@@ -1,6 +1,10 @@
 # Wolio V1 — Freeze Baseline
 
-**Status:** freeze candidate, 2026-11-06. Design revision: `1.1`.
+**Status:** freeze candidate, 2026-11-06. Design revision: `1.2`.
+
+Read `DOCUMENT_AUTHORITY.md` for the complete active-document register and
+`00-product/PROJECT_COVERAGE.md` for coverage beyond the trial. Revision 1.2
+clarifies interfaces, task contracts, historical authority and preparation status.
 
 This document resolves the earlier V1 scope ambiguities. It takes precedence
 over earlier aspirational examples and milestone ordering. Implementation is
@@ -50,8 +54,9 @@ generics are explicitly outside V1. Their extension boundaries are defined in
 
 Earlier `.wol` examples outside CORE_V1 are conceptual unless accepted by its
 grammar. Unsupported syntax must produce a diagnostic, never silently degrade.
-Earlier `OPEN` items are resolved by the decisions above and these normative
-documents; historical review reports describe their original revision only.
+Earlier `OPEN` items are historical, not automatically resolved decisions. Only
+an explicit normative rule resolves a question; a genuine uncovered semantic
+decision blocks its affected task and requires an amendment.
 
 ## Freeze and amendment
 

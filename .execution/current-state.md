@@ -1,9 +1,13 @@
 # Current state
 
-2026-11-06: design documents and execution records only. No Cargo workspace,
-compiler, interpreter, executable conformance suite or benchmark results exist.
-Revision 1.1 is a freeze candidate. M03 is the useful runnable stop point;
-M01–M07 is the complete specified delivery path.
+2026-11-06: design and preparation only. Revision 1.2 is a freeze candidate.
+No Cargo workspace, compiler, interpreter, executable conformance suite or
+benchmark result exists. M03 is the trial; full V1 includes all M01–M07.
 
-Existing local changes were preserved. No commit was created.
-Next: review baseline, record freeze decision, then execute T001.
+Whole-project coverage, post-V1 admission gates, active document authority,
+shared interfaces and full task contracts are now explicit. The previously added
+OpenCode global instructions, Wolio skills and commands were removed at owner request.
+Actual preparation checks are recorded in reports/PREP-0002.md.
+
+Next: owner review/acceptance of an identified committed baseline, then T001.
+No baseline acceptance, implementation, commit or push is implied by this revision.

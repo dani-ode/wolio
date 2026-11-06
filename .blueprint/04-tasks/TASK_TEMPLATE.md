@@ -1,6 +1,6 @@
 # TASK-XXX: <short imperative title>
 
-**Status:** `DRAFT` | **Priority:** `P0/P1/P2` | **Milestone:** `MXX`
+**Execution status:** `.execution/task-status.md` | **Priority:** `P0/P1/P2` | **Milestone:** `MXX`
 
 ## Objective
 <One measurable outcome.>

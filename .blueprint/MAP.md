@@ -1,52 +1,26 @@
-# Blueprint Map — Start Here
+# Blueprint map
 
-**Current status:** `REVISION 1.1 FREEZE CANDIDATE / NO IMPLEMENTATION YET`
+Revision 1.2 freeze candidate; no compiler implementation yet.
 
-Start with [BASELINE-V1.md](BASELINE-V1.md), then
-[DELIVERY_PLAN.md](06-project-management/DELIVERY_PLAN.md). These resolve the
-earlier roadmap's scope and ordering. Actual status lives in `.execution/`.
+1. [Document authority](DOCUMENT_AUTHORITY.md)
+2. [V1 baseline](BASELINE-V1.md)
+3. [Whole-project coverage](00-product/PROJECT_COVERAGE.md)
+4. [Delivery plan](06-project-management/DELIVERY_PLAN.md)
+5. [Task index](04-tasks/task-index.md)
+6. [Acceptance matrix](05-quality/ACCEPTANCE_MATRIX.md)
+7. [Post-V1 plan](06-project-management/POST_V1_PLAN.md)
+8. [Ubuntu and agent quickstart](07-ai-context/GETTING_STARTED.md)
 
-Wolio is an AI-native language and construction system that turns intent into
-bounded, structured, verifiable code changes.
-
-## Execution chain
-
-`Intent → Contract → Scoped change → Semantic analysis → Implementation → Verification`
-
-## Authority ladder
-
-1. [`blueprint.md`](blueprint.md) — vision and principles
-2. `01-architecture/` — system boundaries
-3. `02-specifications/` — language/protocol behavior
-4. `03-implementation/` — crates and milestones
-5. `04-tasks/` — executable work
-6. `05-quality/` — quality gates
-7. `07-ai-context/` — agent rules
-
-## Delivery order
-
-| ID | Milestone | Depends on | Status | Entry point |
-|---|---|---|---|---|
-| M00 | Preparation | — | `REVIEW` | `BASELINE-V1.md` |
-| M01 | Vertical slice | M00 acceptance | `PLANNED` | `03-implementation/milestones/M01-VERTICAL_SLICE.md` |
-| M02 | Semantic core | M01 | `PLANNED` | `03-implementation/milestones/M02-SEMANTIC_CORE.md` |
-| M03 | Verification | M02 | `PLANNED` | `03-implementation/milestones/M03-VERIFICATION.md` |
-| M04 | Agent protocol | M03 | `PLANNED` | `03-implementation/milestones/M04-AGENT_PROTOCOL.md` |
-| M05 | Native backend | M03 | `PLANNED` | `03-implementation/milestones/M05-NATIVE.md` |
-| M06 | Benchmark | M04 | `PLANNED` | `03-implementation/milestones/M06-BENCHMARK.md` |
-| M07 | Toolchain | M04, M05 | `PLANNED` | `06-project-management/DELIVERY_PLAN.md` |
-
-## Read by change type
-
-| Change | Start here |
+| Change | Normative starting point |
 |---|---|
-| Lexer/parser/AST | `02-specifications/language/LANGUAGE_SPEC.md` + relevant crate file |
-| Contracts/effects/dependencies | `blueprint.md` + `01-architecture/SYSTEM_ARCHITECTURE.md` |
-| Verification/diagnostics | `02-specifications/verification/` + `05-quality/DEFINITION_OF_DONE.md` |
-| Agent mutations/scopes | `02-specifications/protocol/WTP_SPEC.md` + `07-ai-context/ENGINEERING_RULES.md` |
-| Planning | `06-project-management/ROADMAP.md` + `04-tasks/task-index.md` |
+| Lexer/parser/types/runtime | language/CORE_V1 + INTERFACE_CONTRACTS |
+| Contracts/errors/effects | CONTRACT_DESIGN + CORE_V1 |
+| Graph/identity/impact | SEMANTIC_MODEL + INTERFACE_CONTRACTS |
+| Diagnostics/evidence | verification/DIAGNOSTIC_SPEC + EVIDENCE_MODEL |
+| Agent mutations | protocol/LOCAL_PROTOCOL_V1 |
+| Packages | package-manager/PACKAGE_MANAGER_SPEC + INTERFACE_CONTRACTS |
+| Formatter/LSP/native | DELIVERY_POLICY + relevant acceptance families |
 
-## Non-negotiables
-
-No silent behavior, no arbitrary AI edits by default, no semantic suppression,
-and no contract change without impact analysis and explicit approval.
+Specifications in the table are under `02-specifications/`; DELIVERY_POLICY is
+under `03-implementation/`. Read only the task-relevant context after the baseline.
+Actual progress: repository `.execution/current-state.md` and `task-status.md`.

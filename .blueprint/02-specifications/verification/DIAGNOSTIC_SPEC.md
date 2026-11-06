@@ -10,10 +10,10 @@ Diagnostics are part of the AI interface, not just compiler text.
   "code": "WOLIO-EFFECT-001",
   "severity": "error",
   "category": "effect",
-  "target": "fn_01J...",
+  "target": "sym_00000000-0000-4000-8000-000000000001",
   "message": "Undeclared effect",
   "violation": {
-    "observed": "Database.Write",
+    "observed": "Console::Write",
     "declared": []
   },
   "source": {

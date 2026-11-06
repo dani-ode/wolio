@@ -1,8 +1,12 @@
-# AI Agent Instructions
+# AI agent instructions
 
-Read BASELINE-V1.md first for revision 1.1 authority, then CORE_V1.md and the
-current work unit in DELIVERY_PLAN.md. `.execution/current-state.md` records
-actual implementation. Historical OPEN items are resolved by the normative
-revision documents; genuinely new semantic questions require an amendment.
+Start with DOCUMENT_AUTHORITY.md, BASELINE-V1.md and `.execution/current-state.md`.
+Find the assigned ID in 04-tasks/task-index.md and EXECUTION_CONTRACTS.md or its
+dedicated file. Read normative behavior and acceptance families for that task.
+Supporting architecture/crate sketches cannot add syntax, effects or release gates.
 
-Read `blueprint.md`, the relevant architecture/specification documents, and the assigned task before editing code. Treat `99-references/` as historical context only. Do not infer APIs from examples, bypass integrity verification, or silently modify an approved specification. Mark unresolved decisions `OPEN` and stop for authorization when a task conflicts with an authoritative document.
+Before edits, check actual readiness and existing user changes. Implement the
+bounded task, run its checks, then record results under `.execution/`. If baseline
+semantics conflict or are absent, document the exact blocker and seek amendment.
+Do not equate documentation completion, owner acceptance or runtime tests with a
+working compiler, passing release or formal proof.

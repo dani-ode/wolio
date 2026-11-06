@@ -1,61 +1,57 @@
-# Wolio Implementation Specification v1
+# Wolio implementation specification V1
 
-> Revision 1.1: BASELINE-V1.md, CORE_V1.md, DELIVERY_POLICY.md, and DELIVERY_PLAN.md
-> control implementation scope and acceptance. The broad feature inventory below
-> is historical architecture context. The first runnable backend is an interpreter;
-> M03 is a complete trial; native is M05; packages/formatter/LSP are M07.
+Status: revision 1.2 freeze candidate. V1 denotes product scope, not milestone 1.
+This specification covers the whole M01–M07 delivery. There is no V2 baseline yet.
 
-**Status:** Draft for implementation  
-**Compiler:** Rust  
-**Native backend:** LLVM
-
-## Purpose
-
-This document defines the first implementation baseline below the Wolio Blueprint. The Blueprint defines direction and principles; this document defines the components, interfaces, invariants, and verification gates required for v1.
-
-## Product boundary
-
-Wolio v1 combines a `.wol` language, compiler, semantic repository graph, verification engine, package manager, and AI construction protocol. The implementation must prioritize machine-verifiable semantics over language breadth.
-
-## Compiler pipeline
+## Pipeline and responsibilities
 
 ```text
-source -> lexer -> parser -> AST -> resolver -> semantic model
-       -> type checking -> contract checking -> effect checking
-       -> dependency checking -> scope/capability checking
-       -> semantic analysis -> Wolio IR -> LLVM IR -> native binary
+source -> lexer -> parser/AST -> resolver -> shared semantic model
+       -> types -> contract well-formedness -> errors/effects/dependencies
+       -> verification/query services
+       -> interpreter (M02; contract guards M03)
+       -> typed IR/verifier -> LLVM/native runtime (M05)
 ```
 
-The semantic model is shared by the compiler and AI tooling. Generated graph data is rebuildable from source and explicit project metadata and is never the sole source of truth.
+Diagnostics are low-level shared values. The CLI composes services; it does not
+implement language semantics. Agent, LSP and formatter consume the same compiler
+model. Runtime never depends on LLVM. Cargo edges are defined in DELIVERY_POLICY.
+Create only useful crates, not every historical crate sketch at T001. Interpreter
+and diagnostic modules may become separate crates when required by boundaries.
 
-## Language baseline
+## Language and enforcement
 
-V1 includes modules, entities, types, enums, errors, operations, implementations, contracts, tests, properties, and events. It provides static typing, `Option<T>`, `Result<T,E>`, semantic/domain types, explicit dependencies, explicit effects, typed errors, provenance, and exhaustive matching.
+CORE_V1 is the sole accepted grammar: immutable nominal/record/enum values,
+operations and implementations, explicit Result/Option and exhaustive match.
+No user recursion, mutation, arbitrary generics or stateful invariants in V1.
+Console output is the only host adapter. Contracts are runtime guarded;
+well-formedness, errors, effects and dependencies are checked statically.
+Unknown implication is never proof. Unsupported profile features fail explicitly.
 
-Contracts describe inputs, preconditions, outputs, postconditions, errors, effects, dependencies, and invariants. Implementations may not silently weaken a contract. Contract changes require an impact report and human approval.
+## Delivery
 
-## Verification invariants
+| Stage | Output | Work units |
+|---|---|---|
+| M01 | init/check frontend and diagnostics | T001–T004 |
+| M02 | semantic graph, types, interpreter/run | T020–T024 |
+| M03 | contracts, tests/verify, inspect/impact and pilot trial | T030–T034 |
+| M04 | local scoped agent protocol and recovery | T040–T044 |
+| M05 | typed IR, LLVM, ABI and parity | T050–T053 |
+| M06 | controlled expanded benchmark | T060–T063 |
+| M07 | Git packages, formatter, LSP and distribution | T070–T074 |
 
-- No undeclared dependency or effect.
-- No unresolved symbol or non-exhaustive match.
-- No semantic suppression mechanism.
-- No unauthorized capability or out-of-scope mutation.
-- Secrets cannot be initialized from source literals.
-- Required tests and diagnostics are machine-readable.
-- Fallbacks and workarounds require explicit authorization.
+M04 and M05 independently follow M03. M06 follows M04; M07 follows M04 and M05.
+V1 is complete only after all stages pass their gates. M03 is independently
+launchable. Package resolution, formatter and LSP are not trial prerequisites.
 
-## Workspace and crates
+## Contracts between components
 
-The Rust workspace is implemented in dependency order. Its crate responsibilities are specified under `crates/`. The initial boundaries are lexer, parser, AST, types, semantic model, contracts, effects, resolver, analyzer, verifier, IR, code generation, runtime, package manager, agent protocol, CLI, formatter, and LSP.
+Use INTERFACE_CONTRACTS for project layout, command behavior and shared formats;
+SEMANTIC_MODEL for identity; EVIDENCE_MODEL for evidence; LOCAL_PROTOCOL_V1 for
+mutation; PACKAGE_MANAGER_SPEC for dependency integrity. Never expose sketches
+from historical crate documents as a competing public contract.
 
-## Package management
-
-The package manager is GitHub-first and Git-native. The normative rules are defined in `02-specifications/package-manager/PACKAGE_MANAGER_SPEC.md`. The implementation must support repository identity, SemVer resolution, deterministic dependency graphs, commit and content-hash verification, lockfiles, private repository credentials, and a content-addressed cache.
-
-## AI construction protocol
-
-The agent lifecycle is discover, understand, propose, authorize, mutate, verify, repair, and finalize. Agents receive explicit read/write/create/delete scope and capabilities. Preferred mutations are structured semantic operations; raw text editing is a restricted capability. Human approval is required for contract, security, capability, architecture, schema, and unsafe changes.
-
-## Definition of v1
-
-V1 is complete when a realistic multi-module project can be created reproducibly, parsed, type-checked, contract-checked, effect-checked, dependency-checked, verified, compiled through LLVM, and modified through bounded agent actions with structured diagnostics and passing regression tests.
+All acceptance cases are indexed in `../05-quality/ACCEPTANCE_MATRIX.md` and
+assigned to work units in `../04-tasks/EXECUTION_CONTRACTS.md`. A task is complete
+only with executed checks and recorded evidence. Written specifications alone do
+not validate parser correctness, runtime parity or benchmark claims.

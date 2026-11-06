@@ -1,14 +1,21 @@
 # Baseline acceptance
 
-Revision 1.1, 2026-11-06: **READY FOR OWNER REVIEW — NOT YET FROZEN**.
-The owner authorized completion and intends to freeze the reference. Approval of
-revision 1.0 does not automatically approve this new revision.
+Revision 1.2, 2026-11-06: **READY FOR OWNER REVIEW — NOT YET FROZEN**.
 
-Documented acceptance: language-first scope and M03 trial (BASELINE-V1), concrete
-grammar (CORE_V1), behavioral obligations (CONTRACT_DESIGN), evidence limits
-(EVIDENCE_MODEL), identity and local protocol (SEMANTIC_MODEL, LOCAL_PROTOCOL_V1),
-complete delivery and measurement (DELIVERY_PLAN, DELIVERY_POLICY).
+The owner requested complete coverage, ambiguity cleanup and OpenCode workflows.
+This authorizes documentation/configuration changes, not automatic acceptance.
+Revision 1.2 adds authority/coverage, shared interface clarifications and task gates.
+Review especially INTERFACE_CONTRACTS and POST_V1_PLAN before approval.
 
-Implementation and empirical benchmark validation: not started.
-Freeze action: owner records ACCEPT revision 1.1, date and identifying repository
-commit/hash. Subsequent semantic changes require an ADR and explicit amendment.
+Acceptance record to complete after review:
+
+- Decision: pending
+- Owner/date: pending
+- Design revision: 1.2
+- Reviewed documentation commit/hash: pending
+- Exceptions/amendments: pending
+
+The acceptance record may be committed after the reviewed documentation commit;
+its hash identifies the reviewed baseline, avoiding a self-referential commit hash.
+No implementation or benchmark validation has occurred. Subsequent semantic
+changes require an ADR, compatibility/fixture impact and explicit owner decision.

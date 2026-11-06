@@ -13,10 +13,11 @@ the frozen work breakdown and acceptance contract, not a claim of completion.
 | M06 | T060 expanded corpus; T061 baseline runners; T062 repeated paired trials; T063 analysis/report | published prompts, hashes, model/tool versions, raw runs and uncertainty; no selective omission |
 | M07 | T070 Git resolution/lock; T071 integrity/cache/offline; T072 formatter; T073 LSP; T074 distribution | moved-tag rejection; locked offline reproduction; format idempotence; stale editor tests; clean-machine install |
 
-Each work unit inherits relevant normative documents and the milestone tests.
-Before execution, expand the work unit using TASK_TEMPLATE with affected paths,
-exact commands and fixtures. This is scheduling detail, not permission to invent
-semantics. Missing semantic decisions require a baseline amendment.
+Each work unit has a contract in `04-tasks/EXECUTION_CONTRACTS.md` or its dedicated
+T001–T004 file, and fixture families in `05-quality/ACCEPTANCE_MATRIX.md` (paths
+relative to the blueprint root). Record exact selected Rust paths and test runner
+commands before execution. This cannot add semantics; missing semantic decisions
+require an amendment. Full V1 completion requires both M06 and M07 acceptance.
 
 ## Trial stop point
 

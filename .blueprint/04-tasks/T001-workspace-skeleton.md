@@ -1,12 +1,14 @@
 # T001: Establish Rust workspace and crate skeleton
 
-**Status:** `READY` | **Priority:** `P0` | **Milestone:** `M01`
+**Execution status:** see `.execution/task-status.md` | **Priority:** `P0` | **Milestone:** `M01`
 
 ## Objective
 Create the minimal buildable Rust workspace and crate boundaries for the
 vertical slice, without implementing language behavior.
 
 ## Authority
+- Baseline: `../DOCUMENT_AUTHORITY.md`, `../BASELINE-V1.md`
+- Toolchain: `../03-implementation/DELIVERY_POLICY.md`
 - Product: [`blueprint.md`](../blueprint.md)
 - Rules: [`DEPENDENCY_RULES.md`](../01-architecture/DEPENDENCY_RULES.md)
 - Milestone: [`M01-VERTICAL_SLICE.md`](../03-implementation/milestones/M01-VERTICAL_SLICE.md)
@@ -20,6 +22,8 @@ AST, diagnostics, and CLI. Do not invent public language APIs.
 - [ ] `cargo test --workspace` succeeds
 - [ ] Dependency direction follows the architecture rules
 - [ ] No unrelated files are modified
+- [ ] Exact stable Rust version pinned; rustfmt/clippy installed; Cargo.lock tracked
+- [ ] CI runs the common ACCEPTANCE_MATRIX checks on a pinned Linux environment
 
 ## Verification
 ```bash
@@ -28,4 +32,4 @@ cargo test --workspace
 ```
 
 ## Dependencies
-None. Blocks T002.
+Owner acceptance of revision 1.2. Blocks T002. No language implementation here.

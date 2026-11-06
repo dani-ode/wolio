@@ -26,7 +26,9 @@
 Determinism, reproducibility, explicit failure, least authority, stable schemas,
 regression resistance, inspectability, and evidence-based evolution are required.
 
-## Constraints and OPEN items
+## Execution-selected constraints
 
-Rust stable and Cargo are the planned implementation baseline. Exact pinned
-versions, CI providers, and performance targets are `OPEN` until M00 approval.
+Rust/Cargo and Linux x86_64 are fixed; T001 pins stable Rust and GitHub Actions
+environment, M05 pins LLVM. DELIVERY_POLICY controls these selections. Performance
+is measured by DELIVERY_PLAN, not an invented M00 threshold. The complete feature
+inventory and later-release boundaries are in PROJECT_COVERAGE.md.

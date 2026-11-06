@@ -1,36 +1,23 @@
-# Technical Definition of Done
+# Release criteria
 
-> Revision 1.1: release profiles and exact acceptance are in DELIVERY_PLAN.md.
-> Trial release requires M03, full toolchain M07. A release may report negative
-> benchmark findings; an improvement claim additionally requires the specified
-> statistical/economic threshold. Architecture/security extensions in this
-> historical checklist are not mandatory V1 features.
+## M03 trial
 
-Wolio V1 is not complete when the compiler compiles itself.
+Fresh users can install from documented pinned Rust sources, init/check/run/test/
+inspect/impact/verify the three examples without LLVM. Contract violations fail
+with structured diagnostics. Three change cycles and the pilot have raw evidence.
+Limitations and unsupported features are documented. No claims of universal proof.
 
-It is complete when a realistic multi-module project can:
+## Full V1
 
-1.  initialize
-2.  parse
-3.  resolve
-4.  type-check
-5.  declare and verify contracts
-6.  declare and verify effects
-7.  enforce explicit dependencies
-8.  enforce architecture policy
-9.  expose semantic queries
-10. accept structured AI changes
-11. enforce change scope
-12. verify every mutation
-13. report machine-readable diagnostics
-14. build native code
-15. run native code
-16. reproduce the semantic graph after deleting `.wolio/`
-17. audit AI maintainability
-18. survive multiple AI-generated change cycles
+All M01–M07 tasks accepted. Scoped mutations survive recovery/concurrent-edit
+fixtures; native execution matches the interpreter; package integrity/offline
+reproduction works; formatter/LSP and clean Linux installation pass. Release
+artifacts include checksums, exact tools/lock metadata, license and release notes.
+The owner selects the distribution license before T074 publication.
 
-## Final gate
+## Evaluation claims
 
-The benchmark must demonstrate that Wolio improves at least one
-meaningful correctness metric without making the AI workflow
-economically impractical.
+Negative or inconclusive benchmark results do not prevent a technical release.
+Improvement claims require DELIVERY_PLAN's statistical and economic thresholds.
+Do not omit failures or extrapolate to stateful/concurrent applications unsupported
+by V1. Future extension gates are in POST_V1_PLAN, not this release checklist.
