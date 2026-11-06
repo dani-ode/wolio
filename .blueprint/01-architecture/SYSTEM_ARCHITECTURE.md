@@ -232,13 +232,18 @@ text references.
 -   persistent schema changes;
 -   unsafe exceptions.
 
+Approval is risk-tiered: eligible implementation/test changes are `AUTO`,
+supported private contract changes may be `POST_REVIEW`, and public/unknown
+contract, capability, security, schema, and architecture-boundary changes are
+`HUMAN_REQUIRED`. Verification proves technical obligations, not business truth.
+
 ## 7. Backend
 
-Use:
+Use, after semantic verification:
 
 ``` text
 Wolio source
-    ↓
+    ↓ Verified Wolio IR
 Wolio IR
     ↓
 LLVM IR

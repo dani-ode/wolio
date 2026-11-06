@@ -7,7 +7,7 @@
 > measurable acceptance and benchmark thresholds are in DELIVERY_PLAN.md.
 > The earlier OPEN list is historical, resolved by those decisions.
 
-**Status:** `Proposed`  
+**Status:** historical/non-normative; product boundary is defined by BASELINE-V1.md and PROJECT_COVERAGE.md
 **Decision authority:** human project owner for scope and contract changes.
 
 ## Product

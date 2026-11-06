@@ -10,7 +10,7 @@ register. Its normative allowlist replaces the older directory-based ranking
 below; broad historical documents cannot override concrete V1 specifications.
 See [PROJECT_COVERAGE.md](00-product/PROJECT_COVERAGE.md) for the entire product.
 
-0. [`BASELINE-V1.md`](BASELINE-V1.md) defines revision 1.2 scope, normative
+0. [`BASELINE-V1.md`](BASELINE-V1.md) defines revision 1.3 scope, normative
    specifications, and overrides earlier conflicting aspirational examples.
 1. `blueprint.md` defines the long-term vision and non-negotiable principles.
 2. `01-architecture/` and `02-specifications/` define approved technical behavior.
@@ -39,5 +39,5 @@ If a decision is missing, mark it `OPEN` instead of inventing behavior.
 
 Progress and evidence, including baseline preparation, are recorded in the
 repository-level `.execution/` ledger. Blueprint status is not implementation
-status. Revision 1.2 is a freeze candidate; the owner's acceptance record is
+status. Revision 1.3 is a freeze candidate; the owner's acceptance record is
 separate from the author's completion report.

@@ -1,7 +1,7 @@
 `.blueprint/BASELINE-V1.md`
 # Wolio V1 — Freeze Baseline
 
-**Status:** freeze candidate, 2026-11-06. Design revision: `1.2`.
+**Status:** freeze candidate, 2026-11-06. Design revision: `1.3`.
 
 Read `DOCUMENT_AUTHORITY.md` for the complete active-document register and
 `00-product/PROJECT_COVERAGE.md` for coverage beyond the trial. Revision 1.2
@@ -58,6 +58,14 @@ grammar. Unsupported syntax must produce a diagnostic, never silently degrade.
 Earlier `OPEN` items are historical, not automatically resolved decisions. Only
 an explicit normative rule resolves a question; a genuine uncovered semantic
 decision blocks its affected task and requires an amendment.
+
+## Revision 1.3 decisions
+
+ADR-007 removes `wolio.ids.json`, defines deterministic semantic identities,
+requires typed-only agent mutation, introduces risk-tiered approval, makes the
+interpreter the default development backend, restricts LLVM to verified IR, and
+defines V1 anti-workaround diagnostics. These rules supersede conflicting
+earlier pre-1.3 text.
 
 ## Freeze and amendment
 

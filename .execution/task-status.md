@@ -4,7 +4,7 @@
 |---|---|---|
 | PREP-0001 blueprint revision 1.1 | DONE | reports/PREP-0001.md; documentation only |
 | PREP-0002 coverage and OpenCode preparation | DONE | reports/PREP-0002.md; runtime discovery requires restart |
-| T001 workspace/toolchain | BLOCKED | revision 1.2 acceptance |
+| T001 workspace/toolchain | BLOCKED | revision 1.3 baseline acceptance |
 | T002–T004 frontend | PLANNED | T001, sequential |
 | T020–T024 executable core | PLANNED | M01 |
 | T030–T034 trial/pilot | PLANNED | M02 |

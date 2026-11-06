@@ -17,7 +17,7 @@ invent language semantics to fill an engineering detail.
 | T020 | resolver/import visibility; crates/wolio-resolver, semantic support | T004 | CORE_V1, INTERFACE_CONTRACTS | SEM resolution/cycles |
 | T021 | nominal/record/enum checking; crates/wolio-types and semantic | T020 | CORE_V1 | SEM constructors/types |
 | T022 | builtin generics, match and Result handling; types | T021 | CORE_V1, INTERFACE_CONTRACTS | SEM matches/Result |
-| T023 | persisted identity map, snapshot graph and register-ids; semantic, CLI | T022 | SEMANTIC_MODEL, INTERFACE_CONTRACTS | ID |
+| T023 | deterministic declaration identity, snapshot graph and provenance; semantic, CLI | T022 | SEMANTIC_MODEL, INTERFACE_CONTRACTS | ID |
 | T024 | interpreter/runtime and run CLI; runtime/interpreter, CLI | T023 | CORE_V1, DELIVERY_POLICY | RUN; all M02 |
 | T030 | predicate checker and runtime guards; contracts, interpreter | T024 | CONTRACT_DESIGN | CONTRACT |
 | T031 | conservative errors/effects/dependencies; effects, contracts, types | T030 | CONTRACT_DESIGN, CORE_V1 | EFFECT |
@@ -25,10 +25,10 @@ invent language semantics to fill an engineering detail.
 | T033 | inspect/impact/compatibility; semantic/query, CLI | T032 | SEMANTIC_MODEL, CONTRACT_DESIGN, INTERFACE_CONTRACTS | QUERY |
 | T034 | three examples, trial install/use docs, pilot harness/raw report; examples, docs, benchmarks/pilot | T033 | DELIVERY_PLAN | TRIAL; all M03 |
 | T040 | JSONL envelopes/replay and queries; agent, CLI | T034 | LOCAL_PROTOCOL_V1 | AGENT versions/query/replay |
-| T041 | all structured operation plans/canonical diffs; agent | T040 | LOCAL_PROTOCOL_V1, SEMANTIC_MODEL | AGENT plan and old/new ID mapping |
-| T042 | scope/capability/approval validation; agent | T041 | LOCAL_PROTOCOL_V1 | AGENT deny/traversal/expiry/revocation |
+| T041 | typed structured operation plans/canonical AST diffs; agent | T040 | LOCAL_PROTOCOL_V1, SEMANTIC_MODEL | AGENT plan, raw-text rejection and old/new ID mapping |
+| T042 | scope/capability/risk-tier approval validation; agent | T041 | LOCAL_PROTOCOL_V1 | AGENT deny/traversal/tier/expiry/revocation |
 | T043 | staged verify, lock/CAS, journal/recovery; agent, filesystem adapter | T042 | LOCAL_PROTOCOL_V1 | AGENT crash/concurrent-edit preservation |
-| T044 | bounded repair/finalize and evidence binding; agent | T043 | LOCAL_PROTOCOL_V1, EVIDENCE_MODEL | AGENT repair exhaustion/finalize; all M04 |
+| T044 | bounded repair/finalize, review ledger and analyzer policy; agent, analyzer, verify | T043 | LOCAL_PROTOCOL_V1, MUTATION_SCHEMA_V1, APPROVAL_MATRIX_V1, DIAGNOSTIC_SPEC, EVIDENCE_MODEL | AGENT repair/review; ANALYZER; all M04 |
 | T050 | typed IR and structural verifier; IR | T034 | DELIVERY_POLICY, CORE_V1 | NATIVE invalid IR |
 | T051 | pin LLVM, checked lowering/object emission; codegen, toolchain config | T050 | DELIVERY_POLICY | NATIVE arithmetic/branches |
 | T052 | document ABI and implement runtime linking; runtime, codegen | T051 | DELIVERY_POLICY | NATIVE records/enums/strings/console/guards |

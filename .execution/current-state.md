@@ -1,6 +1,6 @@
 # Current state
 
-2026-11-06: design and preparation only. Revision 1.2 is a freeze candidate.
+2026-11-06: design and preparation only. Revision 1.3 is a freeze candidate.
 No Cargo workspace, compiler, interpreter, executable conformance suite or
 benchmark result exists. M03 is the trial; full V1 includes all M01–M07.
 

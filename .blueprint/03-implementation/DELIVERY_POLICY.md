@@ -14,6 +14,13 @@ arithmetic and contract guards. Host panic is an internal compiler failure, not
 a language Result. M05 lowers the same checked semantics into typed SSA-like IR
 with explicit blocks, branches, calls, constructors, tags, arithmetic guards, and
 contract guards. IR verifier rejects ill-typed edges and missing terminators.
+Only the verifier may construct the opaque `VerifiedWolioIr` input accepted by
+codegen. It binds immutable IR to the snapshot and completed static checks;
+transformed IR must be reverified. Runtime guards remain mandatory; this is not
+universal proof. Codegen cannot accept raw AST/unverified IR or repair semantics.
+`run` and `test` use the interpreter; `build` explicitly invokes native codegen.
+LLVM is also available for backend development, CI and differential tests, but
+is not a dependency of frontend/interpreter-only builds.
 LLVM optimization must preserve faults/guards; differential fixtures are the
 release gate. Immutable heap values use reference counting initially; no exposed
 pointer identity or mandatory tracing GC. Console is the sole host adapter.

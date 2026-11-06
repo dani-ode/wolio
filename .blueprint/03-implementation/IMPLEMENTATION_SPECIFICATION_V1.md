@@ -1,7 +1,7 @@
 `.blueprint/03-implementation/IMPLEMENTATION_SPECIFICATION_V1.md`
 # Wolio implementation specification V1
 
-Status: revision 1.2 freeze candidate. V1 denotes product scope, not milestone 1.
+Status: revision 1.3 freeze candidate. V1 denotes product scope, not milestone 1.
 This specification covers the whole M01–M07 delivery. There is no V2 baseline yet.
 
 ## Pipeline and responsibilities
@@ -11,7 +11,7 @@ source -> lexer -> parser/AST -> resolver -> shared semantic model
        -> types -> contract well-formedness -> errors/effects/dependencies
        -> verification/query services
        -> interpreter (M02; contract guards M03)
-       -> typed IR/verifier -> LLVM/native runtime (M05)
+        -> typed IR/verifier -> VerifiedWolioIr -> LLVM/native runtime (M05)
 ```
 
 Diagnostics are low-level shared values. The CLI composes services; it does not

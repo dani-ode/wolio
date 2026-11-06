@@ -1,7 +1,7 @@
 `.blueprint/DOCUMENT_AUTHORITY.md`
-# Document authority — revision 1.2
+# Document authority — revision 1.3
 
-This register is the entry point for the entire blueprint. Revision 1.2 is a
+This register is the entry point for the entire blueprint. Revision 1.3 is a
 pre-implementation freeze candidate, not owner acceptance or shipped software.
 
 ## Binding reading order
@@ -12,6 +12,8 @@ pre-implementation freeze candidate, not owner acceptance or shipped software.
    `02-specifications/CONTRACT_DESIGN.md`, `02-specifications/SEMANTIC_MODEL.md`,
    `02-specifications/INTERFACE_CONTRACTS.md`,
    `02-specifications/protocol/LOCAL_PROTOCOL_V1.md`,
+   `02-specifications/protocol/MUTATION_SCHEMA_V1.md`,
+   `02-specifications/protocol/APPROVAL_MATRIX_V1.md`,
    `02-specifications/package-manager/PACKAGE_MANAGER_SPEC.md`,
    `02-specifications/verification/DIAGNOSTIC_SPEC.md`,
    `02-specifications/verification/EVIDENCE_MODEL.md`.
@@ -19,6 +21,10 @@ pre-implementation freeze candidate, not owner acceptance or shipped software.
    `03-implementation/DELIVERY_POLICY.md`, `06-project-management/DELIVERY_PLAN.md`,
    `05-quality/ACCEPTANCE_MATRIX.md`, `04-tasks/EXECUTION_CONTRACTS.md`.
 5. Task files and engineering guidance implement those rules, never extend them.
+
+Revision 1.3 incorporates ADR-007 and supersedes conflicting revision 1.2
+identity, mutation, approval, native-backend, and analyzer wording. Execution
+baseline acceptance remains a separate owner decision before T001.
 
 `02-specifications/EXTENSION_BOUNDARIES.md` and
 `06-project-management/POST_V1_PLAN.md` are binding scope boundaries and research

@@ -72,8 +72,10 @@ can also break exhaustive client source and is a source-breaking change.
 
 V1 proves identical normalized predicates only; other predicate edits are
 `unknown`, never automatically compatible. All public contract changes produce
-an old/new semantic diff and dependent/test impact. Agent application requires
-owner approval bound to that exact diff. Approval permits the specification
+an old/new semantic diff and dependent/test impact. Public and unknown predicate
+changes require owner approval bound to that exact diff. Only private changes
+with identical normalized predicates/signatures and unchanged error/effect/
+dependency sets qualify for POST_REVIEW under LOCAL_PROTOCOL_V1. Approval permits the specification
 change; it cannot make an implementation violation legal.
 
 ## Frame conditions and invariants

@@ -1,7 +1,7 @@
 `.blueprint/01-architecture/SECURITY_THREAT_MODEL.md`
 # Security Threat Model V1
 
-**Status:** `Proposed`
+**Status:** historical/supporting; active V1 rules are defined by the authority register and security architecture
 
 | Threat | Minimum control |
 |---|---|

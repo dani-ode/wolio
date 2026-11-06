@@ -1,11 +1,14 @@
 `.blueprint/02-specifications/protocol/SCOPE_CAPABILITY_MODEL.md`
 # Scope and Capability Model V1
 
+> HISTORICAL / NON-NORMATIVE. LOCAL_PROTOCOL_V1.md and APPROVAL_MATRIX_V1.md
+> define the accepted V1 behavior.
+
 > LOCAL_PROTOCOL_V1.md defines V1 owner identity, approval expiry/revocation,
 > nondelegation, scope matching and atomic mutation. Earlier OPEN items below
 > are superseded. Effect declarations describe behavior, not execution authority.
 
-**Status:** `Proposed`
+**Status:** historical/non-normative; superseded by LOCAL_PROTOCOL_V1.md and APPROVAL_MATRIX_V1.md
 
 Scopes define `READ`, `WRITE`, `CREATE`, `DELETE`, and `EXECUTE` over semantic
 entities and derived paths. Capabilities are narrow authorities such as

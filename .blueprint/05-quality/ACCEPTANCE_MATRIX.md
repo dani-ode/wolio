@@ -10,20 +10,30 @@ tests execute them with the real frontend/runtime. Do not add fake passing tests
 |---|---|---|---|
 | FRONT | all grammar productions, Unicode strings, CRLF byte spans, precedence, empty module | invalid UTF-8/token/escape, unfinished string, malformed declaration, chained comparisons | T002–T004 |
 | SEM | imported public symbols, nominal constructors, records, every builtin generic, exhaustive matches | duplicate/private/missing symbols, cycles, nominal mismatch, bad arity, recursive values, missing/duplicate arms | T020–T022 |
-| ID | stable IDs on formatting/move, exact rename mapping, cache deletion reproduction | duplicate ID, ambiguous reconciliation, resurrected tombstone, stale snapshot | T023 |
+| ID | deterministic IDs on formatting/file relocation, stable module identity, explicit rename provenance, cache deletion reproduction | hash collision, duplicate semantic key, package identity change without impact, implicit rename transfer, stale snapshot | T023 |
 | RUN | Unit/Int entry, selected branches, short-circuiting, checked limits, console capture | overflow, divide zero, MIN/-1, missing entry, unsupported contract profile | T024 |
 | CONTRACT | conjunction/source order, nominal inputs, Result postconditions, nested operations | result in requires, predicate calls/type faults, false requires/ensures, predicate overflow | T030 |
 | EFFECT | propagated error/effect sets, explicitly handled Result, unused declared error | undeclared Err, hidden transitive effect, missing dependency, discarded Result | T031 |
 | EVID | pass/fail/not_run/unknown, deterministic test order, snapshot-bound evidence | changed input invalidates evidence, missing reachable-error/boundary tests, false/faulting tests | T032 |
 | QUERY | stable inspect, typed reverse paths, identical predicate compatibility | removed public API, changed nominal/signature/sets; unknown nonidentical predicate implication | T033 |
 | TRIAL | three runnable examples, init/check/run/test/inspect/impact/verify, three change cycles | wrong implementation passes types but fails ensures; documented limitations and unsuccessful pilot runs | T034 |
-| AGENT | valid scoped edit, all mutation methods, replay, finalization | stale/expired/revoked approval, traversal/symlinks, changed replay, crash at publication steps, concurrent user edits, failed verify | T040–T044 |
-| NATIVE | typed IR, stable ABI, release guards, interpreter/native differential corpus | bad IR edges/terminators, matching faults and contract clauses, unsupported target | T050–T053 |
+| AGENT | typed AST mutation, raw-text rejection, AUTO and POST_REVIEW publication, review record, replay, finalization | public/unknown contract without approval, tier escalation bypass, self-review, stale/expired/revoked approval, traversal/symlinks, changed replay, crash at publication steps, concurrent user edits, failed verify | T040–T044 |
+| NATIVE | verified IR boundary, stable ABI, release guards, interpreter/native differential corpus | unverified/ill-typed IR, bad edges/terminators, matching faults and contract clauses, unsupported target | T050–T053 |
 | BENCH | corpus/prompts/hashes/versions, paired runs, raw data and confidence intervals | timeouts/failures retained, no selective omission, no unsupported improvement claims | T060–T063 |
 | PKG | deterministic graph, private Git helper, verified cache, locked offline install | conflicting ranges/cycles, moved tags, altered bytes, missing offline data, module collision, escaping symlinks/submodules | T070–T071 |
 | TOOL | format idempotence/comment/semantic preservation, LSP hover/definition/references/rename, clean Linux install | fmt check changes nothing, stale editor version, unsaved buffer isolation, corrupt archive/checksum | T072–T074 |
 
 ## Common execution gates
+
+Additional M04 families: typed payload round trips for every CORE_V1 production,
+unknown fields/tags, payload limits, absent create preconditions, conflicting
+operations, canonical diff vectors, and scope-preserving renderer output.
+ANALYZER (T044): configured literal rejection, unconfigured literal acceptance,
+negative literal handling, test/contract exclusions, identical-arm warning,
+warning-only successful verification and failed policy checks blocking apply.
+Review fixtures cover pending local build, release rejection, owner disposition,
+replay/recovery and rejection requiring a fresh plan. ID fixtures include local
+to Git package migration and delete/recreate with old evidence invalidation.
 
 Every Rust work unit runs `cargo fmt --all -- --check`,
 `cargo clippy --workspace --all-targets -- -D warnings`, and

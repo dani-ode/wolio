@@ -1,9 +1,12 @@
 `.blueprint/CHANGELOG.md`
 # Blueprint Changelog
 
+> Historical/supporting record. Non-normative; active rules are defined by
+> DOCUMENT_AUTHORITY and its binding documents.
+
 ## Unreleased
 
-### Revision 1.2 — 2026-11-06
+### Revision 1.2 — 2026-11-06 (superseded by revision 1.3)
 
 - Added authoritative document register, whole-project coverage and post-V1 gates.
 - Aligned implementation, release criteria, navigation and task readiness.

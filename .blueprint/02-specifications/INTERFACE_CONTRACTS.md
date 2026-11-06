@@ -1,14 +1,14 @@
 `.blueprint/02-specifications/INTERFACE_CONTRACTS.md`
 # Shared interface contracts V1
 
-Normative clarification for revision 1.2. These rules connect the language,
+Normative clarification for revision 1.3. These rules connect the language,
 package, CLI and tooling specifications; internal Rust function signatures remain
 implementation choices.
 
 ## Project inputs
 
 Project root contains `wolio.toml`, `src/**/*.wol`, optional `tests/**/*.wol`,
-`wolio.ids.json`, and (with external dependencies) `wolio.lock`. Source discovery
+and (with external dependencies) `wolio.lock`. Source discovery
 uses sorted normalized root-relative paths, does not follow directory symlinks,
 and excludes `.wolio/`, `.git/`, build output and dependency caches. Duplicate
 module names in the compiled package fail. Test modules enter test/verify only.
@@ -26,7 +26,7 @@ operation = "main"
 
 Libraries may omit entrypoint; run/build require it. Entry operations must be
 public for package invocation. `init <directory>` creates this manifest, an
-identity map and a valid `src/main.wol` returning Unit, and refuses to overwrite
+valid `src/main.wol` returning Unit, and refuses to overwrite
 existing files. No implicit directory traversal outside the chosen target.
 
 ## CLI and output
@@ -75,14 +75,12 @@ SHA-256 is lowercase hex. Contract normalization ignores comments/spans and
 formatting, preserves expression/statement order, resolves names to IDs, and
 sorts set-valued clauses only. It never simplifies algebra or reorders predicates.
 
-Identity-map schema: schema_version, package_id (UUIDv4), declarations array
-sorted by module/kind/name with id/module/kind/name, and tombstones array of IDs.
-Unregistered declarations receive ephemeral IDs derived from snapshot plus
-module/kind/name. `init` persists initial IDs; structured creation persists new
-UUIDs. `inspect --register-ids` is the explicit mutating reconciliation command:
-it allocates missing IDs, tombstones removals, preserves exact mappings, and
-rejects ambiguous rename until the caller supplies an explicit old/new mapping.
-It never heuristically transfers identities. This option is available from M02.
+SEMANTIC_MODEL defines deterministic declaration keys and hash domain. The
+existing length-prefixed encoding above applies to every identity field. No
+identity registry is an input or output, and `inspect --register-ids` is not a
+supported option. IDs are available from M02 without mutation. Rename/move
+provenance is an explicit pair of old/new IDs bound to base/result snapshots;
+read-only comparison reports removal/addition without inventing that link.
 
 ## Lexical and binding clarifications
 

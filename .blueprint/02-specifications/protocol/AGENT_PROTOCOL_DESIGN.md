@@ -4,7 +4,7 @@
 > LOCAL_PROTOCOL_V1.md resolves transport, authentication boundary, persistence,
 > and wire schema for M04. Earlier OPEN items below are superseded.
 
-**Status:** `Proposed`  
+**Status:** historical/non-normative; superseded by LOCAL_PROTOCOL_V1.md and MUTATION_SCHEMA_V1.md
 **Lifecycle:** `DISCOVER → UNDERSTAND → PROPOSE → AUTHORIZE → MUTATE → VERIFY → REPAIR → FINALIZE`.
 
 Requests carry intent, allow/deny scope, constraints, capabilities, and a

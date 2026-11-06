@@ -1,7 +1,7 @@
 `.blueprint/MAP.md`
 # Blueprint map
 
-Revision 1.2 freeze candidate; no compiler implementation yet.
+Revision 1.3 freeze candidate; no compiler implementation yet.
 
 1. [Document authority](DOCUMENT_AUTHORITY.md)
 2. [V1 baseline](BASELINE-V1.md)

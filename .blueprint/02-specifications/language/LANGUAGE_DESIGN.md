@@ -5,7 +5,7 @@
 > CORE_V1.md; version negotiation is in DELIVERY_POLICY.md. The OPEN section
 > below describes the superseded draft. M01 parses; M02 executes; M03 guards.
 
-**Status:** `Proposed`  
+**Status:** historical/non-normative; CORE_V1.md is the V1 language authority
 **Authority:** `LANGUAGE_SPEC.md` remains the detailed language authority.
 
 V1 uses explicit declarations for modules, types, entities, operations, errors,

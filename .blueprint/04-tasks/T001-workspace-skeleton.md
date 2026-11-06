@@ -33,4 +33,4 @@ cargo test --workspace
 ```
 
 ## Dependencies
-Owner acceptance of revision 1.2. Blocks T002. No language implementation here.
+Owner acceptance of revision 1.3. Blocks T002. No language implementation here.

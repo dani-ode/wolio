@@ -1,7 +1,7 @@
 `.blueprint/06-project-management/AI_BUG_TAXONOMY.md`
 # AI Failure Taxonomy
 
-**Status:** `Proposed`
+**Status:** supporting taxonomy; enforceable V1 analyzer rules are defined by DIAGNOSTIC_SPEC.md
 
 | ID | Failure | Example to benchmark |
 |---|---|---|

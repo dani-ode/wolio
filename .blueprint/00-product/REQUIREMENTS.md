@@ -8,7 +8,7 @@
 > is M05; packaging/editor/distribution is M07. DELIVERY_POLICY.md resolves
 > version/platform/CI selection; DELIVERY_PLAN.md defines measurable acceptance.
 
-**Status:** `Proposed`
+**Status:** historical/non-normative; V1 requirements are bounded by BASELINE-V1.md and PROJECT_COVERAGE.md
 
 ## Functional requirements
 

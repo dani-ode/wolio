@@ -1,9 +1,9 @@
 `.blueprint/07-ai-context/GETTING_STARTED.md`
-# Ubuntu and OpenCode quickstart
+# Repository engineering quickstart
 
 ## Before code
 
-Review DOCUMENT_AUTHORITY, PROJECT_COVERAGE and revision 1.2. Resolve remaining
+Review DOCUMENT_AUTHORITY, PROJECT_COVERAGE and revision 1.3. Resolve remaining
 owner feedback, commit the reviewed documentation when requested, then record
 owner acceptance with that exact commit/hash in `.execution/baseline-acceptance.md`.
 All implementation tasks remain unstarted until that decision.
@@ -26,7 +26,7 @@ If rustup already exists, inspect its installed toolchains instead of reinstalli
 T001 pins the selected stable version. LLVM is only needed at M05; do not choose
 an arbitrary system LLVM major now. Benchmark runtimes/API access come at T034.
 
-## OpenCode use
+## OpenCode history
 
 The previously installed Wolio skills, slash commands and global workflow have
 been removed at owner request. No project-local OpenCode skills or commands are

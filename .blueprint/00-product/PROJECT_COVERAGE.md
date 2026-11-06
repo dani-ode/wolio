@@ -23,7 +23,8 @@ criteria, not a feature secretly required by a V1 task.
 | Stateful resources, frames, lifecycle invariants, transactions | Post-V1 E01–E02 | POST_V1_PLAN |
 | Structured concurrency, cancellation, idempotency | Post-V1 E03–E04 | POST_V1_PLAN |
 | Value provenance, validation states, secret handles | Post-V1 E05 | POST_V1_PLAN |
-| Architecture constraints and advisory workaround/AI-debt analysis | Post-V1 E06 | POST_V1_PLAN |
+| Architecture constraints and anti-workaround baseline | M04 | LOCAL_PROTOCOL_V1; DIAGNOSTIC_SPEC; AGENT cases |
+| Expanded architecture policy and advisory AI-debt analysis | Post-V1 E06 | POST_V1_PLAN |
 | Property generation, refinements and optional formal proof | Post-V1 E07 | POST_V1_PLAN |
 | FFI and external resource adapters | Post-V1 E08 | POST_V1_PLAN |
 | Remote/multi-user agent transport and stronger isolation | Post-V1 E09 | POST_V1_PLAN |

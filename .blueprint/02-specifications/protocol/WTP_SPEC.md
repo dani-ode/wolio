@@ -1,6 +1,10 @@
 `.blueprint/02-specifications/protocol/WTP_SPEC.md`
 # Wolio AI Agent Protocol
 
+> HISTORICAL / NON-NORMATIVE. V1 behavior is defined by LOCAL_PROTOCOL_V1.md,
+> MUTATION_SCHEMA_V1.md, and APPROVAL_MATRIX_V1.md. This file is retained only
+> as design history.
+
 > LOCAL_PROTOCOL_V1.md is the normative local V1 binding. JSON below illustrates
 > concepts, not additional wire formats. Finalization uses EVIDENCE_MODEL.md;
 > unsupported extension analyses are not silently reported as passing.
@@ -295,7 +299,7 @@ architecture_analysis = pass
 
 ## 14. Human authority
 
-Human approval is mandatory for:
+Historical design required human approval for:
 
 -   contract changes;
 -   security boundary changes;

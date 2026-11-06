@@ -41,6 +41,11 @@ a major schema revision. No source secrets or full runtime values in diagnostics
 | WOLIO-SCOPE-001 | unauthorized mutation |
 | WOLIO-STALE-001 | stale source/approval snapshot |
 | WOLIO-PACKAGE-INTEGRITY-001 | dependency integrity mismatch |
+| WOLIO-ANALYZER-001 | semantic suppression or forbidden bypass |
+| WOLIO-ANALYZER-002 | swallowed/unhandled error substitution |
+| WOLIO-ANALYZER-003 | hidden dependency or effect pattern |
+| WOLIO-ANALYZER-004 | configured forbidden business constant |
+| WOLIO-ANALYZER-005 | heuristic workaround or suspicious duplication |
 
 New codes are additive and never reuse old meanings. Repairs are suggestions,
 not executable authority; adding an effect, error, or weakening a guarantee is

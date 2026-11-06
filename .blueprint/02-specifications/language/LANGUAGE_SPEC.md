@@ -1,6 +1,9 @@
 `.blueprint/02-specifications/language/LANGUAGE_SPEC.md`
 # Wolio Language Specification --- V1 Baseline
 
+> HISTORICAL / NON-NORMATIVE design record. CORE_V1.md is the sole accepted V1
+> grammar and semantics authority.
+
 > Revision 1.1: [CORE_V1.md](CORE_V1.md) is the normative grammar and semantics.
 > Examples below retain conceptual long-term design, not accepted V1 syntax.
 > Human readability and concise consistent syntax are requirements. Entities,
