@@ -1,3 +1,4 @@
+`.blueprint/blueprint.md`
 # Wolio AI Vibe Coding --- Master Technical Blueprint
 
 > Revision 1.1: [BASELINE-V1.md](BASELINE-V1.md) is the controlling product and

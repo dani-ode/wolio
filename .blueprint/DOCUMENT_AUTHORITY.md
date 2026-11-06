@@ -1,3 +1,4 @@
+`.blueprint/DOCUMENT_AUTHORITY.md`
 # Document authority — revision 1.2
 
 This register is the entry point for the entire blueprint. Revision 1.2 is a

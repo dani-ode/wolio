@@ -1,3 +1,4 @@
+`.blueprint/01-architecture/SYSTEM_ARCHITECTURE.md`
 # Wolio System Architecture
 
 > Revision 1.1 architecture: DELIVERY_POLICY.md controls crate direction and

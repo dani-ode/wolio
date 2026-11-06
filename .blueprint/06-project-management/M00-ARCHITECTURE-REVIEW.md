@@ -1,3 +1,4 @@
+`.blueprint/06-project-management/M00-ARCHITECTURE-REVIEW.md`
 # Session Report — M00.13 Architecture Review
 
 **Status:** `COMPLETED`

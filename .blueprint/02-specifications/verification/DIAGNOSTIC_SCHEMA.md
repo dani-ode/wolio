@@ -1,3 +1,4 @@
+`.blueprint/02-specifications/verification/DIAGNOSTIC_SCHEMA.md`
 # Diagnostic schema entry point
 
 The old flat draft is superseded. The sole canonical diagnostic object is

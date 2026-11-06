@@ -1,3 +1,4 @@
+`.blueprint/04-tasks/task-index.md`
 # Task index
 
 Read DOCUMENT_AUTHORITY and BASELINE-V1 first. Task contracts are immutable design;

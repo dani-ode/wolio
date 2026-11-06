@@ -1,3 +1,4 @@
+`.blueprint/04-tasks/EXECUTION_CONTRACTS.md`
 # Complete V1 task contracts
 
 This is the task packet for every work unit after T004. Task IDs are not missing

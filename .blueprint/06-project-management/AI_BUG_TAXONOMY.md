@@ -1,3 +1,4 @@
+`.blueprint/06-project-management/AI_BUG_TAXONOMY.md`
 # AI Failure Taxonomy
 
 **Status:** `Proposed`

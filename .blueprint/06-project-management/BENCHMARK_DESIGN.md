@@ -1,3 +1,4 @@
+`.blueprint/06-project-management/BENCHMARK_DESIGN.md`
 # Benchmark Design V1
 
 > Revision 1.1: DELIVERY_PLAN.md's benchmark protocol replaces this draft corpus

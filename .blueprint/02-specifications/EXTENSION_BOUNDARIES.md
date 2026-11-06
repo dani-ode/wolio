@@ -1,3 +1,4 @@
+`.blueprint/02-specifications/EXTENSION_BOUNDARIES.md`
 # Extension boundaries beyond V1
 
 These decisions complete the product boundary; they do not authorize extra V1

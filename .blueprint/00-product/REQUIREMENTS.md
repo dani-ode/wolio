@@ -1,3 +1,4 @@
+`.blueprint/00-product/REQUIREMENTS.md`
 # Wolio Requirements — M00 Baseline
 
 > Revision 1.1: requirements map to M01 (FR-001/004), M02 (FR-002),

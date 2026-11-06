@@ -1,3 +1,4 @@
+`.blueprint/02-specifications/protocol/AGENT_PROTOCOL_DESIGN.md`
 # Agent Protocol Design V1
 
 > LOCAL_PROTOCOL_V1.md resolves transport, authentication boundary, persistence,

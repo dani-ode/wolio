@@ -1,3 +1,4 @@
+`.blueprint/07-ai-context/GETTING_STARTED.md`
 # Ubuntu and OpenCode quickstart
 
 ## Before code

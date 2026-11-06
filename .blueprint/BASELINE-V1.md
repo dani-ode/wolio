@@ -1,3 +1,4 @@
+`.blueprint/BASELINE-V1.md`
 # Wolio V1 — Freeze Baseline
 
 **Status:** freeze candidate, 2026-11-06. Design revision: `1.2`.

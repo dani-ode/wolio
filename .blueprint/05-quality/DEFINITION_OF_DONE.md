@@ -1,3 +1,4 @@
+`.blueprint/05-quality/DEFINITION_OF_DONE.md`
 # Definition of done
 
 For a task: its contract and assigned ACCEPTANCE_MATRIX families pass, common

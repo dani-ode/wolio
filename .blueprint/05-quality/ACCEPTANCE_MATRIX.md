@@ -1,3 +1,4 @@
+`.blueprint/05-quality/ACCEPTANCE_MATRIX.md`
 # V1 acceptance matrix
 
 Each row is a required fixture family, not a claim tests already exist. Fixtures

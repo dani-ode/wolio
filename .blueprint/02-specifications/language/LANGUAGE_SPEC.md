@@ -1,3 +1,4 @@
+`.blueprint/02-specifications/language/LANGUAGE_SPEC.md`
 # Wolio Language Specification --- V1 Baseline
 
 > Revision 1.1: [CORE_V1.md](CORE_V1.md) is the normative grammar and semantics.

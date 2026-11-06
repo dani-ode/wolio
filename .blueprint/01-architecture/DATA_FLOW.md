@@ -1,3 +1,4 @@
+`.blueprint/01-architecture/DATA_FLOW.md`
 # Source of Truth and Generated State
 
 ## Source of truth

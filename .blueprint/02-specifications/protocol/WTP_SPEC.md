@@ -1,3 +1,4 @@
+`.blueprint/02-specifications/protocol/WTP_SPEC.md`
 # Wolio AI Agent Protocol
 
 > LOCAL_PROTOCOL_V1.md is the normative local V1 binding. JSON below illustrates

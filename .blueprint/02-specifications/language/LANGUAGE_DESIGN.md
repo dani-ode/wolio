@@ -1,3 +1,4 @@
+`.blueprint/02-specifications/language/LANGUAGE_DESIGN.md`
 # Wolio Language Design V1
 
 > Revision 1.1 resolves token spellings, precedence, imports, and grammar in

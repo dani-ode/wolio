@@ -1,3 +1,4 @@
+`.blueprint/01-architecture/decisions/ADR-005-github-package-source.md`
 # ADR-005: GitHub-First Package Source
 
 **Status:** Approved

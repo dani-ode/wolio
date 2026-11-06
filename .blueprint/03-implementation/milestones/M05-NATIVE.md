@@ -1,3 +1,4 @@
+`.blueprint/03-implementation/milestones/M05-NATIVE.md`
 # Milestone 5 --- Native Execution
 
 > Requires M03 independently of M04. DELIVERY_POLICY requires interpreter/native

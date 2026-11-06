@@ -1,3 +1,4 @@
+`.blueprint/06-project-management/M00-AUDIT.md`
 # Session Report — M00.1 Repository Audit
 
 **Status:** `COMPLETED`  

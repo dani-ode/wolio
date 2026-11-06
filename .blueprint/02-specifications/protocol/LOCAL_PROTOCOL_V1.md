@@ -1,3 +1,4 @@
+`.blueprint/02-specifications/protocol/LOCAL_PROTOCOL_V1.md`
 # Local agent protocol V1
 
 M04 provides local JSON-lines over stdin/stdout; no HTTP server, remote auth,

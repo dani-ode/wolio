@@ -1,3 +1,4 @@
+`.blueprint/06-project-management/DELIVERY_PLAN.md`
 # Complete V1 delivery plan
 
 Task status is execution data in `.execution/task-status.md`. The following is

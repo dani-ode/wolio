@@ -1,3 +1,4 @@
+`.blueprint/02-specifications/package-manager/PACKAGE_MANAGER_SPEC.md`
 # Wolio Package Manager Specification
 
 **Status:** Approved  

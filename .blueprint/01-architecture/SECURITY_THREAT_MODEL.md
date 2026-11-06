@@ -1,3 +1,4 @@
+`.blueprint/01-architecture/SECURITY_THREAT_MODEL.md`
 # Security Threat Model V1
 
 **Status:** `Proposed`

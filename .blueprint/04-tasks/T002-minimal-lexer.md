@@ -1,3 +1,4 @@
+`.blueprint/04-tasks/T002-minimal-lexer.md`
 # T002: Implement lexer for minimal source slice
 
 **Execution status:** see `.execution/task-status.md` | **Priority:** `P0` | **Milestone:** `M01`

@@ -1,3 +1,4 @@
+`.blueprint/04-tasks/T003-minimal-parser-ast.md`
 # T003: Implement parser and AST for minimal source slice
 
 **Execution status:** see `.execution/task-status.md` | **Priority:** `P0` | **Milestone:** `M01`

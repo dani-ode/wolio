@@ -1,3 +1,4 @@
+`.blueprint/02-specifications/CONTRACT_DESIGN.md`
 # Behavioral contracts V1
 
 Normative with `language/CORE_V1.md`. A contract belongs to an operation;

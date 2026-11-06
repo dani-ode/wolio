@@ -1,3 +1,4 @@
+`.blueprint/00-product/PROJECT_COVERAGE.md`
 # Whole-project coverage
 
 The trial is a release checkpoint, not the entire project. Every product area is

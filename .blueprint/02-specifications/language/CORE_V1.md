@@ -1,3 +1,4 @@
+`.blueprint/02-specifications/language/CORE_V1.md`
 # Core language V1
 
 Normative for the V1 profiles in `BASELINE-V1.md`. Grammar version `1`.

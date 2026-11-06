@@ -1,3 +1,4 @@
+`.blueprint/07-ai-context/ENGINEERING_RULES.md`
 # Engineering rules
 
 Read DOCUMENT_AUTHORITY and BASELINE-V1, then task-relevant specifications.

@@ -1,3 +1,4 @@
+`.blueprint/04-tasks/T004-diagnostics-cli.md`
 # T004: Add deterministic diagnostics and CLI check
 
 **Execution status:** see `.execution/task-status.md` | **Priority:** `P0` | **Milestone:** `M01`

@@ -1,3 +1,4 @@
+`.blueprint/README.md`
 # Wolio Blueprint
 
 This directory is the authoritative documentation and engineering specification for Wolio.

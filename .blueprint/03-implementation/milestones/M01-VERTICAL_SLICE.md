@@ -1,3 +1,4 @@
+`.blueprint/03-implementation/milestones/M01-VERTICAL_SLICE.md`
 # Milestone 1 --- Compiler Vertical Slice
 
 > Revision 1.1: frontend only, using CORE_V1. Resolution/IDs move to M02.

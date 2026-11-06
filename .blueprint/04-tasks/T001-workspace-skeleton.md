@@ -1,3 +1,4 @@
+`.blueprint/04-tasks/T001-workspace-skeleton.md`
 # T001: Establish Rust workspace and crate skeleton
 
 **Execution status:** see `.execution/task-status.md` | **Priority:** `P0` | **Milestone:** `M01`

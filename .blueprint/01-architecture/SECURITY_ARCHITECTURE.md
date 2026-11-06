@@ -1,3 +1,4 @@
+`.blueprint/01-architecture/SECURITY_ARCHITECTURE.md`
 # Security and Authority Model
 
 ## Principle

@@ -1,3 +1,4 @@
+`.blueprint/03-implementation/crates/WOLIO-VERIFY.md`
 # wolio-verify
 
 ## Responsibility

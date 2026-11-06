@@ -1,3 +1,4 @@
+`.blueprint/06-project-management/M00-PREPARATION.md`
 # M00 — Preparation and Blueprint Completion
 
 > Historical revision 1.0 record. Revision 1.1 replaces the limited preparation

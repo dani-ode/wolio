@@ -1,3 +1,4 @@
+`.blueprint/06-project-management/M00-APPROVAL.md`
 # Session Report — M00.14 Blueprint Approval
 
 > Historical approval of revision 1.0 only. It does not approve revision 1.1.

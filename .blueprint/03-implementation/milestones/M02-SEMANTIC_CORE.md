@@ -1,3 +1,4 @@
+`.blueprint/03-implementation/milestones/M02-SEMANTIC_CORE.md`
 # Milestone 2 --- Semantic Core
 
 > Revision 1.1 adds interpreter/run, nominal/record/enum types, Result/Option

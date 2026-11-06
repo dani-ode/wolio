@@ -1,3 +1,4 @@
+`.blueprint/02-specifications/verification/VERIFICATION_SPEC.md`
 # Wolio Verification, Security, and Anti-Workaround Blueprint
 
 > Revision 1.1: EVIDENCE_MODEL.md defines enforceable V1 guarantees and statuses.

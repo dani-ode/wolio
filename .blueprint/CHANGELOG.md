@@ -1,3 +1,4 @@
+`.blueprint/CHANGELOG.md`
 # Blueprint Changelog
 
 ## Unreleased

@@ -1,3 +1,4 @@
+`.blueprint/GLOSSARY.md`
 # Wolio Glossary
 
 - **Package identity:** The canonical repository path of a package, such as `github.com/wolio-community/http`.

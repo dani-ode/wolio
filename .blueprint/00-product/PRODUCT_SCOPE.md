@@ -1,3 +1,4 @@
+`.blueprint/00-product/PRODUCT_SCOPE.md`
 # Wolio Product Scope — V1
 
 > Revision 1.1 supersedes the two-product MVP below: Wolio's primary product is

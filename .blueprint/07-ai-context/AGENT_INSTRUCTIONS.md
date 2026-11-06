@@ -1,3 +1,4 @@
+`.blueprint/07-ai-context/AGENT_INSTRUCTIONS.md`
 # AI agent instructions
 
 Start with DOCUMENT_AUTHORITY.md, BASELINE-V1.md and `.execution/current-state.md`.

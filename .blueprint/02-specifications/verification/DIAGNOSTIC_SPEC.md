@@ -1,3 +1,4 @@
+`.blueprint/02-specifications/verification/DIAGNOSTIC_SPEC.md`
 # Diagnostic Schema
 
 Diagnostics are part of the AI interface, not just compiler text.

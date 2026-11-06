@@ -1,3 +1,4 @@
+`.blueprint/00-product/README.md`
 # Product
 
 Product requirements, vision, scope, non-goals, and success metrics belong here.

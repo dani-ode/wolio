@@ -1,3 +1,4 @@
+`.blueprint/02-specifications/SEMANTIC_MODEL.md`
 # Semantic model V1
 
 The shared model contains packages, modules, nominal/record/enum types, operations,

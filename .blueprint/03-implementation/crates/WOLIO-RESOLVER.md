@@ -1,3 +1,4 @@
+`.blueprint/03-implementation/crates/WOLIO-RESOLVER.md`
 # wolio-resolver
 
 ## Responsibility

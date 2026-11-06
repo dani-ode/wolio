@@ -1,3 +1,4 @@
+`.blueprint/00-product/SCOPE.md`
 # Wolio Repository and Project Layout
 
 ## 1. Recommended user project

@@ -1,3 +1,4 @@
+`.blueprint/03-implementation/milestones/M03-VERIFICATION.md`
 # Milestone 3 --- Verification
 
 > Revision 1.1: runnable trial, contracts/tests/effects/dependencies/impact and

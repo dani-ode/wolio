@@ -1,3 +1,4 @@
+`.blueprint/03-implementation/milestones/M04-AGENT_PROTOCOL.md`
 # Milestone 4 --- AI Construction Protocol
 
 > LOCAL_PROTOCOL_V1 is the normative local binding. Requires M03, not LLVM.

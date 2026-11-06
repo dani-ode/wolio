@@ -1,3 +1,4 @@
+`.blueprint/03-implementation/DELIVERY_POLICY.md`
 # Delivery and toolchain policy
 
 Rust/Cargo implements the compiler; Linux x86_64 is the V1 supported platform.

@@ -1,3 +1,4 @@
+`.blueprint/03-implementation/IMPLEMENTATION_SPECIFICATION_V1.md`
 # Wolio implementation specification V1
 
 Status: revision 1.2 freeze candidate. V1 denotes product scope, not milestone 1.

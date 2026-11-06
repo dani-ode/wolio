@@ -1,3 +1,4 @@
+`.blueprint/02-specifications/protocol/SCOPE_CAPABILITY_MODEL.md`
 # Scope and Capability Model V1
 
 > LOCAL_PROTOCOL_V1.md defines V1 owner identity, approval expiry/revocation,

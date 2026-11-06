@@ -1,3 +1,4 @@
+`.blueprint/05-quality/RELEASE_CRITERIA.md`
 # Release criteria
 
 ## M03 trial

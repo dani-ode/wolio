@@ -1,3 +1,4 @@
+`.blueprint/MAP.md`
 # Blueprint map
 
 Revision 1.2 freeze candidate; no compiler implementation yet.

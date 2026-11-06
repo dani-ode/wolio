@@ -1,3 +1,4 @@
+`.blueprint/04-tasks/TASK_TEMPLATE.md`
 # TASK-XXX: <short imperative title>
 
 **Execution status:** `.execution/task-status.md` | **Priority:** `P0/P1/P2` | **Milestone:** `MXX`

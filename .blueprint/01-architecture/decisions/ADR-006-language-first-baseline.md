@@ -1,3 +1,4 @@
+`.blueprint/01-architecture/decisions/ADR-006-language-first-baseline.md`
 # ADR-006 — Language-first contract-first V1
 
 Status: proposed for revision 1.1 freeze. Date: 2026-11-06.

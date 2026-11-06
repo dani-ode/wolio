@@ -1,3 +1,4 @@
+`.blueprint/03-implementation/crates/WOLIO-CLI.md`
 # wolio-cli
 
 ## Responsibility

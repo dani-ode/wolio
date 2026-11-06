@@ -1,3 +1,4 @@
+`.blueprint/02-specifications/verification/EVIDENCE_MODEL.md`
 # Verification evidence V1
 
 Each obligation records `id`, `symbol`, `clause`, `source_hash`, `tool_version`,

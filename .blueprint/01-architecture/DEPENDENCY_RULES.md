@@ -1,3 +1,4 @@
+`.blueprint/01-architecture/DEPENDENCY_RULES.md`
 # Crate Dependency Rules
 
 ## Objective

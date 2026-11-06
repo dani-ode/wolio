@@ -1,3 +1,4 @@
+`.blueprint/02-specifications/INTERFACE_CONTRACTS.md`
 # Shared interface contracts V1
 
 Normative clarification for revision 1.2. These rules connect the language,

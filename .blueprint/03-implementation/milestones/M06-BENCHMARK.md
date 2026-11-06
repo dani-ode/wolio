@@ -1,3 +1,4 @@
+`.blueprint/03-implementation/milestones/M06-BENCHMARK.md`
 # Milestone 6 --- Evidence
 
 > Requires M04; M05 is optional and measured separately. M03 pilot comes first.
