@@ -1,5 +1,10 @@
 # Wolio Definition of Done
 
+> Revision 1.1 applicability: DELIVERY_PLAN.md defines per-profile acceptance.
+> Stateful/concurrency/security extensions below are not V1 release blockers.
+> Runtime checks and tests must not be reported as universal static proof.
+> Trial completion is M03; full V1 toolchain completion is M07.
+
 ## A. Language
 
 -   [ ] Grammar is versioned.

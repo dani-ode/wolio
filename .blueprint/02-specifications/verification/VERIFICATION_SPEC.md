@@ -1,5 +1,9 @@
 # Wolio Verification, Security, and Anti-Workaround Blueprint
 
+> Revision 1.1: EVIDENCE_MODEL.md defines enforceable V1 guarantees and statuses.
+> Security/provenance/concurrency examples below describe extensions, not V1
+> capabilities. Heuristics do not establish language illegality or business truth.
+
 ## 1. Verification layers
 
 Verification must be layered.

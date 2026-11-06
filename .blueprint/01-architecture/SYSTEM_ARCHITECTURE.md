@@ -1,5 +1,11 @@
 # Wolio System Architecture
 
+> Revision 1.1 architecture: DELIVERY_POLICY.md controls crate direction and
+> backend staging. Interpreter is M02, LLVM M05. Source legality and agent
+> authorization are separate gates. Behavioral predicates are runtime-guarded,
+> not universally proved. The tree below is an eventual decomposition, not a
+> required initial workspace. V1 excludes mutable state/concurrency/secrets/FFI.
+
 ## 1. Workspace architecture
 
 Use a Rust Cargo workspace.

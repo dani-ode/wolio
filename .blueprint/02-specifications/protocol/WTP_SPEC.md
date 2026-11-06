@@ -1,5 +1,9 @@
 # Wolio AI Agent Protocol
 
+> LOCAL_PROTOCOL_V1.md is the normative local V1 binding. JSON below illustrates
+> concepts, not additional wire formats. Finalization uses EVIDENCE_MODEL.md;
+> unsupported extension analyses are not silently reported as passing.
+
 ## 1. Purpose
 
 The Agent Protocol is the main AI-native layer.

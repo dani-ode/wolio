@@ -1,5 +1,10 @@
 # Wolio Implementation Specification v1
 
+> Revision 1.1: BASELINE-V1.md, CORE_V1.md, DELIVERY_POLICY.md, and DELIVERY_PLAN.md
+> control implementation scope and acceptance. The broad feature inventory below
+> is historical architecture context. The first runnable backend is an interpreter;
+> M03 is a complete trial; native is M05; packages/formatter/LSP are M07.
+
 **Status:** Draft for implementation  
 **Compiler:** Rust  
 **Native backend:** LLVM

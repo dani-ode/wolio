@@ -1,5 +1,8 @@
 # Milestone 5 --- Native Execution
 
+> Requires M03 independently of M04. DELIVERY_POLICY requires interpreter/native
+> parity across all conformance fixtures, not only hello world.
+
 ## Goal
 
 Execute verified Wolio programs natively.

@@ -1,5 +1,8 @@
 # Milestone 6 --- Evidence
 
+> Requires M04; M05 is optional and measured separately. M03 pilot comes first.
+> DELIVERY_PLAN defines corpus, budgets, repetitions and claim thresholds.
+
 Before expanding V1, benchmark Wolio against conventional languages.
 
 ## Matrix

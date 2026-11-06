@@ -1,5 +1,8 @@
 # Milestone 1 --- Compiler Vertical Slice
 
+> Revision 1.1: frontend only, using CORE_V1. Resolution/IDs move to M02.
+> DELIVERY_PLAN controls acceptance over the historical scope below.
+
 Do not begin by implementing every crate.
 
 ## Goal

@@ -4,6 +4,8 @@ This directory is the authoritative documentation and engineering specification 
 
 ## Document authority
 
+0. [`BASELINE-V1.md`](BASELINE-V1.md) defines revision 1.1 scope, normative
+   specifications, and overrides earlier conflicting aspirational examples.
 1. `blueprint.md` defines the long-term vision and non-negotiable principles.
 2. `01-architecture/` and `02-specifications/` define approved technical behavior.
 3. `03-implementation/` defines the current implementation baseline.
@@ -28,3 +30,8 @@ The normal loop is: choose a `READY` task, read its linked authority documents,
 inspect only its affected modules, implement the smallest scoped change, run
 verification, and record evidence. Do not read the whole blueprint by default.
 If a decision is missing, mark it `OPEN` instead of inventing behavior.
+
+Progress and evidence, including baseline preparation, are recorded in the
+repository-level `.execution/` ledger. Blueprint status is not implementation
+status. Revision 1.1 is a freeze candidate; the owner's acceptance record is
+separate from the author's completion report.

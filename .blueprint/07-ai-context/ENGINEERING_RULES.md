@@ -1,5 +1,12 @@
 # Wolio --- Pre-Coding Preparation Checklist
 
+> Revision 1.1: BASELINE-V1.md and DELIVERY_PLAN.md replace the historical
+> all-at-once gate below. Only the current milestone's dependencies must exist.
+> T001 pins Rust and creates CI; M05 pins LLVM. Native execution is not required
+> before the trial. Read CORE_V1.md before implementing syntax. Record progress
+> in `.execution/`, preserve unrelated changes, and amend rather than reinterpret
+> frozen semantics. No unsupported feature may silently execute unchecked.
+
 Do not start implementation until this checklist is complete.
 
 ## 1. Product decisions
@@ -14,10 +21,10 @@ Answer and freeze:
 -   Who has authority to approve contract changes?
 -   What does "safe enough" mean?
 
-Required artifact:
+Required artifact (blueprint location):
 
 ``` text
-docs/PRODUCT_SCOPE.md
+00-product/PRODUCT_SCOPE.md
 ```
 
 ## 2. Failure taxonomy
@@ -47,7 +54,7 @@ Add real examples for each.
 Required artifact:
 
 ``` text
-benchmarks/AI_BUG_TAXONOMY.md
+06-project-management/AI_BUG_TAXONOMY.md
 ```
 
 ## 3. Baseline benchmark
@@ -395,7 +402,7 @@ Only after these are stable should the system grow.
 
 Start implementation only if all are true:
 
--   [ ] product scope frozen;
+    -   [ ] product scope frozen;
 -   [ ] V1 feature list frozen;
 -   [ ] out-of-scope list written;
 -   [ ] semantic vocabulary defined;

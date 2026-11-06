@@ -53,3 +53,22 @@ The user cache is content-addressed under `~/.wolio/cache/`. The cache accelerat
 ## 5. Public API boundary
 
 Packages must explicitly define their public API. Internal implementation details are unavailable to consumers unless exported by the package contract. Dependency changes must participate in semantic impact analysis.
+
+## 6. V1 deterministic resolution (M07)
+
+Constraints support exact SemVer or caret ranges only; prereleases require an
+explicit exact version. One version per repository identity; conflicting ranges
+fail with the dependency chains. Resolve sorted repository identities, trying
+highest matching versions first with deterministic backtracking; dependency
+cycles fail. Lockfile schema version 1 is canonical sorted TOML. Ordinary install
+uses the existing lock, never upgrades it; update explicitly re-resolves.
+
+Repository identity is lowercase host plus case-preserving owner/repository path,
+without `.git` suffix or credentials. Only HTTPS and SSH Git transports are allowed.
+Source hash is SHA-256 over sorted relative tracked-file paths, executable bit,
+length and bytes at the pinned commit, excluding `.git`; reject symlinks escaping
+the package and submodules in V1. Contract hash uses normalized public signatures
+and predicates. Dependency hash covers sorted child identities and lock entries.
+Build scripts are unsupported. Cache hits must pass integrity verification.
+Offline missing objects fail explicitly. Tags are not inherently immutable: a
+locked tag observed at a different commit fails instead of rewriting the lock.

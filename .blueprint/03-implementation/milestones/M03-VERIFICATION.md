@@ -1,5 +1,9 @@
 # Milestone 3 --- Verification
 
+> Revision 1.1: runnable trial, contracts/tests/effects/dependencies/impact and
+> pilot. Predicates are runtime-guarded, not universally proved. Scope/capability
+> moves to M04; architecture policy to extensions. DELIVERY_PLAN controls scope.
+
 ## Goal
 
 Make the compiler enforce the core anti-error rules.

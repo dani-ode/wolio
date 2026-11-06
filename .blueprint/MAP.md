@@ -1,6 +1,10 @@
 # Blueprint Map — Start Here
 
-**Current status:** `PRE-CODING / M01-VERTICAL-SLICE`
+**Current status:** `REVISION 1.1 FREEZE CANDIDATE / NO IMPLEMENTATION YET`
+
+Start with [BASELINE-V1.md](BASELINE-V1.md), then
+[DELIVERY_PLAN.md](06-project-management/DELIVERY_PLAN.md). These resolve the
+earlier roadmap's scope and ordering. Actual status lives in `.execution/`.
 
 Wolio is an AI-native language and construction system that turns intent into
 bounded, structured, verifiable code changes.
@@ -23,12 +27,14 @@ bounded, structured, verifiable code changes.
 
 | ID | Milestone | Depends on | Status | Entry point |
 |---|---|---|---|---|
-| M01 | Vertical slice | — | `READY` | `03-implementation/milestones/M01-VERTICAL_SLICE.md` |
+| M00 | Preparation | — | `REVIEW` | `BASELINE-V1.md` |
+| M01 | Vertical slice | M00 acceptance | `PLANNED` | `03-implementation/milestones/M01-VERTICAL_SLICE.md` |
 | M02 | Semantic core | M01 | `PLANNED` | `03-implementation/milestones/M02-SEMANTIC_CORE.md` |
 | M03 | Verification | M02 | `PLANNED` | `03-implementation/milestones/M03-VERIFICATION.md` |
 | M04 | Agent protocol | M03 | `PLANNED` | `03-implementation/milestones/M04-AGENT_PROTOCOL.md` |
 | M05 | Native backend | M03 | `PLANNED` | `03-implementation/milestones/M05-NATIVE.md` |
-| M06 | Benchmark | M04, M05 | `PLANNED` | `03-implementation/milestones/M06-BENCHMARK.md` |
+| M06 | Benchmark | M04 | `PLANNED` | `03-implementation/milestones/M06-BENCHMARK.md` |
+| M07 | Toolchain | M04, M05 | `PLANNED` | `06-project-management/DELIVERY_PLAN.md` |
 
 ## Read by change type
 

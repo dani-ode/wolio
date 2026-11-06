@@ -1,5 +1,7 @@
 # Milestone 4 --- AI Construction Protocol
 
+> LOCAL_PROTOCOL_V1 is the normative local binding. Requires M03, not LLVM.
+
 ## Goal
 
 Allow an AI agent to modify a project without arbitrary file editing.

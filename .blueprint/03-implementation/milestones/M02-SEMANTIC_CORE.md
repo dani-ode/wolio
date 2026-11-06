@@ -1,5 +1,9 @@
 # Milestone 2 --- Semantic Core
 
+> Revision 1.1 adds interpreter/run, nominal/record/enum types, Result/Option
+> and exhaustive matching. Contract predicates are unsupported until M03.
+> DELIVERY_PLAN controls acceptance.
+
 ## Goal
 
 Make Wolio meaning machine-queryable.

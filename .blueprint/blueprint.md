@@ -1,5 +1,11 @@
 # Wolio AI Vibe Coding --- Master Technical Blueprint
 
+> Revision 1.1: [BASELINE-V1.md](BASELINE-V1.md) is the controlling product and
+> delivery decision. This document retains the long-term rationale. Its broad
+> platform feature lists are not the V1 implementation scope. Language first;
+> M03 is the independently runnable trial; stateful/concurrency features are
+> post-V1 extensions. Static checking is not universal behavioral proof.
+
 **Status:** Pre-implementation baseline\
 **Audience:** Compiler engineers, language designers, AI-agent
 engineers, verification engineers\

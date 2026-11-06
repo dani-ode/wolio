@@ -7,6 +7,11 @@ can consume semantic information without importing the backend.
 
 ## Allowed dependency graph
 
+The historical diagram below is processing order, not Cargo dependency direction.
+DELIVERY_POLICY.md defines actual `depends on` edges and the interpreter branch.
+In particular runtime must not depend on codegen and semantic data must not depend
+on its analysis passes.
+
 ``` text
 wolio-lexer
     ↓

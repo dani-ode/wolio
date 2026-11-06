@@ -1,5 +1,11 @@
 # Technical Definition of Done
 
+> Revision 1.1: release profiles and exact acceptance are in DELIVERY_PLAN.md.
+> Trial release requires M03, full toolchain M07. A release may report negative
+> benchmark findings; an improvement claim additionally requires the specified
+> statistical/economic threshold. Architecture/security extensions in this
+> historical checklist are not mandatory V1 features.
+
 Wolio V1 is not complete when the compiler compiles itself.
 
 It is complete when a realistic multi-module project can:

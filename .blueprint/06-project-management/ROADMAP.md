@@ -1,5 +1,9 @@
 # Wolio Implementation Roadmap
 
+> Revision 1.1: DELIVERY_PLAN.md replaces the phase sequence below with the
+> authoritative M01–M07 delivery path. This older roadmap remains design rationale.
+> In particular pilot evidence is collected at M03, before native/protocol work.
+
 ## 0. Rule before implementation
 
 Do not start by implementing the full language.

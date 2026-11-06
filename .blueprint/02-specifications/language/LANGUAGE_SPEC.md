@@ -1,5 +1,10 @@
 # Wolio Language Specification --- V1 Baseline
 
+> Revision 1.1: [CORE_V1.md](CORE_V1.md) is the normative grammar and semantics.
+> Examples below retain conceptual long-term design, not accepted V1 syntax.
+> Human readability and concise consistent syntax are requirements. Entities,
+> provenance, secrets, concurrency, and architecture contracts are post-V1.
+
 ## 1. Design target
 
 Wolio source may be verbose. Human readability is secondary to
