@@ -1,4 +1,5 @@
 `.blueprint/README.md`
+
 # Wolio Blueprint
 
 This directory is the authoritative documentation and engineering specification for Wolio.
@@ -18,7 +19,6 @@ See [PROJECT_COVERAGE.md](00-product/PROJECT_COVERAGE.md) for the entire product
 4. `04-tasks/` contains executable engineering work.
 5. `05-quality/` defines acceptance and release standards.
 6. `07-ai-context/` defines how coding agents must use this repository.
-7. `99-references/` contains supporting references that are not authoritative.
 
 When documents conflict, the higher-level document wins. Proposed changes must be recorded before implementation.
 
