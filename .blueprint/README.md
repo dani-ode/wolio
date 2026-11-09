@@ -37,6 +37,7 @@ inspect only its affected modules, implement the smallest scoped change, run
 verification, and record evidence. Do not read the whole blueprint by default.
 If a decision is missing, mark it `OPEN` instead of inventing behavior.
 
+
 Progress and evidence, including baseline preparation, are recorded in the
 repository-level `.execution/` ledger. Blueprint status is not implementation
 status. Revision 1.3 is a freeze candidate; the owner's acceptance record is
