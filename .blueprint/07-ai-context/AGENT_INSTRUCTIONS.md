@@ -2,8 +2,8 @@
 # AI agent instructions
 
 Start with DOCUMENT_AUTHORITY.md, BASELINE-V1.md and `.execution/current-state.md`.
-Find the assigned ID in 04-tasks/task-index.md and EXECUTION_CONTRACTS.md or its
-dedicated file. Read normative behavior and acceptance families for that task.
+Find the assigned ID in 04-tasks/task-index.md, read its dedicated task file and
+04-tasks/EXECUTION_CONTRACTS.md. Read normative behavior and acceptance families for that task.
 Supporting architecture/crate sketches cannot add syntax, effects or release gates.
 
 Before edits, check actual readiness and existing user changes. Implement the

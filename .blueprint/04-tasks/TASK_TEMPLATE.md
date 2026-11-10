@@ -1,34 +1,58 @@
 `.blueprint/04-tasks/TASK_TEMPLATE.md`
-# TASK-XXX: <short imperative title>
+# Tnnn: <short imperative title>
 
-**Execution status:** `.execution/task-status.md` | **Priority:** `P0/P1/P2` | **Milestone:** `MXX`
+Copy into `Tnnn-<kebab-slug>.md` only after allocating the ID in `task-index.md`
+under the rules in `EXECUTION_CONTRACTS.md`. Do not record status in this file.
+
+| Field | Value |
+|---|---|
+| Milestone | `MXX` |
+| Priority | `P0` |
+| Depends on | `<task IDs or owner baseline acceptance>` |
+| Blocks | `<task IDs or none>` |
+| Acceptance families | `<ACCEPTANCE_MATRIX family and cases>` |
+| Bounded areas | `<responsibility areas/paths>` |
+| Execution status | `.execution/task-status.md` (sole source) |
+| Report | `.execution/reports/Tnnn.md` |
 
 ## Objective
 <One measurable outcome.>
 
 ## Authority
-- Blueprint: `<link>`
-- Specification: `<link>`
-- Implementation: `<link>`
-- Decision: `<link or OPEN>`
+- Normative: `<links to documents in DOCUMENT_AUTHORITY>`
+- Acceptance: `<ACCEPTANCE_MATRIX family>`, DEFINITION_OF_DONE
+- Supporting only (cannot add behavior): `<crate notes, milestone sketches>`
 
 ## Scope
-- Affected crates/modules: `<paths>`
-- Allowed symbols/files: `<paths or symbols>`
-- Out of scope: `<items>`
+In scope:
+- `<deliverable>`
+
+Out of scope (owner):
+- `<item>` (`<owner task ID>`)
+
+## Normative requirements
+Traceability summary; the cited document wins on any difference.
+- `<rule>` (`<source document>`)
 
 ## Acceptance criteria
+Positive and boundary:
 - [ ] `<observable behavior>`
-- [ ] `<failure/boundary behavior>`
-- [ ] No unrelated behavior changes
+
+Rejection and failure:
+- [ ] `<failure/boundary behavior with diagnostic code>`
+
+Completion:
+- [ ] Common gates in EXECUTION_CONTRACTS pass
+- [ ] No semantics beyond the cited authority; no unrelated changes
+- [ ] Report written under the EXECUTION_CONTRACTS report contract
 
 ## Verification
 ```bash
 <commands>
 ```
-Evidence: `<output/test/report>`
+Evidence: `.execution/reports/Tnnn.md`
 
-## Dependencies
-- Depends on: `<task IDs>`
-- Blocks: `<task IDs>`
-- Open decisions: `OPEN: <question>`
+## Dependencies and open items
+- Depends on: `<task IDs>`; blocks: `<task IDs>`
+- Execution prerequisites: `<external inputs or none>`
+- Open: `OPEN: <question and the authority that must answer it>` or none

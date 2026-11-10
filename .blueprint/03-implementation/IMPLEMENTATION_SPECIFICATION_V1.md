@@ -53,6 +53,6 @@ mutation; PACKAGE_MANAGER_SPEC for dependency integrity. Never expose sketches
 from historical crate documents as a competing public contract.
 
 All acceptance cases are indexed in `../05-quality/ACCEPTANCE_MATRIX.md` and
-assigned to work units in `../04-tasks/EXECUTION_CONTRACTS.md`. A task is complete
+assigned to work units in `../04-tasks/task-index.md` and their task files under `../04-tasks/`. A task is complete
 only with executed checks and recorded evidence. Written specifications alone do
 not validate parser correctness, runtime parity or benchmark claims.

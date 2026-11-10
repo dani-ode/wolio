@@ -1,69 +1,83 @@
 `.blueprint/04-tasks/EXECUTION_CONTRACTS.md`
-# Complete V1 task contracts
+# V1 task execution rules
 
-This is the task packet for every work unit after T004. Task IDs are not missing
-files: their complete contracts live here. T001–T004 also retain dedicated files.
-Read DOCUMENT_AUTHORITY, BASELINE-V1, the listed authority and acceptance family.
+Shared rules for every registered V1 task. Each task's complete contract lives in
+its own file registered in [task-index.md](task-index.md); this file holds only
+what all tasks share and never restates one task's deliverables. Read
+DOCUMENT_AUTHORITY, BASELINE-V1, the task file and the authority it lists.
 Actual readiness and results live only in `.execution/task-status.md`.
 
-All tasks inherit the common checks in ACCEPTANCE_MATRIX. Add fixture inputs and
-host test runners in the named areas; record the actual test names and commands
-in the execution report. Paths below are bounded responsibility areas: choose
-the smallest useful crate layout and record that choice before editing. Do not
-invent language semantics to fill an engineering detail.
+## Single source per fact
 
-| Task | Deliverable and bounded paths | Depends on | Authority | Acceptance |
-|---|---|---|---|---|
-| T020 | resolver/import visibility; crates/wolio-resolver, semantic support | T004 | CORE_V1, INTERFACE_CONTRACTS | SEM resolution/cycles |
-| T021 | nominal/record/enum checking; crates/wolio-types and semantic | T020 | CORE_V1 | SEM constructors/types |
-| T022 | builtin generics, match and Result handling; types | T021 | CORE_V1, INTERFACE_CONTRACTS | SEM matches/Result |
-| T023 | deterministic declaration identity, snapshot graph and provenance; semantic, CLI | T022 | SEMANTIC_MODEL, INTERFACE_CONTRACTS | ID |
-| T024 | interpreter/runtime and run CLI; runtime/interpreter, CLI | T023 | CORE_V1, DELIVERY_POLICY | RUN; all M02 |
-| T030 | predicate checker and runtime guards; contracts, interpreter | T024 | CONTRACT_DESIGN | CONTRACT |
-| T031 | conservative errors/effects/dependencies; effects, contracts, types | T030 | CONTRACT_DESIGN, CORE_V1 | EFFECT |
-| T032 | test discovery/runner, evidence aggregation, verify CLI; verify, CLI | T031 | EVIDENCE_MODEL | EVID |
-| T033 | inspect/impact/compatibility; semantic/query, CLI | T032 | SEMANTIC_MODEL, CONTRACT_DESIGN, INTERFACE_CONTRACTS | QUERY |
-| T034 | three examples, trial install/use docs, pilot harness/raw report; examples, docs, benchmarks/pilot | T033 | DELIVERY_PLAN | TRIAL; all M03 |
-| T040 | JSONL envelopes/replay and queries; agent, CLI | T034 | LOCAL_PROTOCOL_V1 | AGENT versions/query/replay |
-| T041 | typed structured operation plans/canonical AST diffs; agent | T040 | LOCAL_PROTOCOL_V1, SEMANTIC_MODEL | AGENT plan, raw-text rejection and old/new ID mapping |
-| T042 | scope/capability/risk-tier approval validation; agent | T041 | LOCAL_PROTOCOL_V1 | AGENT deny/traversal/tier/expiry/revocation |
-| T043 | staged verify, lock/CAS, journal/recovery; agent, filesystem adapter | T042 | LOCAL_PROTOCOL_V1 | AGENT crash/concurrent-edit preservation |
-| T044 | bounded repair/finalize, review ledger and analyzer policy; agent, analyzer, verify | T043 | LOCAL_PROTOCOL_V1, MUTATION_SCHEMA_V1, APPROVAL_MATRIX_V1, DIAGNOSTIC_SPEC, EVIDENCE_MODEL | AGENT repair/review; ANALYZER; all M04 |
-| T050 | typed IR and structural verifier; IR | T034 | DELIVERY_POLICY, CORE_V1 | NATIVE invalid IR |
-| T051 | pin LLVM, checked lowering/object emission; codegen, toolchain config | T050 | DELIVERY_POLICY | NATIVE arithmetic/branches |
-| T052 | document ABI and implement runtime linking; runtime, codegen | T051 | DELIVERY_POLICY | NATIVE records/enums/strings/console/guards |
-| T053 | build CLI and full differential release suite; CLI, tests/native | T052 | CORE_V1, CONTRACT_DESIGN | NATIVE all; all M05 |
-| T060 | frozen expanded corpus/independent hidden tests; benchmarks/corpus | T044 | DELIVERY_PLAN | BENCH corpus and 24-task eligibility |
-| T061 | Go/Rust/TypeScript baseline runners; benchmarks/runners | T060 | DELIVERY_PLAN | BENCH equivalent capabilities and budgets |
-| T062 | 10 paired runs per arm with raw records; benchmarks/results | T061 | DELIVERY_PLAN | BENCH complete runs incl. failures |
-| T063 | statistical/cost analysis and report; benchmarks/analysis, docs | T062 | DELIVERY_PLAN | BENCH intervals/negative findings; all M06 |
-| T070 | Git resolution/manifest/lock and package CLI; package, resolver, CLI | T044, T053 | PACKAGE_MANAGER_SPEC, INTERFACE_CONTRACTS | PKG graph/conflicts/imports |
-| T071 | credentials/integrity/cache/offline; package | T070 | PACKAGE_MANAGER_SPEC | PKG tamper/offline; all PKG |
-| T072 | canonical comment-preserving formatter/fmt CLI; format, parser, CLI | T071 | DELIVERY_POLICY | TOOL formatting |
-| T073 | incremental LSP/rename and stale edit checks; LSP, query | T072 | DELIVERY_POLICY, SEMANTIC_MODEL | TOOL editor |
-| T074 | Linux artifacts/checksums/license/install docs and CI; release, docs, workflows | T073 | DELIVERY_POLICY | TOOL clean install; all M07 |
+| Fact | Sole source |
+|---|---|
+| Language, protocol, package and evidence behavior | normative documents listed in `../DOCUMENT_AUTHORITY.md` |
+| Acceptance family definitions | `../05-quality/ACCEPTANCE_MATRIX.md` |
+| Milestone order and milestone gates | `../06-project-management/DELIVERY_PLAN.md` |
+| One task's objective, scope, dependencies, acceptance and verification | that task's file |
+| Task ID allocation and file location | `task-index.md` |
+| Live status, blockers, decisions and evidence | repository `.execution/` |
 
-## Verification beyond common Rust checks
+Task files summarize normative rules for traceability only. On any difference
+the cited normative document wins and the difference is a documentation defect:
+stop the affected task, record the exact conflict and fix it (a semantic change
+requires an ADR under BASELINE-V1). Mirrors of task facts — the task-index
+dependency column, ACCEPTANCE_MATRIX owner column, DELIVERY_PLAN work units and
+task-status rows — must match the task file; a mismatch blocks the task until
+corrected in one documentation change.
 
-- T034: execute every documented trial command from a fresh directory; run the
-  six-task, three-run-per-language pilot defined in DELIVERY_PLAN. Publish raw
-  failures and model/tool IDs; missing access is BLOCKED, not simulated evidence.
-- T043: fault-inject every journal/publication boundary and restart recovery.
-- T053: run the conformance corpus under both backends and compare normalized
-  outputs, faults and violated clause identities with release optimization on.
-- T060–T063: use the frozen benchmark protocol, retain corpus/run hashes and
-  reproducible runner/analysis commands in the report. Model API access/cost is
-  an execution prerequisite, not permission to fabricate benchmark runs.
-- T071: run isolated local Git fixtures online and disconnected; capture exact
-  add/install/update/locked/offline invocation results.
-- T074: install the built archive in a fresh Linux x86_64 environment, validate
-  checksums and run the documented sample. Record the selected project license
-  from the owner's decision; never invent ownership or a license grant.
+## Task registry and change control
+
+- One ID has exactly one file `Tnnn-<kebab-slug>.md`, one task-index row and one
+  task-status row. The ID in the file heading equals the filename ID.
+- IDs are allocated only by registering them in task-index. Unlisted numbers
+  are reserve, not hidden tasks.
+- Numbering blocks: M01 T001–T019, M02 T020–T029, M03 T030–T039, M04 T040–T049,
+  M05 T050–T059, M06 T060–T069, M07 T070–T079. A new task takes the next unused
+  ID in its milestone block; exhausting a block requires an amendment.
+- IDs are never reused, renumbered or repurposed. A withdrawn task keeps its
+  file and rows, marked with the decision that withdrew it.
+- Adding, splitting, merging or withdrawing a task, or changing its dependencies
+  or acceptance assignment, updates in the same change: the task file(s),
+  task-index, task-status, affected DELIVERY_PLAN/ACCEPTANCE_MATRIX mirrors and
+  CHANGELOG. After owner baseline acceptance this is an amendment.
+- Every behavior has exactly one implementing task. Each task file lists its
+  out-of-scope items with their owner task. When a later task needs an earlier
+  task's analysis, it consumes that analysis instead of reimplementing it.
+  Unclear ownership is a blocker to record, never a free choice.
+- Priority: every registered task is `P0` because V1 completion requires all of
+  them (BASELINE-V1). Execution order is determined only by dependencies.
+- POST_V1_PLAN packages E01–E10 are design work, never V1 task IDs.
+
+## Common gates
+
+All tasks inherit the common checks in ACCEPTANCE_MATRIX. Every Rust work unit
+runs `cargo fmt --all -- --check`,
+`cargo clippy --workspace --all-targets -- -D warnings` and
+`cargo test --workspace`; T001 additionally runs `cargo check --workspace`.
+Store compiler conformance fixtures under `tests/conformance/<family>/`, executed
+by host-side tests through the real frontend/runtime. Keep tests independent of
+network except explicitly marked Git integration tests with controlled
+repositories; never require production credentials in CI.
+
+Bounded paths in task files are responsibility areas: choose the smallest useful
+crate layout and record that choice before editing. Record actual test names and
+commands in the execution report. Do not invent language semantics to fill an
+engineering detail; an `OPEN` item in a task file must be resolved by its named
+authority before the affected acceptance item can pass.
+
+## Readiness and execution
+
+READY means the task file exists, every `Depends on` task is DONE and the owner
+baseline is accepted. When asked to continue, choose the first eligible task; do
+not silently execute later tasks when the user assigns one ID. Prerequisites
+outside the repository (LLVM build, model API access and cost, owner license
+decision) that are missing make the task BLOCKED with a record under
+`.execution/blockers/`; they never permit simulated evidence.
 
 ## Report contract
 
-Use `.execution/reports/Tnnn.md`: task ID, baseline identity, changed paths,
-implemented behavior, commands/exit results, fixture families, limitations and
-follow-up. DONE requires every acceptance item. A blocked command is not passed.
-Choose the first eligible task when asked to continue; do not silently execute
-later tasks when the user assigns only one ID.
+Use `.execution/reports/Tnnn.md` for implementation and `PREP-nnnn.md` for
+preparation: task ID, baseline identity, changed paths, implemented behavior,
+commands/exit results, fixture families, limitations and follow-up. DONE
+requires every acceptance item of the task file. A blocked command is not passed.
