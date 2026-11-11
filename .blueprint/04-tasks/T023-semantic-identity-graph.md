@@ -20,8 +20,8 @@ provenance representation, reproducibly from source alone.
 ## Authority
 - Normative: [SEMANTIC_MODEL.md](../02-specifications/SEMANTIC_MODEL.md), [INTERFACE_CONTRACTS.md](../02-specifications/INTERFACE_CONTRACTS.md) (canonical hashes and identities)
 - Decision: [ADR-007](../01-architecture/decisions/ADR-007-deterministic-identity-and-gated-automation.md)
-- Acceptance: ACCEPTANCE_MATRIX `ID` (including the additional ID fixtures), DEFINITION_OF_DONE
-- Supporting only: [WOLIO-SEMANTIC.md](../03-implementation/crates/WOLIO-SEMANTIC.md)
+- Acceptance: [ACCEPTANCE_MATRIX.md](../05-quality/ACCEPTANCE_MATRIX.md) `ID` (including the additional ID fixtures), [DEFINITION_OF_DONE.md](../05-quality/DEFINITION_OF_DONE.md)
+- Implementation layout: [IMPLEMENTATION_SPECIFICATION_V1.md](../03-implementation/IMPLEMENTATION_SPECIFICATION_V1.md)
 
 ## Scope
 In scope: identity hashing, package identity derivation, clause identity,

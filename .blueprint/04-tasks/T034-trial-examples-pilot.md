@@ -20,7 +20,7 @@ results, completing the M03 trial stop point.
 ## Authority
 - Normative: [DELIVERY_PLAN.md](../06-project-management/DELIVERY_PLAN.md) (Trial stop point and Benchmark protocol), [RELEASE_CRITERIA.md](../05-quality/RELEASE_CRITERIA.md) (M03 trial), [CORE_V1.md](../02-specifications/language/CORE_V1.md), [CONTRACT_DESIGN.md](../02-specifications/CONTRACT_DESIGN.md)
 - Acceptance: [ACCEPTANCE_MATRIX.md](../05-quality/ACCEPTANCE_MATRIX.md) `TRIAL`, M03 row of [DELIVERY_PLAN.md](../06-project-management/DELIVERY_PLAN.md), [DEFINITION_OF_DONE.md](../05-quality/DEFINITION_OF_DONE.md)
-- Supporting only: [M03-VERIFICATION.md](../03-implementation/milestones/M03-VERIFICATION.md), [BENCHMARK_DESIGN.md](../06-project-management/BENCHMARK_DESIGN.md)
+- Taxonomy & Implementation: [AI_BUG_TAXONOMY.md](../06-project-management/AI_BUG_TAXONOMY.md), [IMPLEMENTATION_SPECIFICATION_V1.md](../03-implementation/IMPLEMENTATION_SPECIFICATION_V1.md)
 
 ## Scope
 In scope:

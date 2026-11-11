@@ -1,4 +1,8 @@
 `.blueprint/03-implementation/README.md`
 # Implementation Specification
 
-This section translates the approved architecture and specifications into Rust crates, cross-cutting engineering rules, and milestones. Unresolved APIs must be marked `OPEN`; implementation documents may not invent behavior that belongs in a specification.
+Crate boundaries, dependency rules, and compiler pipeline staging are defined in
+[IMPLEMENTATION_SPECIFICATION_V1.md](IMPLEMENTATION_SPECIFICATION_V1.md).
+Toolchain pinning, interpreter/LLVM parity, and the cross-version Bug-Fix &
+Regression Gate policy (`BUG-nnnn`) are defined in
+[DELIVERY_POLICY.md](DELIVERY_POLICY.md).

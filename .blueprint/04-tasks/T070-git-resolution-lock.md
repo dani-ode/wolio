@@ -21,7 +21,7 @@ and implement `wolio add`, `remove`, `list`, `info` and `graph`.
 - Normative: [PACKAGE_MANAGER_SPEC.md](../02-specifications/package-manager/PACKAGE_MANAGER_SPEC.md), [INTERFACE_CONTRACTS.md](../02-specifications/INTERFACE_CONTRACTS.md) (names and dependency packages), [SEMANTIC_MODEL.md](../02-specifications/SEMANTIC_MODEL.md), [DELIVERY_POLICY.md](../03-implementation/DELIVERY_POLICY.md)
 - Decision: [ADR-005](../01-architecture/decisions/ADR-005-github-package-source.md)
 - Acceptance: [ACCEPTANCE_MATRIX.md](../05-quality/ACCEPTANCE_MATRIX.md) `PKG`, [DEFINITION_OF_DONE.md](../05-quality/DEFINITION_OF_DONE.md)
-- Supporting only: [WOLIO-PACKAGE.md](../03-implementation/crates/WOLIO-PACKAGE.md), [WOLIO-RESOLVER.md](../03-implementation/crates/WOLIO-RESOLVER.md), [WOLIO-CLI.md](../03-implementation/crates/WOLIO-CLI.md)
+- Implementation layout: [IMPLEMENTATION_SPECIFICATION_V1.md](../03-implementation/IMPLEMENTATION_SPECIFICATION_V1.md)
 
 ## Scope
 In scope:

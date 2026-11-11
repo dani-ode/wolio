@@ -20,7 +20,7 @@ guards enabled, aggregate obligation evidence bound to the snapshot, and expose
 ## Authority
 - Normative: [EVIDENCE_MODEL.md](../02-specifications/verification/EVIDENCE_MODEL.md), [CORE_V1.md](../02-specifications/language/CORE_V1.md), [CONTRACT_DESIGN.md](../02-specifications/CONTRACT_DESIGN.md), [INTERFACE_CONTRACTS.md](../02-specifications/INTERFACE_CONTRACTS.md)
 - Acceptance: [ACCEPTANCE_MATRIX.md](../05-quality/ACCEPTANCE_MATRIX.md) `EVID`, [DEFINITION_OF_DONE.md](../05-quality/DEFINITION_OF_DONE.md)
-- Supporting only: [WOLIO-VERIFY.md](../03-implementation/crates/WOLIO-VERIFY.md), [WOLIO-CLI.md](../03-implementation/crates/WOLIO-CLI.md), [M03-VERIFICATION.md](../03-implementation/milestones/M03-VERIFICATION.md)
+- Implementation layout: [IMPLEMENTATION_SPECIFICATION_V1.md](../03-implementation/IMPLEMENTATION_SPECIFICATION_V1.md)
 
 ## Scope
 In scope:

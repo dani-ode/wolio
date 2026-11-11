@@ -1,11 +1,31 @@
 `.blueprint/02-specifications/language/CORE_V1.md`
 # Core language V1
 
-Normative for the V1 profiles in `BASELINE-V1.md`. Grammar version `1`.
+Normative for the V1 profiles in `BASELINE-V1.md`. Grammar version `1` (`[language] version = "1"`).
 All programs are UTF-8. Identifiers are ASCII `[A-Za-z_][A-Za-z0-9_]*`, case
-sensitive; keywords are reserved. Whitespace is insignificant, `//` comments end
-at newline. Strings use JSON escapes. Integer literals are decimal digits with
-no separators; unary minus is an operator. No implicit semicolon insertion.
+sensitive; keywords are reserved in every position. Whitespace is insignificant,
+`//` comments end at newline. Strings use JSON escapes. Integer literals are
+decimal digits with no separators; unary minus is an operator. No implicit
+semicolon insertion.
+
+## Reserved words and forward compatibility
+
+To guarantee zero source collisions across V1, V2 (`CORE_V2.md`), and V3
+(`CORE_V3.md`), the V1 lexer and binder reserve all three sets below:
+
+1. **V1 active keywords (22):** `module`, `import`, `pub`, `type`, `record`,
+   `enum`, `operation`, `requires`, `ensures`, `effects`, `dependencies`,
+   `errors`, `intent`, `implementation`, `test`, `for`, `let`, `if`, `else`,
+   `match`, `true`, `false`.
+2. **V1 reserved builtins & bindings (13):** `Bool`, `Int`, `String`, `Unit`,
+   `Option`, `Result`, `None`, `Some`, `Ok`, `Err`, `unit`, `console`, `result`.
+3. **V2 & V3 forward-reserved keywords (19):** `in`, `with`, `bound`,
+   `invariant`, `predicate`, `List`, `Map`, `Decimal`, `UInt`, `Bytes`,
+   `format`, `secret`, `Secret`, `resource`, `transaction`, `modifies`, `old`,
+   `property`, `std`.
+
+Using any keyword in (1) or (3) as an identifier produces `WOLIO-SYNTAX-001`.
+Redeclaring any builtin in (2) or binding `result` produces `WOLIO-RESOLVE-001`.
 
 ## Grammar
 
@@ -59,9 +79,10 @@ if conditions and match subjects disambiguate record construction from blocks.
 - Builtins: `Bool`, signed 64-bit `Int`, UTF-8 `String`, `Unit`, `Option<T>`,
   `Result<T,E>`. `unit()` constructs Unit. Other builtin generics are rejected.
 - Checked integer overflow and division by zero produce runtime faults, including
-  `MIN / -1`; division truncates toward zero, remainder has the dividend's sign.
-  The literal magnitude `9223372036854775808` is allowed only immediately under
-  unary minus, producing MIN. Arithmetic never wraps, in any backend/build mode.
+  `MIN / -1`; division truncates toward zero, remainder has the dividend's sign,
+  and `MIN % -1` is `0`. The literal magnitude `9223372036854775808` is allowed
+  only immediately under unary minus, producing `MIN`. Arithmetic never wraps,
+  in any backend or build mode.
 - Values are immutable, structurally copied by semantics. Runtime may share
   immutable storage. No references, pointers, assignment, or observable identity.
 - `type CustomerId = Int;` creates a nominal type, not an alias. `CustomerId(1)`
@@ -74,7 +95,8 @@ if conditions and match subjects disambiguate record construction from blocks.
   unresolved type parameters are errors, not dynamic values.
 - `+ - * / %` accept Int; ordering accepts Int; equality accepts identical types
   recursively (including records/enums); logical operators accept Bool. No
-  implicit conversions, truthiness, null, float, or string concatenation.
+  implicit conversions, truthiness, null, float, or string concatenation in V1
+  (deterministic `format(...)` and `Decimal` are introduced in `CORE_V2.md`).
 - Let bindings are immutable and cannot shadow within an operation. A block's
   final expression is its result. Branch results must have the same type.
 - Match is permitted on enums, Option, Result, and Bool; one arm per constructor,
@@ -87,8 +109,9 @@ One flat module per file; module names must be unique within the package.
 Imports name modules, not paths. `module::symbol` resolves only imported public
 declarations; local names resolve lexically. No implicit prelude except builtins.
 Operation signatures are explicit; exactly one local implementation is required.
-No overloading, dynamic dispatch, closures, loops, or recursive call cycles in V1.
-Operation calls are the only user-defined computation calls.
+No overloading, dynamic dispatch, closures, loops, or recursive call cycles in V1
+(total bounded loops and pure predicates are introduced in `CORE_V2.md`).
+Operation calls are the only user-defined computation calls in V1.
 
 All called operations must appear in `dependencies`, including local calls;
 constructors and builtin `unit()` are exempt. Effects are upper bounds and
@@ -121,6 +144,15 @@ implementation Clamp { if (x > 10) { 10 } else { x } }
 test boundary for Clamp { Clamp(0) == 0 }
 ```
 
-M01 parses this grammar but reports semantic checks as not run. M02 executes
-contract-free programs; encountering contract clauses requiring M03 produces
-`WOLIO-FEATURE-001`, not an unchecked execution. M03 enables full V1 contracts.
+## Milestone staging rule (M01 -> M02 -> M03)
+
+- **M01 (`T001`–`T004`):** Parses the full `CORE_V1` grammar and reports all
+  semantic/contract obligations as `not_run`.
+- **M02 (`T020`–`T024`):** Resolves modules/symbols, checks types, assigns
+  `sym_` IDs, and executes programs via `wolio run`. Declarative `effects`,
+  `dependencies`, `errors`, and `intent` clauses are parsed and allowed in M02
+  (their static set verification is reported `not_run` until `T031`). Only
+  operations containing `requires` or `ensures` predicate clauses fail `wolio run`
+  at M02 with `WOLIO-FEATURE-001` until `T030` implements runtime predicate guards.
+- **M03 (`T030`–`T034`):** Enables full V1 `requires`/`ensures` runtime guards
+  (`T030`) and static `errors`/`effects`/`dependencies` set enforcement (`T031`).

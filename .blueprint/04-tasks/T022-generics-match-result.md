@@ -18,8 +18,8 @@ enforce the Result-handling obligation, rejecting every other builtin generic.
 
 ## Authority
 - Normative: [CORE_V1.md](../02-specifications/language/CORE_V1.md) (types and values), [INTERFACE_CONTRACTS.md](../02-specifications/INTERFACE_CONTRACTS.md) (binding and Result-handling clarifications), [SEMANTIC_MODEL.md](../02-specifications/SEMANTIC_MODEL.md) (type application identity)
-- Acceptance: ACCEPTANCE_MATRIX `SEM`, DEFINITION_OF_DONE
-- Supporting only: [WOLIO-TYPES.md](../03-implementation/crates/WOLIO-TYPES.md)
+- Acceptance: [ACCEPTANCE_MATRIX.md](../05-quality/ACCEPTANCE_MATRIX.md) `SEM`, [DEFINITION_OF_DONE.md](../05-quality/DEFINITION_OF_DONE.md)
+- Implementation layout: [IMPLEMENTATION_SPECIFICATION_V1.md](../03-implementation/IMPLEMENTATION_SPECIFICATION_V1.md)
 
 ## Scope
 In scope: builtin generic applications and constructors, expected-type

@@ -19,8 +19,8 @@ rejecting mismatches with structured diagnostics.
 
 ## Authority
 - Normative: [CORE_V1.md](../02-specifications/language/CORE_V1.md) (types and values), [SEMANTIC_MODEL.md](../02-specifications/SEMANTIC_MODEL.md) (interned types), [EVIDENCE_MODEL.md](../02-specifications/verification/EVIDENCE_MODEL.md) (code registry)
-- Acceptance: ACCEPTANCE_MATRIX `SEM`, DEFINITION_OF_DONE
-- Supporting only: [WOLIO-TYPES.md](../03-implementation/crates/WOLIO-TYPES.md), [WOLIO-SEMANTIC.md](../03-implementation/crates/WOLIO-SEMANTIC.md)
+- Acceptance: [ACCEPTANCE_MATRIX.md](../05-quality/ACCEPTANCE_MATRIX.md) `SEM`, [DEFINITION_OF_DONE.md](../05-quality/DEFINITION_OF_DONE.md)
+- Implementation layout: [IMPLEMENTATION_SPECIFICATION_V1.md](../03-implementation/IMPLEMENTATION_SPECIFICATION_V1.md)
 
 ## Scope
 In scope: builtin `Bool`, `Int`, `String`, `Unit`; nominal declarations,

@@ -1,327 +1,62 @@
 `.blueprint/blueprint.md`
-# Wolio AI Vibe Coding --- Master Technical Blueprint
+# Wolio — Industrial AI-Native Programming Language Master Overview (V1–V3)
 
-> Revision 1.1: [BASELINE-V1.md](BASELINE-V1.md) is the controlling product and
-> delivery decision. This document retains the long-term rationale. Its broad
-> platform feature lists are not the V1 implementation scope. Language first;
-> M03 is the independently runnable trial; stateful/concurrency features are
-> post-V1 extensions. Static checking is not universal behavioral proof.
+> Normative execution baselines are [BASELINE-V1.md](BASELINE-V1.md),
+> [BASELINE-V2.md](BASELINE-V2.md), and [BASELINE-V3.md](BASELINE-V3.md). This
+> document summarizes the industrial philosophy unifying all three versions.
 
-**Status:** Pre-implementation baseline\
-**Audience:** Compiler engineers, language designers, AI-agent
-engineers, verification engineers\
-**Primary goal:** Build Wolio as an AI-native software construction
-system, not merely as a stricter programming language.
+## 1. Core thesis: Defeating AI "Akal-Akalan" (Reward Hacking) at Scale
 
-## 1. Executive decision
+AI coding models generate code orders of magnitude faster than human programmers,
+but in conventional languages (Python, TypeScript, Go, Rust) they frequently
+resolve compiler or test failures using shortcuts ("akal-akalan") that accumulate
+severe technical debt:
+1. **Swallowing errors:** Catching or matching an error and returning a dummy
+   success value (`Ok(0)`) to silence the compiler.
+2. **Hardcoding to unit tests:** Writing `if (input == 42) { return 10; }` or
+   `99 + 1` to pass a specific unit test without implementing the domain rule.
+3. **Unbounded loops and state corruption:** Writing `while (true)` loops without
+   termination bounds or mutating shared state before an error occurs.
+4. **Hidden side effects and spaghetti dependencies:** Calling I/O deep inside a
+   helper or importing infrastructure directly into domain logic.
+5. **Weakening contracts or deleting tests:** Relaxing type/contract rules or
+   removing failing tests so a broken implementation passes CI.
 
-Wolio must optimize for:
+## 2. Strategic design trade-off
 
-1.  machine verifiability;
-2.  explicit semantics;
-3.  bounded AI change scope;
-4.  deterministic dependency/effect behavior;
-5.  semantic traceability;
-6.  safe repair loops;
-7.  long-term AI maintainability.
+Wolio explicitly optimizes for **industrial AI correctness at scale**, not
+manual human typing speed or small-script token brevity:
+- Verbose, explicit declarations (`dependencies [...]`, `effects [...]`,
+  `errors [...]`, `requires`, `ensures`, `bound`, `invariant`, nominal wrappers)
+  are intentional.
+- Every extra line of explicit contract acts as a mechanical ratchet that
+  prevents an AI agent from introducing silent regressions across thousands of
+  modules.
 
-The central product is:
+## 3. Three-generation conflict-free architecture (`V1 -> V2 -> V3`)
 
-``` text
-Human Intent
-    ↓
-Requirement / Specification
-    ↓
-Wolio Contract
-    ↓
-AI Change Proposal
-    ↓
-Scope + Capability Check
-    ↓
-Semantic Analysis
-    ↓
-Implementation
-    ↓
-Verification
-    ↓
-Executable
+```text
+V1 (M01–M07: Immutable Contract Core & Guarded Agent Protocol)
+  - Acyclic immutable core, nominal types, exhaustive Result/Option
+  - Runtime-guarded requires/ensures + static errors/effects/dependencies
+  - Deterministic sym_ graph, local JSON-AST mutation protocol, analyzer 001..005
+  - VerifiedWolioIr -> LLVM native parity, Git package manager, fmt, LSP
+  - Forward-reserves all V2 and V3 keywords from T002
+        │
+        ▼
+V2 (M08–M11: V1 Bug-Fix Gate + Bounded Loops, Collections & Architecture Policy)
+  - M08: Mandatory V1 Bug-Fix & Regression Gate (BUG-nnnn conformance suite)
+  - Total bounded loops: for (x in src with acc: T = init) { bound ...; invariant ...; }
+  - Immutable List<T>, Map<K,V>, exact 128-bit fixed-scale Decimal, UInt, Bytes, format(...)
+  - Reusable pure acyclic predicate declarations callable in contracts
+  - [architecture] allow/deny module dependency rules + multi-module Agent Protocol v2
+        │
+        ▼
+V3 (M12–M15: V2 Bug-Fix Gate + Standard Library, Capability I/O, Transactions & Fuzzing)
+  - M12: Mandatory V2 Bug-Fix & Copy-on-Write Performance Gate
+  - Industrial std::* modules (string, collections, math, json, time, crypto, fs, net)
+  - Opaque Secret<T> redaction & validation provenance
+  - Capability-gated external effects + mandatory hermetic with_mock in tests
+  - Linear non-aliasing resource handles, modifies/old(...), atomic transaction rollback
+  - Contract-driven property fuzzing (wolio verify --fuzz) with shrinking counterexamples
 ```
-
-The language is only one layer of the system.
-
-The design deliberately avoids treating strictness as correctness. A
-program can be structurally valid while implementing the wrong business
-rule. Therefore Wolio separates:
-
--   intent correctness;
--   contract correctness;
--   implementation correctness;
--   regression correctness.
-
-## 2. Product boundary
-
-Wolio consists of two tightly integrated products.
-
-### A. Wolio Language Platform
-
--   `.wol` source language
--   lexer/parser
--   AST
--   semantic model
--   static type checker
--   Result/Option
--   exhaustive matching
--   contracts
--   explicit dependencies
--   explicit effects
--   semantic/domain types
--   compiler
--   Wolio IR
--   LLVM backend
--   native executable
--   package manager
--   formatter
--   test runner
--   LSP
-
-### B. Wolio AI Construction System
-
--   Agent Protocol
--   semantic repository graph
--   change scopes
--   capabilities
--   intent tracking
--   impact analysis
--   structured mutations
--   verification orchestration
--   repair protocol
--   workaround detection
--   secret protection
--   decision memory
--   AI maintainability analysis
-
-The second layer is the main differentiator from Rust, Go, and similar
-languages.
-
-## 3. Non-negotiable principles
-
-### P1 --- No silent behavior
-
-No implicit fallback, undeclared dependency, undeclared effect, hidden
-global mutation, or swallowed error.
-
-### P2 --- AI does not edit arbitrary text by default
-
-AI should operate through structured actions such as:
-
-``` text
-create_symbol
-modify_symbol
-modify_contract
-add_test
-add_dependency
-declare_effect
-rename_symbol
-move_symbol
-request_capability
-request_scope
-```
-
-Raw text editing exists only as a controlled low-level capability.
-
-### P3 --- Contract changes are first-class changes
-
-Changing a precondition, postcondition, invariant, error set, effect
-set, or dependency contract is not an ordinary implementation edit.
-
-It creates a contract-change proposal with impact analysis.
-
-### P4 --- Compiler and analyzer have different responsibilities
-
-Compiler must reject illegal programs.
-
-Analyzer should detect likely architectural, semantic, or AI-specific
-problems.
-
-AI may propose repairs.
-
-Humans retain authority over contract changes, security exceptions, and
-high-risk architecture changes.
-
-### P5 --- No suppression principle
-
-Semantic violations cannot be bypassed using:
-
-``` text
-ignore
-disable
-no-check
-lint-disable
-unsafe-ignore
-```
-
-`unsafe` is permitted only as an explicit, auditable capability.
-
-### P6 --- Semantic identity is independent from filesystem identity
-
-Filesystem conventions may be verified, but paths are not the type
-system. Refactoring must remain possible.
-
-### P7 --- Optimize for evidence, not elegance
-
-Every major feature must be justified by benchmarks or real failure
-cases.
-
-## 4. MVP scope
-
-### Tier 0 --- mandatory
-
--   static typing;
--   Result / Option;
--   exhaustive match;
--   explicit dependencies;
--   explicit effects;
--   contracts;
--   semantic IDs;
--   compiler verification.
-
-### Tier 1 --- required for the AI-native value proposition
-
--   AI Agent Protocol;
--   change scope;
--   capability model;
--   semantic repository graph;
--   impact analysis;
--   structured code mutations;
--   mandatory verification;
--   semantic/domain types;
--   provenance;
--   intent;
--   fallback/workaround detection;
--   secret type.
-
-### Tier 2 --- later
-
--   ownership;
--   advanced concurrency;
--   architecture contracts;
--   property testing;
--   stronger refinement types;
--   formal verification.
-
-### Deliberately postponed
-
--   filesystem-as-type-system;
--   line number as identity;
--   mandatory large file trees;
--   hard language-level LOC limits;
--   excessive metadata;
--   advanced formal methods before baseline benchmarks.
-
-## 5. Success criteria
-
-Wolio is successful only if it improves AI software construction against
-a baseline such as GPT + Go/Rust/TypeScript.
-
-Measure:
-
--   task correctness;
--   semantic bugs escaping verification;
--   regression rate;
--   repair iterations;
--   compiler feedback loops;
--   token consumption;
--   wall-clock time;
--   change blast radius;
--   security defects;
--   race/concurrency defects;
--   hidden dependency count;
--   fallback/workaround count;
--   AI maintainability score.
-
-The benchmark must include an AI bug taxonomy:
-
-``` text
-W01 Wrong type
-W02 Missing error handling
-W03 Hidden dependency
-W04 Wrong dependency direction
-W05 Missing test
-W06 Incorrect edge case
-W07 Wrong algorithm
-W08 Wrong business rule
-W09 Race condition
-W10 State inconsistency
-W11 Security flaw
-W12 Contract misunderstanding
-W13 Incorrect assumption
-W14 Unintended side effect
-W15 Regression
-```
-
-## 6. Definition of Done for the platform
-
-The platform is not considered finished when `hello world` compiles.
-
-It is finished when:
-
-1.  Wolio projects can be created reproducibly.
-2.  Wolio source has a stable grammar.
-3.  Compiler diagnostics are structured and machine-readable.
-4.  AI can inspect semantic state without reading the whole repository.
-5.  AI can request bounded changes.
-6.  Out-of-scope edits are rejected.
-7.  Contracts cannot be silently weakened.
-8.  Effects and dependencies are checked.
-9.  tests and verification are mandatory according to project policy.
-10. unsafe behavior is auditable.
-11. secrets cannot become source literals.
-12. semantic graph and decision memory survive refactors.
-13. a realistic multi-module project can be built.
-14. benchmark results demonstrate improvement over a
-    conventional-language baseline.
-
-## 7. Final architecture
-
-``` text
-                    HUMAN / PRODUCT INTENT
-                              │
-                              ▼
-                    REQUIREMENT MODEL
-                              │
-                              ▼
-                       WOLIO CONTRACTS
-                              │
-                    ┌─────────┴─────────┐
-                    ▼                   ▼
-             SEMANTIC MODEL       AI AGENT PROTOCOL
-                    │                   │
-                    └─────────┬─────────┘
-                              ▼
-                     CHANGE PROPOSAL
-                              │
-                  Scope + Capability Check
-                              │
-                              ▼
-                    Semantic Repository Graph
-                              │
-              ┌───────────────┼────────────────┐
-              ▼               ▼                ▼
-          Type Check      Effect Check     Dependency Check
-              │               │                │
-              └───────────────┼────────────────┘
-                              ▼
-                      Semantic Analyzer
-                              │
-                              ▼
-                      Wolio Intermediate IR
-                              │
-                              ▼
-                           LLVM
-                              │
-                              ▼
-                         Executable
-```
-
-This architecture is the baseline for all other documents in this
-blueprint.

@@ -1,44 +1,35 @@
 `.blueprint/README.md`
+# Wolio Blueprint (Revision 1.4)
 
-# Wolio Blueprint
+This directory is the authoritative engineering specification for **Wolio**, an
+industrial contract-first programming language and AI software construction
+system designed to prevent AI reward-hacking and workarounds ("akal-akalan").
 
-This directory is the authoritative documentation and engineering specification for Wolio.
+## Document authority and zero-clutter layout
 
-## Document authority
+[DOCUMENT_AUTHORITY.md](DOCUMENT_AUTHORITY.md) is the controlling register. All
+46 superseded historical draft files have been removed in Revision 1.4 so that
+every file in `.blueprint/` is current and non-contradictory.
 
-Revision 1.2: [DOCUMENT_AUTHORITY.md](DOCUMENT_AUTHORITY.md) is the controlling
-register. Its normative allowlist replaces the older directory-based ranking
-below; broad historical documents cannot override concrete V1 specifications.
-See [PROJECT_COVERAGE.md](00-product/PROJECT_COVERAGE.md) for the entire product.
-
-0. [`BASELINE-V1.md`](BASELINE-V1.md) defines revision 1.3 scope, normative
-   specifications, and overrides earlier conflicting aspirational examples.
-1. `blueprint.md` defines the long-term vision and non-negotiable principles.
-2. `01-architecture/` and `02-specifications/` define approved technical behavior.
-3. `03-implementation/` defines the current implementation baseline.
-4. `04-tasks/` contains executable engineering work.
-5. `05-quality/` defines acceptance and release standards.
-6. `07-ai-context/` defines how coding agents must use this repository.
-
-When documents conflict, the higher-level document wins. Proposed changes must be recorded before implementation.
-
-## Status values
-
-Documents use one of: `Draft`, `Proposed`, `Approved`, `Implemented`, `Deprecated`, or `Superseded`.
+1. **Baselines:**
+   - [BASELINE-V1.md](BASELINE-V1.md): V1 Immutable Contract Core, Local Agent Protocol, Verified LLVM Backend, Benchmark & Toolchain (`M01`–`M07`, `T001`–`T074`).
+   - [BASELINE-V2.md](BASELINE-V2.md): V2 V1-Bugfix Gate, Total Bounded Loops, `List`/`Map`, Exact `Decimal`, Reusable Pure `predicate`s & `[architecture]` Policy (`M08`–`M11`, `T201`–`T216`).
+   - [BASELINE-V3.md](BASELINE-V3.md): V3 V2-Bugfix Gate, Industrial Standard Library `std::*`, `Secret<T>`, Capability-Gated I/O Mocks, `transaction` Frames & Contract Property Fuzzing (`M12`–`M15`, `T301`–`T315`).
+2. **Layers:**
+   - `00-product/`: Whole-project coverage across V1, V2, and V3.
+   - `01-architecture/`: Architecture Decision Records (`ADR-005`..`ADR-008`).
+   - `02-specifications/`: Normative language (`CORE_V1`, `CORE_V2`, `CORE_V3`), contract, semantic, protocol, package, and diagnostic specifications.
+   - `03-implementation/`: Self-contained crate boundaries (`IMPLEMENTATION_SPECIFICATION_V1.md`, `IMPLEMENTATION_SPECIFICATION_V2.md`, `IMPLEMENTATION_SPECIFICATION_V3.md`) and delivery/bug-fix policies (`DELIVERY_POLICY.md`).
+   - `04-tasks/`: Self-contained task contracts (`T001`–`T074`, `T201`–`T216` in `V2-TASKS.md`, `T301`–`T315` in `V3-TASKS.md`).
+   - `05-quality/`: Acceptance matrix, Definition of Done, and Release Criteria.
+   - `06-project-management/`: Delivery plan, Post-V1 map, and `AI_BUG_TAXONOMY.md` (`W01`–`W15`).
+   - `07-ai-context/`: Agent execution rules and Ubuntu quickstart.
 
 ## Fast path for coding agents
 
-Start with [`MAP.md`](MAP.md). It is the helicopter view and contains the
-current phase, dependency order, and the smallest set of documents to read
-for each kind of change. Then open the relevant task in `04-tasks/`.
-
-The normal loop is: choose a `READY` task, read its linked authority documents,
-inspect only its affected modules, implement the smallest scoped change, run
-verification, and record evidence. Do not read the whole blueprint by default.
-If a decision is missing, mark it `OPEN` instead of inventing behavior.
-
-
-Progress and evidence, including baseline preparation, are recorded in the
-repository-level `.execution/` ledger. Blueprint status is not implementation
-status. Revision 1.3 is a freeze candidate; the owner's acceptance record is
-separate from the author's completion report.
+1. Read `.execution/current-state.md` and `.execution/task-status.md`.
+2. Open the assigned task file in `04-tasks/`. Every task file contains a
+   **Self-contained implementation context** section so you do not need to read
+   the entire repository.
+3. Implement only the assigned task scope, run its verification commands, and
+   record evidence in `.execution/reports/Tnnn.md`.

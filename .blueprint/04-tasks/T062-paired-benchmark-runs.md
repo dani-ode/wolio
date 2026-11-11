@@ -20,7 +20,7 @@ omission.
 ## Authority
 - Normative: [DELIVERY_PLAN.md](../06-project-management/DELIVERY_PLAN.md) (Benchmark protocol), [RELEASE_CRITERIA.md](../05-quality/RELEASE_CRITERIA.md) (Evaluation claims), [BASELINE-V1.md](../BASELINE-V1.md)
 - Acceptance: [ACCEPTANCE_MATRIX.md](../05-quality/ACCEPTANCE_MATRIX.md) `BENCH`, [DEFINITION_OF_DONE.md](../05-quality/DEFINITION_OF_DONE.md)
-- Supporting only: [M06-BENCHMARK.md](../03-implementation/milestones/M06-BENCHMARK.md), [BENCHMARK_DESIGN.md](../06-project-management/BENCHMARK_DESIGN.md), [AI_BUG_TAXONOMY.md](../06-project-management/AI_BUG_TAXONOMY.md)
+- Taxonomy: [AI_BUG_TAXONOMY.md](../06-project-management/AI_BUG_TAXONOMY.md)
 
 ## Scope
 In scope:

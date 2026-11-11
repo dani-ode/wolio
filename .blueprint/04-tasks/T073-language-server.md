@@ -20,7 +20,7 @@ workspace rename with explicit old/new `sym_` identity mappings.
 ## Authority
 - Normative: [DELIVERY_POLICY.md](../03-implementation/DELIVERY_POLICY.md) (M07 services), [SEMANTIC_MODEL.md](../02-specifications/SEMANTIC_MODEL.md), [INTERFACE_CONTRACTS.md](../02-specifications/INTERFACE_CONTRACTS.md), [EVIDENCE_MODEL.md](../02-specifications/verification/EVIDENCE_MODEL.md)
 - Acceptance: [ACCEPTANCE_MATRIX.md](../05-quality/ACCEPTANCE_MATRIX.md) `TOOL`, [DEFINITION_OF_DONE.md](../05-quality/DEFINITION_OF_DONE.md)
-- Supporting only: [WOLIO-LSP.md](../03-implementation/crates/WOLIO-LSP.md), [WOLIO-SEMANTIC.md](../03-implementation/crates/WOLIO-SEMANTIC.md), [WOLIO-CLI.md](../03-implementation/crates/WOLIO-CLI.md)
+- Implementation layout: [IMPLEMENTATION_SPECIFICATION_V1.md](../03-implementation/IMPLEMENTATION_SPECIFICATION_V1.md)
 
 ## Scope
 In scope:

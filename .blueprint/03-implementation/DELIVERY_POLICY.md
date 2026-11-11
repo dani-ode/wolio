@@ -1,60 +1,74 @@
 `.blueprint/03-implementation/DELIVERY_POLICY.md`
-# Delivery and toolchain policy
+# Delivery, toolchain, and cross-version bug-fix policy
 
-Rust/Cargo implements the compiler; Linux x86_64 is the V1 supported platform.
-Other platforms are best-effort until added with CI. T001 selects the then-current
-stable Rust release, records its exact version in rust-toolchain.toml, commits
-Cargo.lock, and uses GitHub Actions on a pinned runner image. No floating version
-is permitted in recorded release evidence. M05 similarly pins a supported LLVM
-major and exact build/container digest before backend implementation. These are
-execution inputs, not unresolved language decisions.
+## 1. Platform and toolchain pinning
 
-Interpreter first: typed semantic expressions execute sequentially with checked
-arithmetic and contract guards. Host panic is an internal compiler failure, not
-a language Result. M05 lowers the same checked semantics into typed SSA-like IR
-with explicit blocks, branches, calls, constructors, tags, arithmetic guards, and
-contract guards. IR verifier rejects ill-typed edges and missing terminators.
-Only the verifier may construct the opaque `VerifiedWolioIr` input accepted by
-codegen. It binds immutable IR to the snapshot and completed static checks;
-transformed IR must be reverified. Runtime guards remain mandatory; this is not
-universal proof. Codegen cannot accept raw AST/unverified IR or repair semantics.
-`run` and `test` use the interpreter; `build` explicitly invokes native codegen.
-LLVM is also available for backend development, CI and differential tests, but
-is not a dependency of frontend/interpreter-only builds.
-LLVM optimization must preserve faults/guards; differential fixtures are the
-release gate. Immutable heap values use reference counting initially; no exposed
-pointer identity or mandatory tracing GC. Console is the sole host adapter.
+Rust/Cargo implements the compiler; Linux x86_64 is the V1–V3 supported platform.
+Other platforms are best-effort until added with CI. `T001` selects the
+then-current stable Rust release, records its exact version in
+`rust-toolchain.toml`, commits `Cargo.lock`, and uses GitHub Actions on a pinned
+runner image. No floating version is permitted in recorded release evidence.
+`M05` similarly pins a supported LLVM major and exact build/container digest
+before backend implementation.
 
-The CLI composes frontend, semantic checks, interpreter/backend, and tooling.
-Scope authorization belongs to agent application, not ordinary source legality.
-Crate notes describe eventual module boundaries; create a crate only when useful.
-Dependency arrows mean "depends on": parser -> lexer/AST; resolver -> AST/semantic;
-type/contracts/effects passes -> semantic; interpreter -> semantic/runtime;
-codegen -> IR; agent -> verification/query services. Runtime never depends on
-codegen or LLVM. No dependency cycles. Diagnostic values are shared low-level data.
+## 2. Interpreter-first and verified native lowering
 
-## Manifest and versions
+Typed semantic expressions execute sequentially in `wolio-runtime` with checked
+arithmetic and contract guards. A host Rust panic is an internal compiler failure
+(exit code `3`), never a language `Result`.
 
-Use `[package] name/version`, `[language] version = "1"`, and `[entrypoint]
-module/operation`. `[module] path` is required only for published Git packages.
-This supersedes earlier `[project]` manifest examples. Compiler, language,
-diagnostic schema, protocol, and package versions are independent. Unsupported
-major versions fail explicitly. V1 source-breaking changes require a new language
-major; additive diagnostic fields do not. Publish migration notes with changes.
+`M05` lowers the same checked semantics into typed SSA-like IR with explicit
+blocks, branches, calls, constructors, tags, arithmetic guards, and contract
+guards. The IR verifier rejects ill-typed edges and missing terminators. Only the
+verifier may construct the opaque `VerifiedWolioIr` input accepted by codegen. It
+binds immutable IR to the snapshot and completed static checks; transformed IR
+must be reverified. Runtime guards remain mandatory in release builds. `run` and
+`test` use the interpreter by default; `build` explicitly invokes native codegen.
+LLVM optimization must preserve faults and guards; differential fixtures
+comparing interpreter and native execution are the release gate. Immutable heap
+values use reference counting initially (with copy-on-write optimization for
+`List`/`Map` in V3 `M12`); no pointer identity is exposed.
 
-Release artifacts: Linux x86_64 tar.gz, SHA-256 checksums, exact toolchain/lock
-metadata, license and release notes. `install --locked --offline` never resolves
-new versions or accesses the network. Failed builds never reuse stale success
-evidence. Reproducible semantic outputs are mandatory; bit-identical native
-binaries are measured separately with environment recorded.
+## 3. Cross-version Bug-Fix & Regression Gate Policy (`V1 -> V2 -> V3`)
 
-## M07 services
+To prevent technical debt and regressions as Wolio evolves from V1 (`CORE_V1.md`)
+to V2 (`CORE_V2.md`) and V3 (`CORE_V3.md`):
 
-Formatter parses and prints canonical syntax, preserves comments, uses four-space
-indentation and LF, is idempotent, and preserves semantic AST/IDs. `fmt --check`
-does not write. LSP supports initialize/shutdown, incremental document updates,
-diagnostics, hover, definition, references, and rename using the same snapshot
-model. Unsaved buffers never overwrite disk. Rename emits a reviewed workspace
-edit including identity mappings; stale document versions reject application.
-Package rules remain in PACKAGE_MANAGER_SPEC.md with the additional lock rules
-specified there. No package install scripts or implicit capability grants.
+1. **Dedicated Inter-Version Stabilization Milestones:**
+   - `M08` (`T201`–`T203`) is a mandatory **V1 Bug-Fix & Regression Gate** before
+     any V2 language feature (`M09`) can be implemented.
+   - `M12` (`T301`–`T303`) is a mandatory **V2 Bug-Fix, Memory & Performance Gate**
+     before any V3 standard library or stateful feature (`M13`) can be implemented.
+2. **Regression-First Bug Protocol (`BUG-nnnn`):**
+   - Every compiler, runtime, protocol, or tooling defect discovered during
+     milestone execution or benchmark campaigns (`M03`, `M06`, `M11`, `M15`) is
+     recorded in `.execution/reports/BUG-nnnn.md`.
+   - Every bug fix MUST first add a minimal failing conformance fixture under
+     `tests/conformance/regressions/BUG-nnnn/` that reproduces the defect, then
+     fix the implementation without weakening any existing contract or acceptance
+     case.
+   - All `tests/conformance/regressions/**` fixtures run in CI on every subsequent
+     task across V1, V2, and V3.
+3. **Strict Upward Version Isolation:**
+   - Upgrading the compiler binary to V2 or V3 must never change the behavior,
+     diagnostics, or `sym_` hashes of a project declaring `[language] version = "1"`
+     in `wolio.toml`.
+
+## 4. Manifest, versions, and M07 services
+
+Use `[package] name/version`, `[language] version = "1" | "2" | "3"`, and
+`[entrypoint] module/operation`. `[module] path` is required only for published
+Git packages. Compiler, language, diagnostic schema, protocol, and package
+versions are independent. Unsupported major versions fail explicitly
+(`WOLIO-FEATURE-001`).
+
+Release artifacts: Linux x86_64 `.tar.gz`, SHA-256 checksums, exact toolchain/lock
+metadata, license, and release notes. `install --locked --offline` never resolves
+new versions or accesses the network.
+
+Formatter (`wolio fmt`) parses and prints canonical syntax, preserves `//`
+comments, uses four-space indentation and LF, is idempotent, and verifies that
+all `sym_` declaration IDs and clause identities are unchanged after formatting.
+LSP (`wolio lsp`) supports `initialize`/`shutdown`, incremental document updates,
+diagnostics, hover, definition, references, and version-checked workspace rename
+using the shared semantic snapshot model without writing unsaved buffers to disk.

@@ -20,7 +20,7 @@ and verify clean-machine installation, completing M07 and V1.
 ## Authority
 - Normative: [DELIVERY_POLICY.md](../03-implementation/DELIVERY_POLICY.md) (Manifest and versions), [RELEASE_CRITERIA.md](../05-quality/RELEASE_CRITERIA.md) (Full V1), [APPROVAL_MATRIX_V1.md](../02-specifications/protocol/APPROVAL_MATRIX_V1.md), [BASELINE-V1.md](../BASELINE-V1.md)
 - Acceptance: [ACCEPTANCE_MATRIX.md](../05-quality/ACCEPTANCE_MATRIX.md) `TOOL`, M07 row of [DELIVERY_PLAN.md](../06-project-management/DELIVERY_PLAN.md), [RELEASE_CRITERIA.md](../05-quality/RELEASE_CRITERIA.md), [DEFINITION_OF_DONE.md](../05-quality/DEFINITION_OF_DONE.md)
-- Supporting only: [IMPLEMENTATION_SPECIFICATION_V1.md](../03-implementation/IMPLEMENTATION_SPECIFICATION_V1.md)
+- Implementation layout: [IMPLEMENTATION_SPECIFICATION_V1.md](../03-implementation/IMPLEMENTATION_SPECIFICATION_V1.md)
 
 ## Scope
 In scope:

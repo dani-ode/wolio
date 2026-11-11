@@ -1,22 +1,32 @@
 `.blueprint/02-specifications/EXTENSION_BOUNDARIES.md`
-# Extension boundaries beyond V1
+# Version progression and extension boundaries (V1 -> V2 -> V3)
 
-These decisions complete the product boundary; they do not authorize extra V1
-syntax. An extension needs a versioned language amendment and conformance suite.
+This document defines the strict boundary rules between V1 ([CORE_V1.md](language/CORE_V1.md)),
+V2 ([CORE_V2.md](language/CORE_V2.md)), and V3 ([CORE_V3.md](language/CORE_V3.md)).
 
-| Extension | Required semantics before admission | Required evidence |
-|---|---|---|
-| Stateful resources | explicit read/write handles, non-aliasing ownership or checked access, modifies frame, entry snapshots, invariant entry/exit points | unrelated state unchanged; alias attempt rejected |
-| Transactions | adapter-defined atomic boundary, rollback guarantees, isolation, error-state guarantees | fault injection before/after commit; no claim across unrelated adapters |
-| Idempotency | key scope, request fingerprint, durable outcome, conflict/expiry behavior | duplicate, concurrent duplicate, crash/retry cases |
-| Concurrency | structured child tasks, join/cancellation/error propagation, no detached tasks by default | deterministic scheduling tests; race/lost-update cases |
-| Provenance | nominal untrusted/validated states with explicit constructors; no magic trust inference | unvalidated value rejected at trusted boundary |
-| Secrets | opaque handles, no literal/display/serialization, explicit disclosure capability | redaction and unauthorized sink tests |
-| Formal proof | decidable supported fragment, solver/version/time limits, counterexamples, unknown result | timeout is never proof; runtime fallback remains explicit |
-| FFI | ABI, ownership, exception/fault boundary, effect declaration, audited capability | invalid ABI/resource lifetime tests |
-| Architecture rules | module edge allow/deny data; deny precedence | forbidden transitive dependency fixtures |
+## 1. Upward compatibility rules
 
-No general theorem can establish business-intent correctness. Heuristic
-workaround detection remains advisory; only an explicit violated rule blocks
-legality. A future language release may reject an extension after experiments;
-V1 remains a complete, independently useful specification without it.
+1. **Reserved lexical space:** Every V2 and V3 keyword is reserved in the V1
+   lexer (`CORE_V1.md`). A valid V1 program can never use an identifier that
+   later becomes a keyword in V2 or V3.
+2. **Manifest version gating:** `[language] version = "1" | "2" | "3"` in
+   `wolio.toml` selects the active grammar and semantic profile. Using a V2
+   construct under `version = "1"` or a V3 construct under `version = "1"`/`"2"`
+   fails deterministically with `WOLIO-FEATURE-001`.
+3. **Bug-fix before feature expansion:** Neither V2 (`M09`) nor V3 (`M13`) may
+   begin feature implementation until the preceding version's dedicated Bug-Fix
+   & Regression Gate (`M08` for V1->V2, `M12` for V2->V3) has closed all open
+   P0/P1 defects with permanent conformance regression fixtures.
+
+## 2. Capability progression matrix
+
+| Capability | V1 (`version = "1"`) | V2 (`version = "2"`) | V3 (`version = "3"`) |
+|---|---|---|---|
+| Control flow | `if`/`else`, exhaustive `match`, acyclic calls | + Total bounded `for (x in src with acc = init) { bound ...; invariant ...; }` | Same as V2 (no unbounded `while`) |
+| Builtin types | `Bool`, `Int`, `String`, `Unit`, `Option<T>`, `Result<T,E>` | + `UInt`, `Decimal` (128-bit fixed scale), `Bytes`, `List<T>`, `Map<K,V>` | + `Secret<T>`, `resource <Handle>`, `std::*` types |
+| String formatting | Literal strings only | + Type-checked deterministic `format(template, ...)` | + `std::string` pure manipulation & parsing (`Secret<T>` rejected) |
+| Contract clauses | Inline `requires`/`ensures` (no calls), `errors`, `effects`, `dependencies`, `intent` | + Reusable pure acyclic `predicate` calls in `requires`/`ensures`/`bound`/`invariant` | + `modifies [res]`, `old(expr)` snapshots, and `property` fuzzing |
+| Architecture rules | Explicit operation `dependencies` and module `import` | + `[architecture]` allow/deny module import rules (`WOLIO-ARCH-001`) | Same as V2 + `std::*` capability boundaries |
+| Agent mutations | Single/existing-module AST declarations (`protocol_version: 1`) | + `create_module`, `delete_module`, `add_import`, `remove_import` (`protocol_version: 2`) | + `property`, `resource`, and `with_mock` AST payloads (`protocol_version: 3`) |
+| External I/O & tests | `console::print` (`Console::Write`) only; captured in tests | Same as V1 | + `Clock`, `Fs`, `Net`, `Db`, `Secret::Use`; mandatory `with_mock` in tests (`WOLIO-EFFECT-002`) |
+| Verification depth | Static type/set checks + runtime guards + unit `test` + `WOLIO-ANALYZER-001`..`005` | + Loop `bound`/`invariant` checks (`WOLIO-CONTRACT-005`/`006`) + architecture check | + Automatic contract/property fuzzing (`wolio verify --fuzz`, `WOLIO-FUZZ-001`) |

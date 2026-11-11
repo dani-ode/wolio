@@ -19,7 +19,7 @@ expose `wolio fmt` and read-only `wolio fmt --check`.
 ## Authority
 - Normative: [DELIVERY_POLICY.md](../03-implementation/DELIVERY_POLICY.md) (M07 services), [CORE_V1.md](../02-specifications/language/CORE_V1.md), [SEMANTIC_MODEL.md](../02-specifications/SEMANTIC_MODEL.md), [INTERFACE_CONTRACTS.md](../02-specifications/INTERFACE_CONTRACTS.md)
 - Acceptance: [ACCEPTANCE_MATRIX.md](../05-quality/ACCEPTANCE_MATRIX.md) `TOOL`, [DEFINITION_OF_DONE.md](../05-quality/DEFINITION_OF_DONE.md)
-- Supporting only: [WOLIO-FORMAT.md](../03-implementation/crates/WOLIO-FORMAT.md), [WOLIO-CLI.md](../03-implementation/crates/WOLIO-CLI.md)
+- Implementation layout: [IMPLEMENTATION_SPECIFICATION_V1.md](../03-implementation/IMPLEMENTATION_SPECIFICATION_V1.md)
 
 ## Scope
 In scope:

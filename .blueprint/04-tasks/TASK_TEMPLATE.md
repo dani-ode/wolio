@@ -21,7 +21,10 @@ under the rules in `EXECUTION_CONTRACTS.md`. Do not record status in this file.
 ## Authority
 - Normative: `<links to documents in DOCUMENT_AUTHORITY>`
 - Acceptance: `<ACCEPTANCE_MATRIX family>`, DEFINITION_OF_DONE
-- Supporting only (cannot add behavior): `<crate notes, milestone sketches>`
+- Implementation layout: [IMPLEMENTATION_SPECIFICATION_V1.md](../03-implementation/IMPLEMENTATION_SPECIFICATION_V1.md)
+
+## Self-contained implementation context
+- `<exact crate path, allowed dependencies, diagnostic codes, and key data structures>`
 
 ## Scope
 In scope:
@@ -55,4 +58,4 @@ Evidence: `.execution/reports/Tnnn.md`
 ## Dependencies and open items
 - Depends on: `<task IDs>`; blocks: `<task IDs>`
 - Execution prerequisites: `<external inputs or none>`
-- Open: `OPEN: <question and the authority that must answer it>` or none
+- Open: none

@@ -1,26 +1,22 @@
 `.blueprint/06-project-management/POST_V1_PLAN.md`
-# Post-V1 product plan
+# Post-V1 product roadmap (V2 and V3 baselines)
 
-This plan covers the rest of the vision without assigning fictional language
-versions. All items start PLANNED (design/research); none is READY for compiler
-implementation. A successful experiment produces a proposed versioned baseline,
-syntax/semantics, migration policy, threat model, conformance cases and task set.
-Owner acceptance is required before merging new language behavior.
+The earlier exploratory work packages (`E01`–`E10`) are now structured into two
+concrete, non-colliding release blueprints: [BASELINE-V2.md](../BASELINE-V2.md)
+(`[language] version = "2"`) and [BASELINE-V3.md](../BASELINE-V3.md)
+(`[language] version = "3"`).
 
-| ID | Work package | Prerequisites | Required design and exit evidence |
+## Mapping of historical E01–E10 packages to V2 and V3
+
+| Former ID | Capability | Assigned Version & Milestone | Normative Specification & Tasks |
 |---|---|---|---|
-| E01 | Stateful resources and invariant frames | M03, M05 | Choose ownership/checked-access model; define aliases, reads/writes, old snapshots and lifecycle checks; reject alias misuse and prove unrelated state unchanged in fixtures |
-| E02 | Transactions and adapters | E01 | Define adapter isolation/commit/rollback and error-state guarantees; fault injection around commit; explicitly reject cross-adapter atomicity claims |
-| E03 | Structured concurrency | E01 | Define spawn/join/cancel, ordering, errors and lifetime; deterministic scheduler tests, race/lost-update cases and cancellation cleanup |
-| E04 | Durable idempotency | E02, E03 | Define keys, fingerprints, expiry, persistence and conflicts; concurrent duplicates and crash/retry tests |
-| E05 | Validation provenance and secrets | M03; E01 for resource handles | Define untrusted/validated nominal transitions and opaque secret sinks; reject implicit trust, literals, disclosure, display and serialization; redaction tests |
-| E06 | Expanded architecture policy and advisory analyzer | M04, M06 | Version allow/deny graph rules with deny precedence; separate rule violation from heuristic suspicion; transitive-edge fixtures and false-positive evaluation. M04 already enforces the V1 anti-workaround baseline defined by LOCAL_PROTOCOL_V1 and DIAGNOSTIC_SPEC. |
-| E07 | Properties, refinements, bounded proof | M03, M06 | Specify generators/shrinking/replay; define supported proof fragment, solver pin, timeout and unknown; counterexample and timeout tests; never equate unknown with proof |
-| E08 | FFI and external I/O adapters | M05, E01; E05 for secrets | Define ABI, ownership, fault boundary, effects and capability policy; invalid ABI/lifetime and unauthorized I/O tests |
-| E09 | Remote collaboration and isolation | M04, E05 | Define authenticated identities, authorization/revocation, multi-user locks and OS isolation; replay, cross-user and escape testing |
-| E10 | Additional language expressiveness | M06 and demonstrated user need | Evaluate generics, traits, inheritance, macros, events and entities individually; supply desugaring/semantics, diagnostics, cost and migration experiments before admission |
-
-No date or release number is promised. Prioritize only after the trial feedback
-and measured limitations. E10 is an explicit decision backlog, not approval of
-all listed features. An extension may be rejected with rationale while V1 remains
-complete. Update PROJECT_COVERAGE whenever an item is accepted, split or rejected.
+| — | V1 Bug-Fix & Regression Hardening Gate | **V2** `M08` (`T201`–`T203`) | [BASELINE-V2.md](../BASELINE-V2.md), [V2-TASKS.md](../04-tasks/V2-TASKS.md) |
+| `E10` (core subset) | Total bounded loops (`for..in..with..bound..invariant`), `List<T>`, `Map<K,V>`, `Decimal`, `UInt`, `Bytes`, `format(...)` | **V2** `M09` (`T204`–`T208`) | [CORE_V2.md](../02-specifications/language/CORE_V2.md), [V2-TASKS.md](../04-tasks/V2-TASKS.md) |
+| `E06` | Reusable pure `predicate`s, `[architecture]` allow/deny rules (`WOLIO-ARCH-001`), multi-module Agent Protocol v2 | **V2** `M10` (`T209`–`T212`) | [CORE_V2.md](../02-specifications/language/CORE_V2.md), [V2-TASKS.md](../04-tasks/V2-TASKS.md) |
+| — | V2 Native LLVM parity, V2 Formatter/LSP & 24-task Algorithmic Benchmark | **V2** `M11` (`T213`–`T216`) | [BASELINE-V2.md](../BASELINE-V2.md), [V2-TASKS.md](../04-tasks/V2-TASKS.md) |
+| — | V2 Bug-Fix, Copy-on-Write Memory & Performance Gate | **V3** `M12` (`T301`–`T303`) | [BASELINE-V3.md](../BASELINE-V3.md), [V3-TASKS.md](../04-tasks/V3-TASKS.md) |
+| `E05` | Industrial Standard Library (`std::*`), opaque `Secret<T>` (`WOLIO-SECURITY-001`), validation provenance | **V3** `M13` (`T304`–`T307`) | [CORE_V3.md](../02-specifications/language/CORE_V3.md), [V3-TASKS.md](../04-tasks/V3-TASKS.md) |
+| `E01`, `E02`, `E08` | Capability-gated external I/O, mandatory `with_mock` test sandbox (`WOLIO-EFFECT-002`), linear `resource` handles & `transaction` rollback (`WOLIO-RESOURCE-001`) | **V3** `M14` (`T308`–`T311`) | [CORE_V3.md](../02-specifications/language/CORE_V3.md), [V3-TASKS.md](../04-tasks/V3-TASKS.md) |
+| `E07` | Contract-driven property fuzzing (`property`, `wolio verify --fuzz`, `WOLIO-FUZZ-001`), Agent Protocol v3 & Full Industrial Benchmark | **V3** `M15` (`T312`–`T315`) | [CORE_V3.md](../02-specifications/language/CORE_V3.md), [V3-TASKS.md](../04-tasks/V3-TASKS.md) |
+| `E03`, `E04`, `E09` | Shared-memory/async concurrency, distributed idempotency daemons, remote multi-tenant agent server | Deferred Post-V3 research | Requires separate Post-V3 ADR after `M15` |
+| `E10` (excluded) | Unbounded `while (true)` loops, IEEE-754 binary floats in business logic, inheritance, macros | Permanently rejected | Violates deterministic AI anti-workaround guarantees |

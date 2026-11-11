@@ -20,7 +20,7 @@ Implement `wolio install` and `wolio update`, content-addressed caching under
 ## Authority
 - Normative: [PACKAGE_MANAGER_SPEC.md](../02-specifications/package-manager/PACKAGE_MANAGER_SPEC.md), [DELIVERY_POLICY.md](../03-implementation/DELIVERY_POLICY.md), [INTERFACE_CONTRACTS.md](../02-specifications/INTERFACE_CONTRACTS.md), [EVIDENCE_MODEL.md](../02-specifications/verification/EVIDENCE_MODEL.md)
 - Acceptance: [ACCEPTANCE_MATRIX.md](../05-quality/ACCEPTANCE_MATRIX.md) `PKG`, [DEFINITION_OF_DONE.md](../05-quality/DEFINITION_OF_DONE.md)
-- Supporting only: [WOLIO-PACKAGE.md](../03-implementation/crates/WOLIO-PACKAGE.md), [WOLIO-CLI.md](../03-implementation/crates/WOLIO-CLI.md)
+- Implementation layout: [IMPLEMENTATION_SPECIFICATION_V1.md](../03-implementation/IMPLEMENTATION_SPECIFICATION_V1.md)
 
 ## Scope
 In scope:
