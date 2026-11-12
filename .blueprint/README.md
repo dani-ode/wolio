@@ -1,9 +1,10 @@
 `.blueprint/README.md`
+
 # Wolio Blueprint (Revision 1.4)
 
 This directory is the authoritative engineering specification for **Wolio**, an
 industrial contract-first programming language and AI software construction
-system designed to prevent AI reward-hacking and workarounds ("akal-akalan").
+system designed to prevent AI reward-hacking and workarounds.
 
 ## Document authority and zero-clutter layout
 
