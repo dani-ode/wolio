@@ -39,24 +39,29 @@ manual human typing speed or small-script token brevity:
 V1 (M01–M07: Immutable Contract Core & Guarded Agent Protocol)
   - Acyclic immutable core, nominal types, exhaustive Result/Option
   - Runtime-guarded requires/ensures + static errors/effects/dependencies
-  - Deterministic sym_ graph, local JSON-AST mutation protocol, analyzer 001..005
-  - VerifiedWolioIr -> LLVM native parity, Git package manager, fmt, LSP
-  - Forward-reserves all V2 and V3 keywords from T002
+  - Early scalar boundary & property fuzzing (wolio verify --fuzz) with WOLIO-VERIFY-002
+  - Deterministic sym_ graph, local agent protocol with canonical code payloads, analyzer 001..005
+  - VerifiedWolioIr -> textual LLVM IR (.ll) lowering + clang native parity, Git package manager, fmt, LSP
+  - Forward-reserves all 23 V2 and V3 keywords from T002 (including foreign, with_mock, where, fn)
         │
         ▼
-V2 (M08–M11: V1 Bug-Fix Gate + Bounded Loops, Collections & Architecture Policy)
+V2 (M08–M11: V1 Bug-Fix Gate + Bounded Loops, Collections, Bitwise & Architecture Policy)
   - M08: Mandatory V1 Bug-Fix & Regression Gate (BUG-nnnn conformance suite)
   - Total bounded loops: for (x in src with acc: T = init) { bound ...; invariant ...; }
-  - Immutable List<T>, Map<K,V>, exact 128-bit fixed-scale Decimal, UInt, Bytes, format(...)
+  - Immutable List<T>, Map<K,V>, exact Decimal with explicit rounding (mul_round/div_round), UInt, Bytes, format(...)
+  - Bitwise operations (bit_and, bit_or, bit_xor, bit_shl, bit_shr, bit_not)
   - Reusable pure acyclic predicate declarations callable in contracts
   - [architecture] allow/deny module dependency rules + multi-module Agent Protocol v2
+  - Full 24-task algorithmic comparative benchmark (M11 / T215)
         │
         ▼
-V3 (M12–M15: V2 Bug-Fix Gate + Standard Library, Capability I/O, Transactions & Fuzzing)
+V3 (M12–M15: V2 Bug-Fix Gate + Standard Library, Capability FFI, Transactions & Fuzzing)
   - M12: Mandatory V2 Bug-Fix & Copy-on-Write Performance Gate
   - Industrial std::* modules (string, collections, math, json, time, crypto, fs, net)
+  - Capability-gated Foreign Module / FFI (foreign type, foreign operation, generated C glue, no raw pointers)
+  - Fixed-width integer types (UInt8..UInt32, Int8..Int32) with checked conversions
   - Opaque Secret<T> redaction & validation provenance
   - Capability-gated external effects + mandatory hermetic with_mock in tests
-  - Linear non-aliasing resource handles, modifies/old(...), atomic transaction rollback
+  - Linear non-aliasing resource handles with explicit acquisition scope, modifies/old(...), transaction rollback
   - Contract-driven property fuzzing (wolio verify --fuzz) with shrinking counterexamples
 ```

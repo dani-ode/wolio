@@ -1,7 +1,7 @@
 `.blueprint/BASELINE-V1.md`
 # Wolio V1 — Freeze Baseline
 
-**Status:** freeze candidate, 2026-11-10. Design revision: `1.4`.
+**Status:** freeze candidate, 2026-11-14. Design revision: `1.5`.
 
 Read [DOCUMENT_AUTHORITY.md](DOCUMENT_AUTHORITY.md) for the complete active-document
 register and [PROJECT_COVERAGE.md](00-product/PROJECT_COVERAGE.md) for how V1
@@ -35,7 +35,7 @@ industrial systems.
 | Trial | M03 | T030–T034 | `requires`/`ensures` guards, static error/effect/dependency sets, `test`/`verify`, `inspect`/`impact`, pilot benchmark | contract failures, three change cycles, raw pilot results |
 | Agent | M04 | T040–T044 | local JSONL protocol, typed AST mutation plans, scope/approvals, CAS/journal recovery, `WOLIO-ANALYZER-001`..`005` | stale/rejected/accepted mutation and anti-workaround fixtures |
 | Native | M05 | T050–T053 | typed IR, `VerifiedWolioIr` verifier, LLVM lowering, C/runtime ABI, interpreter/native parity | interpreter/native differential corpus |
-| Evaluation | M06 | T060–T063 | 24-task × 10-seed paired benchmark across Wolio, Go, Rust, TypeScript | reproducible bootstrap report, including negative findings |
+| Evaluation | M06 | T060–T063 | 10-task contract-first benchmark across Wolio, Go, Rust, TypeScript (200 runs; 24-task algorithmic benchmark in V2 T215) | reproducible bootstrap report, including negative findings |
 | Toolchain | M07 | T070–T074 | Git packages, SHA-256 cache/offline lock, canonical formatter, LSP, Linux x86_64 archive | offline locked build, format idempotence, editor diagnostics |
 
 `M03` is a legitimate standalone trial checkpoint. `M04` and `M05` independently
@@ -70,24 +70,38 @@ transactions, and contract fuzzing belong to [BASELINE-V3.md](BASELINE-V3.md).
   [DELIVERY_PLAN.md](06-project-management/DELIVERY_PLAN.md),
   [ACCEPTANCE_MATRIX.md](05-quality/ACCEPTANCE_MATRIX.md).
 
-## Revision 1.4 decisions
+## Revision 1.5 decisions
 
-[ADR-008](01-architecture/decisions/ADR-008-multi-version-anti-workaround-roadmap.md)
-builds on [ADR-007](01-architecture/decisions/ADR-007-deterministic-identity-and-gated-automation.md)
-by:
-1. Removing all 46 superseded historical draft files from `.blueprint/` so zero
-   conflicting syntax or error codes remain in the repository.
-2. Reserving all V2 and V3 keywords in the V1 lexer (`CORE_V1.md`) so V1 code
-   never collides with V2 or V3 language upgrades.
-3. Resolving the `T020` cycle diagnostic code (`WOLIO-RESOLVE-001`) and `T024`
-   M02 contract clause staging rule (declarative `effects`/`dependencies`/`errors`/
-   `intent` are parsed in M02; only `requires`/`ensures` trigger `WOLIO-FEATURE-001`
-   at `wolio run` before `T030`).
-4. Making all five V1 anti-workaround analyzer codes (`WOLIO-ANALYZER-001`..`005`)
-   concrete, enforceable checks (including constant-folding literal checks and
-   test-literal mirroring warnings).
-5. Making every task file (`T001`–`T074`) self-contained so an agent executing a
-   task does not need to read the entire repository.
+Revision 1.5 incorporates critical architecture and vibe-coding optimizations
+to ensure Wolio serves as a robust systems language for large-scale enterprise
+construction without scope bloat:
+1. **Keyword Forward-Reservation:** Expanded Set 3 forward-reserved keywords to
+   23 words by adding `with_mock`, `where`, `fn`, and `foreign` (for Systems FFI),
+   guaranteeing zero source collisions across V1, V2, and V3.
+2. **LLM Mutation Ergonomics:** Solved the JSON-AST verbosity paradox in
+   `MUTATION_SCHEMA_V1` and `LOCAL_PROTOCOL_V1` by permitting canonical Wolio
+   source code strings (`code: string`) in mutation payloads, parsed server-side
+   into verified AST diffs while preserving 100% strict semantic bounds.
+3. **Early Anti-Hardcoding Defense:** Added automated scalar boundary and property
+   fuzzing (`wolio verify --fuzz`) with `WOLIO-VERIFY-002` in M03 (`T032`),
+   defeating AI test-overfitting on scalar types directly in V1.
+4. **Rescoped V1 Benchmark:** Refined M06 from a 960-run matrix into a 10-task
+   Contract & Protocol Benchmark (200 runs) evaluating contract verification,
+   error handling, and agent repair vs Go, Rust, TS; the 24-task algorithmic
+   benchmark matrix is formally scheduled for V2 M11 (`T215`).
+5. **Crate Consolidation:** Consolidated the compiler middle-end into
+   `crates/wolio-semantic` (submodules `resolver`, `types`, `graph`, `contracts`,
+   `effects`, `analyzer`), reducing workspace crate count from 19 to 14 and
+   eliminating cyclic dependency hazards.
+6. **Hermetic Native Lowering:** Pinned native codegen in `wolio-codegen` to
+   verified textual LLVM IR (`.ll`) emission and `clang` compilation, eliminating
+   brittle Cargo C++ FFI build risks (`llvm-sys`/`inkwell`).
+7. **Conformance Fixture Header Standard:** Specified the standard machine-readable
+   test header format (`// @mode:`, `// @expect-status:`, `// @expect-code:`) across
+   `tests/conformance/`.
+8. **Compacted Systems Roadmap:** Aligned the full systems capabilities across V1
+   (scalar & IR foundation), V2 (bitwise ops, exact math), and V3 (capability-gated
+   FFI & fixed-width integers), strictly avoiding a separate V4.
 
 ## Freeze and amendment
 

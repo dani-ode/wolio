@@ -74,3 +74,28 @@ aggregation. All five codes have concrete, deterministic triggers:
 - Neither `WOLIO-ANALYZER-002` nor `003` duplicates `WOLIO-ERROR-001`,
   `WOLIO-DEPENDENCY-001`, or `WOLIO-EFFECT-001` (`002`/`003` run only after `T031`
   checks pass).
+
+## 4. Scalar Boundary and Fuzz Verification Diagnostics (M03 / T032)
+
+To defeat AI test-overfitting and reward-hacking directly at V1 M03 without
+waiting for V3 arbitrary generators, `wolio verify --fuzz` tests contract-guarded
+operations against automated boundary and scalar inputs:
+
+| Code | Severity | Meaning | Deterministic Trigger |
+|---|---|---|---|
+| `WOLIO-VERIFY-002` | `error` | Contract postcondition violated under scalar boundary or fuzz input | Under `wolio verify --fuzz`, an operation with `requires`/`ensures` produces an `ensures` postcondition violation or runtime fault when executed with boundary scalar inputs (`Int::MIN`, `Int::MAX`, `-1`, `0`, `1`, inequality boundaries) or deterministic seeded pseudo-random inputs that satisfy `requires`. |
+
+## 5. V3 Capability, Security, Resource, and FFI Diagnostics (`M13`–`M15`)
+
+V3 registers strict compile-time and runtime diagnostics enforcing the capability model, linear resources, and Foreign Function Interface (FFI):
+
+| Code | Severity | Meaning | Deterministic Trigger |
+|---|---|---|---|
+| `WOLIO-SECURITY-001` | `error` | Opaque `Secret<T>` violation or unvalidated provenance | Constructing `Secret<T>` from literal/pure expression in production code; attempting to access `.value`, apply `==`/`!=`, or pass `Secret<T>` to `format`, `print`, or `std::json`; or constructing domain type from `UntrustedOrigin` without validating smart-constructor `ensures`. |
+| `WOLIO-EFFECT-002` | `error` | Unmocked external I/O or foreign call in test sandbox | A `test` or `property` block invokes an operation with non-console external effects (`Clock::Read`, `Fs::*`, `Net::*`, `Db::*`, `Foreign::Call`) without an enclosing `with_mock` handler covering that operation. |
+| `WOLIO-RESOURCE-001` | `error` | Linear `resource` handle aliasing, leaking, or missing `modifies` | Passing the same `resource` binding twice in one call (`f(db, db)`); aliasing via `let b2 = b;`; returning a `resource` without linear transfer; embedding a `resource` in record/enum/collection; or mutating a `resource` without declaring `modifies [handle];`. |
+| `WOLIO-FOREIGN-001` | `error` | Undeclared foreign library in manifest | A `foreign type` or `foreign operation` references a library in `from "<library>"` that is not listed in `wolio.toml` `[foreign].allowed_libraries`. |
+| `WOLIO-FOREIGN-002` | `error` | Illegal storage of linear opaque `foreign type` | Attempting to declare a field of a `record`, an `enum` variant payload, or a collection (`List`, `Map`, `Option`, `Result`) containing a `foreign type`. |
+| `WOLIO-FUZZ-001` | `error` | Contract or property fuzzing counterexample | `wolio verify --fuzz` discovers an input satisfying `requires`/`where` that causes an `ensures` violation, property body `false`, or unhandled runtime fault, returning a deterministically shrunk minimal counterexample. |
+
+

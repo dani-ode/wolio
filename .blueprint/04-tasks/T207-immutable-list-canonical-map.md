@@ -8,34 +8,36 @@
 | Depends on | T206 |
 | Blocks | T208 |
 | Acceptance families | V2-DATA (collections) and V2-LOOP (collection iteration) |
-| Bounded areas | `crates/wolio-resolver`, `crates/wolio-types`, `crates/wolio-runtime` |
+| Bounded areas | `crates/wolio-semantic` (submodules `resolver`, `types`), `crates/wolio-runtime` |
 | Execution status | `.execution/task-status.md` (sole source) |
 | Report | `.execution/reports/T207.md` |
 
 ## Objective
 Implement type checking and deterministic value-semantic runtime operations for
-immutable `List<T>` and canonical-order `Map<K, V>`, including bounded `for`
-loop iteration over `List<T>` and `Map::keys(...)`.
+immutable `List<T>` and canonical-order `Map<K, V>`, including turbofish constructor
+syntax (`List::empty::<T>()`, `Map::empty::<K, V>()`) and bounded `for` loop
+iteration over `List<T>` and `Map::keys(...)`.
 
 ## Authority
 - Normative: [CORE_V2.md](../02-specifications/language/CORE_V2.md) (Section 3: Builtin types and deterministic operations; Section 4: Total bounded loop semantics)
-- Implementation layout: [IMPLEMENTATION_SPECIFICATION_V2.md](../03-implementation/IMPLEMENTATION_SPECIFICATION_V2.md) (Section 3.2: Value-semantic immutable `List<T>` and `Map<K, V>`)
+- Implementation layout: [IMPLEMENTATION_SPECIFICATION_V2.md](../03-implementation/IMPLEMENTATION_SPECIFICATION_V2.md) (Section 3.3: Value-semantic immutable `List<T>` and `Map<K, V>`)
 - Acceptance: [ACCEPTANCE_MATRIX.md](../05-quality/ACCEPTANCE_MATRIX.md) `V2-DATA` and `V2-LOOP`, [DEFINITION_OF_DONE.md](../05-quality/DEFINITION_OF_DONE.md)
 
 ## Self-contained implementation context
-- **Builtin generic types (`crates/wolio-types`):**
+- **Builtin generic types (`crates/wolio-semantic::types`):**
   - `List<T>`: accepts any valid V2 value type `T`.
-    - `List::empty<T>() -> List<T>`
-    - `List::push<T>(list: List<T>, item: T) -> List<T>`
-    - `List::len<T>(list: List<T>) -> Int`
-    - `List::get<T>(list: List<T>, index: Int) -> Option<T>` (returns `Option::None` if `index < 0` or `index >= len`; never panics or faults)
+    - `List::empty::<T>() -> List<T>` (or `List::empty()` with type inference)
+    - `List::push::<T>(list: List<T>, item: T) -> List<T>`
+    - `List::len::<T>(list: List<T>) -> Int`
+    - `List::get::<T>(list: List<T>, index: Int) -> Option<T>` (returns `Option::None` if `index < 0` or `index >= len`; never panics or faults)
   - `Map<K, V>`: `V` may be any valid V2 value type; **`K` must be `Int`, `UInt`, `String`, `Bool`, or a `nominal` type wrapping one of those four primitives**. Any other key type (`Decimal`, `Bytes`, `Record`, `Enum`, `List`, `Map`, `Option`, `Result`, `Unit`) fails type checking with `WOLIO-TYPE-001`.
-    - `Map::empty<K, V>() -> Map<K, V>`
-    - `Map::insert<K, V>(map: Map<K, V>, key: K, value: V) -> Map<K, V>`
-    - `Map::get<K, V>(map: Map<K, V>, key: K) -> Option<V>`
-    - `Map::remove<K, V>(map: Map<K, V>, key: K) -> Map<K, V>`
-    - `Map::len<K, V>(map: Map<K, V>) -> Int`
-    - `Map::keys<K, V>(map: Map<K, V>) -> List<K>`
+    - `Map::empty::<K, V>() -> Map<K, V>` (or `Map::empty()` with type inference)
+    - `Map::insert::<K, V>(map: Map<K, V>, key: K, value: V) -> Map<K, V>`
+    - `Map::get::<K, V>(map: Map<K, V>, key: K) -> Option<V>`
+    - `Map::remove::<K, V>(map: Map<K, V>, key: K) -> Map<K, V>`
+    - `Map::len::<K, V>(map: Map<K, V>) -> Int`
+    - `Map::keys::<K, V>(map: Map<K, V>) -> List<K>`
+  - Explicit generic calls in expressions require turbofish `::<...>` syntax, preventing syntactic collision with the `<` comparison operator.
 - **Canonical ordering & value equality (`crates/wolio-runtime`):**
   - `Map<K, V>` stores entries in a deterministic `BTreeMap<MapKey, Value>` ordered by `MapKey`:
     - `Bool`: `false < true`

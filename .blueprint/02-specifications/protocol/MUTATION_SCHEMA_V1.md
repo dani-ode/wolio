@@ -10,8 +10,15 @@ Requests and responses use UTF-8 JSON. Object keys are sorted lexicographically
 for hashing. Unknown object keys are rejected. Arrays preserve order unless a
 field says it is a set; set arrays are sorted by their canonical JSON value.
 Integers are signed decimal JSON integers in the CORE_V1 Int range. No floats,
-null values except create preconditions, duplicate object keys, comments, JSON patches, byte offsets, source
-fragments, or arbitrary file paths are accepted in mutation payloads.
+null values except create preconditions, duplicate object keys, comments, JSON patches, byte offsets,
+arbitrary line diffs, or arbitrary file paths are accepted in mutation payloads.
+
+To optimize for natural LLM construction and eliminate the token/nesting overhead
+of manual JSON-AST serialization, implementation bodies, contract clauses, and
+declarations may be provided either as typed AST objects OR as canonical Wolio
+source strings (`code: string`). When `code` is supplied, `wolio-agent` parses it
+server-side via `wolio-parser` into a verified AST before diffing; raw file-level
+writes and out-of-scope edits remain strictly forbidden.
 
 The canonical mutation hash is SHA-256 over:
 
@@ -129,7 +136,7 @@ paths obey CORE_V1. Paths are nonempty arrays of identifiers; arrays are ordered
 unless designated sets. No source spans are supplied.
 
 ```text
-create payload = {module, declaration}
+create payload = {module, declaration: declaration_shape | {code: string}}
 nominal declaration = {kind:"nominal", name, public:boolean, type}
 record declaration = {kind:"record", name, public:boolean, fields:[{name,type}]}
 enum declaration = {kind:"enum", name, public:boolean, variants:[{name,type?}]}
@@ -139,13 +146,20 @@ implementation declaration = {kind:"implementation", name, body:block}
 test declaration = {kind:"test", name, operation:path, body:block}
 contract = {requires:[expr], ensures:[expr], effects:[path],
             dependencies:[path], errors:[path], intent?:string}
-replace_implementation payload = {body:block}
-replace_contract payload = {contract}
+replace_implementation payload = {body:block} | {code:string}
+replace_contract payload = {contract} | {code:string}
 rename_symbol payload = {new_name:identifier}
 move_symbol payload = {new_module:identifier}
-add_test payload = {module:identifier, name:identifier, body:block}
+add_test payload = {module:identifier, name:identifier, body:block} | {module:identifier, name:identifier, code:string}
 delete_symbol payload = {}
 ```
+
+When `{code: string}` is provided for an implementation, contract, declaration,
+or test, `wolio-agent` parses the string into the exact AST shape above using
+`wolio-parser`. If parsing fails, validation immediately returns `WOLIO-SYNTAX-001`
+without staging. If valid, the resulting parsed AST is diffed against
+`expected_old_hash` under the normal semantic pipeline. This prevents LLM
+hallucination of deep JSON-AST structures without sacrificing any semantic guarantees.
 
 These shapes supersede the prose shorthand in section 5: create uses the
 declaration's `kind`, not a separate declaration_kind. `add_test.target` is the

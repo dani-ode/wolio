@@ -8,7 +8,7 @@
 | Depends on | T020 |
 | Blocks | T022 |
 | Acceptance families | SEM (constructors, types) |
-| Bounded areas | `crates/wolio-types`, semantic |
+| Bounded areas | `crates/wolio-semantic` (types submodule), semantic support |
 | Execution status | `.execution/task-status.md` (sole source) |
 | Report | `.execution/reports/T021.md` |
 

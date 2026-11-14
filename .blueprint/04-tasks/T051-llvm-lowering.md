@@ -29,8 +29,10 @@ In scope:
   repository toolchain/CI configuration without making LLVM a dependency of
   frontend/interpreter-only builds.
 - `wolio-codegen` entry accepting only `VerifiedWolioIr`.
-- LLVM lowering and Linux x86_64 object emission for `Int`, `Bool`, `Unit`,
-  branches, short-circuit logic, operation calls and checked integer arithmetic.
+- Emitting verified textual LLVM IR (`.ll`) and invoking the pinned `clang` toolchain
+  to compile to Linux x86_64 object code for `Int`, `Bool`, `Unit`, branches,
+  short-circuit logic, operation calls and checked integer arithmetic (pure Rust
+  codegen without `llvm-sys` / `inkwell` FFI bindings).
 
 Out of scope (owner):
 - Heap values (records, enums, strings), `console::print` ABI and executable

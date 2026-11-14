@@ -1,7 +1,7 @@
 `.blueprint/MAP.md`
-# Blueprint map (Revision 1.4 — V1, V2, and V3)
+# Blueprint map (Revision 1.5 — V1, V2, and V3)
 
-Revision 1.4 freeze candidate; zero conflicting historical documents remain.
+Revision 1.5 freeze candidate; zero conflicting historical documents remain.
 
 ## 1. Master baselines and authority
 
@@ -11,7 +11,7 @@ Revision 1.4 freeze candidate; zero conflicting historical documents remain.
 4. [V3 baseline (`M12`–`M15`: `std::*`, capability I/O, secrets, transactions, fuzzing)](BASELINE-V3.md)
 5. [Whole-project coverage](00-product/PROJECT_COVERAGE.md)
 6. [Delivery plan](06-project-management/DELIVERY_PLAN.md)
-7. [Task index (`T001`–`T074`, `T201`–`T216`, `T301`–`T315`)](04-tasks/task-index.md)
+7. [Task index (`T001`–`T074`, `T201`–`T216`, `T301`–`T319`)](04-tasks/task-index.md)
 8. [Acceptance matrix](05-quality/ACCEPTANCE_MATRIX.md)
 9. [Ubuntu and agent quickstart](07-ai-context/GETTING_STARTED.md)
 

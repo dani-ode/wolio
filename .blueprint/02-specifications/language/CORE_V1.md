@@ -19,10 +19,10 @@ To guarantee zero source collisions across V1, V2 (`CORE_V2.md`), and V3
    `match`, `true`, `false`.
 2. **V1 reserved builtins & bindings (13):** `Bool`, `Int`, `String`, `Unit`,
    `Option`, `Result`, `None`, `Some`, `Ok`, `Err`, `unit`, `console`, `result`.
-3. **V2 & V3 forward-reserved keywords (19):** `in`, `with`, `bound`,
+3. **V2 & V3 forward-reserved keywords (23):** `in`, `with`, `bound`,
    `invariant`, `predicate`, `List`, `Map`, `Decimal`, `UInt`, `Bytes`,
    `format`, `secret`, `Secret`, `resource`, `transaction`, `modifies`, `old`,
-   `property`, `std`.
+   `property`, `std`, `with_mock`, `where`, `fn`, `foreign`.
 
 Using any keyword in (1) or (3) as an identifier produces `WOLIO-SYNTAX-001`.
 Redeclaring any builtin in (2) or binding `result` produces `WOLIO-RESOLVE-001`.

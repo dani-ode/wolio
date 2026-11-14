@@ -17,14 +17,15 @@ Plan params contain intent, operation array, allowed symbol/path scope, and
 requested capabilities. Operations are create_declaration, replace_implementation,
 replace_contract, rename_symbol, move_symbol, add_test, delete_symbol. Each carries
 target ID (except create), expected old hash, and typed payload. Payloads encode
-V1 AST nodes using tagged JSON objects; implementation bodies and predicates are
-AST expressions, never raw source strings. String literal values and intent
-strings remain ordinary data. The schema covers CORE_V1 productions only and
-rejects unknown tags/fields, raw source, byte offsets, patches and arbitrary file
-replacement. Parse/type checks still apply to emitted source. The mutation
-engine renders canonical source from the validated AST and preserves unrelated
-source/comments. It must not invent requires/ensures or widen effect/dependency
-sets to make a plan pass. Missing lists retain CORE_V1's empty-set meaning.
+V1 AST nodes either using tagged JSON objects or as canonical Wolio source strings
+(`code: string`) parsed server-side by `wolio-parser` into validated AST fragments.
+String literal values and intent strings remain ordinary data. The schema covers
+CORE_V1 productions only and rejects unknown tags/fields, arbitrary line/regex
+patches, byte offsets, and uncontrolled file replacement. Parse/type checks still
+apply to emitted source. The mutation engine renders canonical source from the
+validated AST and preserves unrelated source/comments. It must not invent
+requires/ensures or widen effect/dependency sets to make a plan pass. Missing
+lists retain CORE_V1's empty-set meaning.
 Creation rejects an occupied semantic key; rename/move returns old/new identity
 links and updates references as one scope-checked change. No high-level alias
 such as create_operation bypasses these checks; create_declaration with kind

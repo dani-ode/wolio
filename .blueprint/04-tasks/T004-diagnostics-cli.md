@@ -47,9 +47,10 @@ through the CLI and return canonical machine-readable JSON diagnostics and
   ```
 - **`wolio init <dir>` template:** Creates `<dir>/wolio.toml` (with `[package]`, `[language] version = "1"`, `[entrypoint] module = "main"`, `operation = "main"`) and `<dir>/src/main.wol` (`module main; pub operation main() -> Unit { effects []; dependencies []; } implementation main { unit() }`). Refuses to overwrite existing files (exit `2`).
 - **Exit codes:** `0` success, `1` source rejection (`WOLIO-SYNTAX-001` or `WOLIO-FEATURE-001`), `2` CLI usage/manifest/IO configuration error, `3` internal compiler error.
+- **Conformance fixture test runner:** The test runner harness in `tests/conformance/` parses header directives (`// @mode:`, `// @expect-status:`, `// @expect-code:`, `// @expect-stdout:`) to execute tests hermetically across all milestones.
 
 ## Scope
-In scope: `init` and `check` commands, project source discovery, JSON and human diagnostic output, exit codes, and `tests/conformance/front/` fixture runner.
+In scope: `init` and `check` commands, project source discovery, JSON and human diagnostic output, exit codes, and `tests/conformance/front/` fixture runner executing parsed header directives.
 
 Out of scope (owner):
 - Module uniqueness, imports and resolution (T020); identity targets (T023); `run` (T024); `test`/`verify`/`inspect`/`impact` (T032–T033).

@@ -8,7 +8,7 @@
 | Depends on | T043 |
 | Blocks | T060, T070 |
 | Acceptance families | AGENT (repair, finalize, review); ANALYZER; completes M04 |
-| Bounded areas | agent (`crates/wolio-agent`), analyzer (`crates/wolio-analyzer`), verification (`crates/wolio-verify`) |
+| Bounded areas | agent (`crates/wolio-agent`), `crates/wolio-semantic` (analyzer submodule), verification (`crates/wolio-verify`) |
 | Execution status | `.execution/task-status.md` (sole source) |
 | Report | `.execution/reports/T044.md` |
 
@@ -24,7 +24,7 @@ completing M04.
 - Acceptance: [ACCEPTANCE_MATRIX.md](../05-quality/ACCEPTANCE_MATRIX.md) `AGENT` and `ANALYZER`, M04 row of [DELIVERY_PLAN.md](../06-project-management/DELIVERY_PLAN.md), [DEFINITION_OF_DONE.md](../05-quality/DEFINITION_OF_DONE.md)
 
 ## Self-contained implementation context
-- **Enforceable V1 Analyzer Rules (`crates/wolio-analyzer`, run after `T031` static checks pass):**
+- **Enforceable V1 Analyzer Rules (`crates/wolio-semantic` analyzer submodule, run after `T031` static checks pass):**
   1. `WOLIO-ANALYZER-001` (`error`): Rejects any mutation request or directive attempting diagnostic suppression, rule disabling, or verification bypass. Repair `classes` never include `"suppress"` or `"ignore"`.
   2. `WOLIO-ANALYZER-002` (`error`): Inside an `implementation` of an operation returning `Result<T, E>`, rejects a `match` over a callee `Result` whose `Result::Err(_)` arm ignores/discards its bound error payload and returns a constant/literal `Result::Ok(...)` (swallowed error substitution).
   3. `WOLIO-ANALYZER-003` (`error`): Rejects declared bloat where an operation declares a symbol in `dependencies [...]` that is never called in its `implementation`, or declares an effect in `effects [...]` that is neither directly nor transitively produced by its called operations.
