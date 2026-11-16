@@ -17,8 +17,8 @@ Revision 1.5 freeze candidate; zero conflicting historical documents remain.
 
 ## 2. Self-contained task lookup
 
-Every V1 task file (`04-tasks/Tnnn-*.md`) and V2/V3 task specification
-([V2-TASKS.md](04-tasks/V2-TASKS.md), [V3-TASKS.md](04-tasks/V3-TASKS.md))
+Every task contract file (`04-tasks/Tnnn-*.md`) and milestone task specification
+([V1-TASKS.md](04-tasks/V1-TASKS.md), [V2-TASKS.md](04-tasks/V2-TASKS.md), [V3-TASKS.md](04-tasks/V3-TASKS.md))
 embeds its required crate boundaries, rules, and diagnostic codes. Only consult
 the normative reference below if an implementation detail needs deeper context:
 

@@ -22,7 +22,7 @@ and V3 (`M12`–`M15`).
 | Milestone | Ordered work units | Acceptance and verification |
 |---|---|---|
 | `M08` — V1 Bug-Fix Gate | `T201` triage & `BUG-*` regression suite; `T202` compiler/protocol/LLVM bug fixes; `T203` version-1 isolation lock | Zero open V1 P0/P1 defects; all `tests/conformance/regressions/BUG-*` pass; V1 snapshot hashes unchanged |
-| `M09` — Loops & Data | `T204` V2 parser (`for`, `predicate`); `T205` `UInt`/`Decimal`/`Bytes`; `T206` bounded loop verifier & runtime guards (`005`/`006`); `T207` `List<T>`/`Map<K,V>`; `T208` `format(...)` | `V2-LOOP` and `V2-DATA` suites; loop `bound` and `invariant` entry/step/exit failure checks; exact `Decimal` math |
+| `M09` — Loops & Data | `T204` V2 parser (`for`, `predicate`); `T205` `UInt`/`Decimal`/`Bytes`; `T206` bounded loop verifier & runtime guards (`005`/`006`); `T207` `List<T>`/`Map<K,V>`/`Set<T>`; `T208` `format(...)` | `V2-LOOP` and `V2-DATA` suites; loop `bound` and `invariant` entry/step/exit failure checks; exact `Decimal` math |
 | `M10` — Predicates & Architecture | `T209` reusable pure `predicate`; `T210` `[architecture]` module allow/deny (`WOLIO-ARCH-001`); `T211` Agent Protocol v2 (`create_module`, `add_import`); `T212` V2 loop analyzer rules | `V2-PRED`, `V2-ARCH`, `V2-AGENT` suites; forbidden architecture imports rejected; multi-module agent refactor passes |
 | `M11` — V2 Native & Benchmark | `T213` IR/LLVM lowering for loops/collections/Decimal; `T214` V2 formatter & LSP; `T215` 24-task algorithmic benchmark (`W04`/`W07`/`W08`); `T216` V2 release | Interpreter/native parity on all V2 fixtures; published V2 paired benchmark report and Linux x86_64 release |
 

@@ -112,7 +112,7 @@ removal/addition without inventing that link.
    `ensures`, `effects`, `dependencies`, `errors`, `intent`, `implementation`,
    `test`, `for`, `let`, `if`, `else`, `match`, `true`, `false`.
 2. **V2 & V3 forward-reserved keywords (reserved in V1 lexer to prevent cross-version collision; `WOLIO-SYNTAX-001` if used as identifier):**
-   `in`, `with`, `bound`, `invariant`, `predicate`, `List`, `Map`, `Decimal`,
+   `in`, `with`, `bound`, `invariant`, `predicate`, `List`, `Map`, `Set`, `Decimal`,
    `UInt`, `Bytes`, `format`, `secret`, `Secret`, `resource`, `transaction`,
    `modifies`, `old`, `property`, `std`, `with_mock`, `where`, `fn`, `foreign`.
 3. **Reserved builtin names and bindings (`WOLIO-RESOLVE-001` if redeclared or shadowed):**

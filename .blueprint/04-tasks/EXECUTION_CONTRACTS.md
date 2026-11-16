@@ -4,8 +4,8 @@
 Shared rules for every registered Wolio task across V1 (`T001`–`T074`), V2
 (`T201`–`T216`), and V3 (`T301`–`T319`). Every V1 (`T001`–`T074`), V2
 (`T201`–`T216`), and V3 (`T301`–`T319`) task's complete contract lives in its
-own self-contained file registered in [task-index.md](task-index.md) (with V2
-and V3 also summarized in [V2-TASKS.md](V2-TASKS.md) and
+own self-contained file registered in [task-index.md](task-index.md) (with
+milestones also summarized in [V1-TASKS.md](V1-TASKS.md), [V2-TASKS.md](V2-TASKS.md), and
 [V3-TASKS.md](V3-TASKS.md)). Actual readiness and live states belong only to
 `.execution/task-status.md`.
 
@@ -29,7 +29,7 @@ that single task **without reading the entire repository**:
 | Language, protocol, package, and evidence behavior | Normative documents listed in [../DOCUMENT_AUTHORITY.md](../DOCUMENT_AUTHORITY.md) |
 | Acceptance family definitions | [../05-quality/ACCEPTANCE_MATRIX.md](../05-quality/ACCEPTANCE_MATRIX.md) |
 | Milestone order and milestone gates | [../06-project-management/DELIVERY_PLAN.md](../06-project-management/DELIVERY_PLAN.md) |
-| One task's objective, scope, dependencies, self-contained rules, and verification | That task's individual contract file (`04-tasks/Tnnn-*.md`) as sole normative authority (`task-index.md`, `V2-TASKS.md`, `V3-TASKS.md` are non-normative indexes) |
+| One task's objective, scope, dependencies, self-contained rules, and verification | That task's individual contract file (`04-tasks/Tnnn-*.md`) as sole normative authority (`task-index.md`, `V1-TASKS.md`, `V2-TASKS.md`, `V3-TASKS.md` are non-normative indexes) |
 | Task ID allocation and file location | [task-index.md](task-index.md) |
 | Live status, blockers, decisions, and evidence | Repository `.execution/` |
 

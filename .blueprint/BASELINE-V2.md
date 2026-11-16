@@ -21,10 +21,11 @@ domain architectures without opening the door to AI workarounds:
    collections and integer ranges while making infinite loops (`while (true)`) and
    unverified loop state mutations impossible via mandatory `bound` and `invariant`
    clauses (`CORE_V2.md`).
-3. **Immutable Value Collections with Turbofish Syntax:** Add `List<T>` and `Map<K, V>`
-   with unambiguous generic turbofish constructor syntax (`List::empty::<T>()`,
-   `Map::empty::<K, V>()`) or declaration-target type inference, resolving Pratt
-   parser `<` comparison ambiguities.
+3. **Immutable Value Collections with Turbofish Syntax (ADR-009):** Add `List<T>`,
+   canonical-order `Map<K, V>`, and canonical `Set<T>` with unambiguous generic turbofish
+   constructor syntax (`List::empty::<T>()`, `Map::empty::<K, V>()`, `Set::empty::<T>()`)
+   or declaration-target type inference, resolving Pratt parser `<` comparison ambiguities.
+   Collections are pure, immutable, and content-addressed.
 4. **Exact Financial Decimal Arithmetic & Explicit Rounding:** Add 128-bit fixed-scale
    `Decimal` (scale `10^6`, zero IEEE-754 float drift). Standard `*` and `/` operators
    strictly trap on unrepresentable fractional remainders, while explicit financial
@@ -53,10 +54,10 @@ domain architectures without opening the door to AI workarounds:
 ## 2. Non-collision guarantees with V1 and V3
 
 - **Lexical compatibility:** Every V2 keyword (`for`, `in`, `with`, `bound`,
-  `invariant`, `predicate`, `List`, `Map`, `Decimal`, `UInt`, `Bytes`, `format`) and
+  `invariant`, `predicate`, `List`, `Map`, `Set`, `Decimal`, `UInt`, `Bytes`, `format`) and
   every V3 keyword (`secret`, `Secret`, `resource`, `transaction`, `modifies`, `old`,
   `property`, `std`, `with_mock`, `where`, `fn`, `foreign`) is already reserved in
-  `CORE_V1.md` (23 forward-reserved keywords). No valid V1 identifier can collide
+  `CORE_V1.md` (24 forward-reserved keywords). No valid V1 identifier can collide
   with V2 or V3 syntax.
 - **Manifest version gating:** Projects with `[language] version = "1"` continue to
   enforce V1 restrictions (`WOLIO-FEATURE-001` on V2 constructs); `[language] version = "2"`
@@ -70,12 +71,13 @@ domain architectures without opening the door to AI workarounds:
 | Milestone | Work units | Scope | Exit evidence |
 |---|---|---|---|
 | `M08` — V1 Bug-Fix & Regression Gate | `T201`–`T203` | Resolve all open V1 compiler/protocol/codegen defects; convert M06 benchmark failure patterns into regression tests; bump language gate for V2 | Zero open V1 P0/P1 bugs; all `BUG-*` fixtures pass in interpreter and native builds |
-| `M09` — Bounded Loops, Collections, Bitwise & Decimal | `T204`–`T208` | Parse and type-check `CORE_V2` (`for..in..with..bound..invariant`, turbofish `List::*::<T>()`/`Map::*::<K,V>()`, checked bitwise ops, `Decimal` with explicit `RoundingMode`, `UInt`, `Bytes`, `format`); execute in interpreter with `bound`/`invariant` guards | Positive/negative loop bound, loop invariant, collection, bitwise, and exact Decimal conformance suites |
+| `M09` — Bounded Loops, Collections, Bitwise & Decimal | `T204`–`T208` | Parse and type-check `CORE_V2` (`for..in..with..bound..invariant`, turbofish `List::*::<T>()`/`Map::*::<K,V>()`/`Set::*::<T>()`, checked bitwise ops, `Decimal` with explicit `RoundingMode`, `UInt`, `Bytes`, `format`); execute in interpreter with `bound`/`invariant` guards | Positive/negative loop bound, loop invariant, collection, bitwise, and exact Decimal conformance suites |
 | `M10` — Pure Predicates, Architecture Policy & Agent Protocol v2 | `T209`–`T212` | Implement `predicate` declarations and calls inside contracts, `[architecture]` module allow/deny rules (`WOLIO-ARCH-001`), and `protocol_version: 2` (`create_module`, `add_import`, canonical code snippet strings / loop/predicate AST payloads, loop-invariant analyzer rules) | Predicate cycle/purity rejection, architecture layer rejection, multi-module agent mutation fixtures |
 | `M11` — V2 Native Parity, Tooling & Algorithmic Benchmark | `T213`–`T216` | Lower bounded loops, collections, bitwise ops, and `Decimal` to `VerifiedWolioIr` and textual LLVM IR (`.ll`); update `wolio fmt` and `wolio lsp` for V2; run 24-task algorithmic/collection benchmark (`W04`, `W07`, `W08`, 960 runs) | Interpreter/native differential parity on all V2 fixtures; published 960-run V2 comparative benchmark report |
 
 ## 4. Normative V2 documents
 
+- Paradigm authority: [ADR-009](01-architecture/decisions/ADR-009-unconventional-paradigm-unification.md)
 - Language grammar and semantics: [CORE_V2.md](02-specifications/language/CORE_V2.md)
 - Implementation architecture and crate extensions: [IMPLEMENTATION_SPECIFICATION_V2.md](03-implementation/IMPLEMENTATION_SPECIFICATION_V2.md)
 - Standalone task contracts (`T201`–`T216`): [task-index.md](04-tasks/task-index.md) and [V2-TASKS.md](04-tasks/V2-TASKS.md)

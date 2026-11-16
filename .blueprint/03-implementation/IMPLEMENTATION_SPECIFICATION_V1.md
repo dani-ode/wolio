@@ -41,7 +41,7 @@ Create crates only when their milestone begins (`T001` creates only the `M01` cr
 |---|---|---|---|
 | `crates/wolio-diagnostics` | `M01` (`T001`) | Shared `Span`, `Diagnostic`, `EvidenceRecord`, code registry, canonical JSON helpers | none (leaf data crate) |
 | `crates/wolio-ast` | `M01` (`T001`) | Spanned AST nodes for declarations, contracts, expressions, types, patterns | `wolio-diagnostics` |
-| `crates/wolio-lexer` | `M01` (`T001`/`T002`) | UTF-8 validation, tokenization, V1 active + V2/V3 forward-reserved keywords (23 keywords), string escape validation | `wolio-diagnostics` |
+| `crates/wolio-lexer` | `M01` (`T001`/`T002`) | UTF-8 validation, tokenization, V1 active + V2/V3 forward-reserved keywords (24 keywords), string escape validation | `wolio-diagnostics` |
 | `crates/wolio-parser` | `M01` (`T001`/`T003`) | Recursive-descent/Pratt parser for `CORE_V1` (and `CORE_V2`/`CORE_V3` by version) | `wolio-lexer`, `wolio-ast`, `wolio-diagnostics` |
 | `crates/wolio-semantic` | `M02` (`T020`–`T023`, `T030`–`T031`, `T044`) | Unified compiler middle-end: `resolver` (`T020`), `types` (`T021`–`T022`), `graph` (`T023`), `contracts` (`T030`), `effects` (`T031`), and `analyzer` (`T044`) | `wolio-parser`, `wolio-ast`, `wolio-diagnostics` |
 | `crates/wolio-runtime` | `M02` (`T024`) | Interpreter evaluator, checked arithmetic, runtime contract guards (`T030`), native C ABI (`T052`) | `wolio-ast`, `wolio-semantic`, `wolio-diagnostics` (NEVER `wolio-codegen` or LLVM) |

@@ -9,7 +9,9 @@
 ### Revision 1.5 — 2026-11-14 (current freeze candidate)
 
 - Addressed industrial vibe-coding and systems architecture review:
-  - **Forward-Reserved Keywords:** Added `with_mock`, `where`, `fn`, and `foreign` to V1 Set 3 forward-reserved keywords (23 total keywords) across `CORE_V1.md`, `INTERFACE_CONTRACTS.md`, and `T002`.
+  - **Unconventional Paradigm Unification (ADR-009):** Codified Wolio's radical architectural departure from conventional languages across four immutable pillars: (1) Zero-coloring deterministic dataflow parallelism replacing threads and async/await; (2) Canonical content-addressed value collections (`Set<T>`, `Map<K, V>`) and relational identity graphs over `sym_id` tuples replacing mutable pointer heaps; (3) Contractual refinement and exhaustive closed sums replacing class inheritance and open trait hierarchies; (4) Linear resource frames, atomic rollbacks, and mandatory hermetic test isolation (`with_mock`) replacing mutable pointer I/O.
+  - **Canonical Set Collection:** Added `Set<T>` to V2 M09 (`CORE_V2.md`, `T207`, `T213`, `BASELINE-V2.md`) and forward-reserved `Set` in V1 Set 3 keywords (expanding to 24 forward-reserved keywords).
+  - **Forward-Reserved Keywords:** Added `Set`, `with_mock`, `where`, `fn`, and `foreign` to V1 Set 3 forward-reserved keywords (24 total keywords) across `CORE_V1.md`, `INTERFACE_CONTRACTS.md`, and `T002`.
   - **LLM Mutation Ergonomics:** Solved JSON-AST verbosity paradox in `MUTATION_SCHEMA_V1.md` and `LOCAL_PROTOCOL_V1.md` by allowing canonical Wolio `code: string` payloads, parsed server-side into typed AST diffs by `wolio-parser`.
   - **Early Anti-Hardcoding Defense:** Added scalar boundary and property fuzzing in M03 (`wolio verify --fuzz`) with `WOLIO-VERIFY-002` to defeat test-overfitting on scalar types directly in V1.
   - **M06 Rescoping:** Refined V1 M06 evaluation from a 960-run algorithmic matrix to a 10-task Contract & Protocol Benchmark (200 runs), reserving the 24-task algorithmic benchmark for V2 M11 (`T215`).

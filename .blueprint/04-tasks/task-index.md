@@ -11,6 +11,8 @@ states belong only to `.execution/task-status.md`.
 
 ## Part I — V1 Tasks (`M01`–`M07`, `[language] version = "1"`)
 
+Milestone summary: [V1-TASKS.md](V1-TASKS.md). Individual task contract files below are the sole normative authority.
+
 ### M01 — Frontend (entry: owner V1 baseline acceptance)
 
 | ID | Task file | Depends on | Acceptance |
@@ -82,6 +84,8 @@ states belong only to `.execution/task-status.md`.
 
 ## Part II — V2 Tasks (`M08`–`M11`, `[language] version = "2"`)
 
+Milestone summary: [V2-TASKS.md](V2-TASKS.md). Individual task contract files below are the sole normative authority.
+
 ### M08 — V1 Bug-Fix & Regression Gate (entry: V1 completion and owner V2 gate acceptance)
 
 | ID | Task file | Depends on | Acceptance |
@@ -97,7 +101,7 @@ states belong only to `.execution/task-status.md`.
 | T204 | [T204-v2-loop-predicate-parser.md](T204-v2-loop-predicate-parser.md) | T203 | V2-LOOP syntax |
 | T205 | [T205-uint-bytes-decimal-scalars.md](T205-uint-bytes-decimal-scalars.md) | T204 | V2-DATA scalars, exact math, bitwise (`UInt`, `Bytes`, `Decimal`, bitwise) |
 | T206 | [T206-bounded-for-loop-guards.md](T206-bounded-for-loop-guards.md) | T205 | V2-LOOP (`WOLIO-CONTRACT-005`/`006`) |
-| T207 | [T207-immutable-list-canonical-map.md](T207-immutable-list-canonical-map.md) | T206 | V2-DATA collections (`List<T>`, `Map<K,V>`) |
+| T207 | [T207-immutable-list-canonical-map.md](T207-immutable-list-canonical-map.md) | T206 | V2-DATA collections (`List<T>`, `Map<K,V>`, `Set<T>`) |
 | T208 | [T208-deterministic-typechecked-format.md](T208-deterministic-typechecked-format.md) | T207 | V2-DATA `format`; all M09 |
 
 ### M10 — Pure Predicates, Architecture Policy & Agent Protocol v2 (entry: M09)
@@ -121,6 +125,8 @@ states belong only to `.execution/task-status.md`.
 ---
 
 ## Part III — V3 Tasks (`M12`–`M15`, `[language] version = "3"`)
+
+Milestone summary: [V3-TASKS.md](V3-TASKS.md). Individual task contract files below are the sole normative authority.
 
 ### M12 — V2 Bug-Fix, Memory & Performance Gate (entry: V2 completion and owner V3 gate acceptance)
 

@@ -51,7 +51,7 @@ enabling safe AI vibe coding without raw pointers or scope-bloat:
 
 - All V3 keywords (`secret`, `Secret`, `resource`, `transaction`, `modifies`, `old`,
   `property`, `std`, `with_mock`, `where`, `fn`, `foreign`) are reserved from day
-  one in `CORE_V1.md` (23 forward-reserved keywords).
+  one in `CORE_V1.md` (24 forward-reserved keywords).
 - `std::*` occupies a reserved top-level namespace that user modules in V1 and V2
   cannot declare (`std` is a reserved keyword).
 - V3 diagnostics (`WOLIO-SECURITY-001`, `WOLIO-EFFECT-002`, `WOLIO-RESOURCE-001`,
@@ -68,6 +68,7 @@ enabling safe AI vibe coding without raw pointers or scope-bloat:
 
 ## 4. Normative V3 documents
 
+- Paradigm authority: [ADR-009](01-architecture/decisions/ADR-009-unconventional-paradigm-unification.md)
 - Language grammar and semantics: [CORE_V3.md](02-specifications/language/CORE_V3.md)
 - Implementation architecture and crate extensions: [IMPLEMENTATION_SPECIFICATION_V3.md](03-implementation/IMPLEMENTATION_SPECIFICATION_V3.md)
 - Standalone task contracts (`T301`–`T319`): [task-index.md](04-tasks/task-index.md) and [V3-TASKS.md](04-tasks/V3-TASKS.md)

@@ -28,8 +28,10 @@ vulnerabilities. V2 adds core expressiveness while keeping AI workarounds imposs
   `bit_and`, `bit_or`, `bit_xor`, `bit_shl`, `bit_shr`, `bit_not` with strict bounds
   checks on shift amounts (`0 <= n < 64`) to eliminate undefined behavior and silent wraparounds.
 - **Unambiguous generic constructor syntax:** Pratt/recursive-descent parsing uses
-  turbofish syntax (`List::empty::<T>()`, `Map::empty::<K, V>()`) or target type inference,
+  turbofish syntax (`List::empty::<T>()`, `Map::empty::<K, V>()`, `Set::empty::<T>()`) or target type inference,
   completely eliminating syntactic collisions with the `<` comparison operator.
+- **Canonical Content-Addressed Sets & Maps (ADR-009):** `Set<T>` and `Map<K, V>` are pure,
+  immutable value collections with deterministic total ordering and canonical layouts.
 - **No reusable-contract duplication:** Pure, total, effect-free `predicate`
   declarations can be called inside `requires`, `ensures`, and loop `invariant`
   clauses without allowing arbitrary side-effecting operations in contracts.
@@ -121,6 +123,15 @@ V2 adds the following builtin types to V1's `Bool`, `Int`, `String`, `Unit`,
   - `Map::remove::<K, V>(Map<K, V>, K) -> Map<K, V>`
   - `Map::len::<K, V>(Map<K, V>) -> Int`
   - `Map::keys::<K, V>(Map<K, V>) -> List<K>`
+- `Set<T>`: immutable, deterministic canonical-order value set (`T` must be
+  `Int`, `UInt`, `String`, `Bool`, or a nominal wrapper over them, matching `Map` key rules per ADR-009).
+  Builtin pure operations:
+  - `Set::empty::<T>() -> Set<T>` (or `Set::empty()` with type inference)
+  - `Set::insert::<T>(Set<T>, T) -> Set<T>`
+  - `Set::contains::<T>(Set<T>, T) -> Bool`
+  - `Set::remove::<T>(Set<T>, T) -> Set<T>`
+  - `Set::len::<T>(Set<T>) -> Int`
+  - `Set::items::<T>(Set<T>) -> List<T>`
 - `format(template: String, args...) -> String`: deterministic, type-checked
   string formatting (`format("order={} total={}", id.value, total)`). Placeholders
   `{}` must match argument count and only accept `Int`, `UInt`, `Decimal`, `Bool`,
@@ -136,9 +147,10 @@ let total = for (item in items with acc: Int = 0) {
 };
 ```
 
-1. **Source evaluation:** `iter_source` evaluates once to either a `List<T>` or an
+1. **Source evaluation:** `iter_source` evaluates once to a `List<T>`, `Set<T>`, or an
    integer range `start..end` (`start <= end`, exclusive of `end`; `start > end`
-   yields 0 iterations).
+   yields 0 iterations). When iterating `Set<T>`, elements are traversed in ascending
+   canonical order.
 2. **Mandatory `bound` check:** Before iteration begins, `bound expr;` (type `Bool`)
    is evaluated once. For `start..end` ranges, the compiler also requires an
    explicit upper-bound comparison in `bound`. If `bound` evaluates to `false`, execution

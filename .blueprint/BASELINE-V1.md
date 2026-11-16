@@ -67,6 +67,8 @@ transactions, and contract fuzzing belong to [BASELINE-V3.md](BASELINE-V3.md).
   [APPROVAL_MATRIX_V1.md](02-specifications/protocol/APPROVAL_MATRIX_V1.md).
 - Package manager:
   [PACKAGE_MANAGER_SPEC.md](02-specifications/package-manager/PACKAGE_MANAGER_SPEC.md).
+- Standalone task contracts (`T001`–`T074`):
+  [task-index.md](04-tasks/task-index.md) and [V1-TASKS.md](04-tasks/V1-TASKS.md).
 - Toolchain, architecture edges, and delivery gates:
   [IMPLEMENTATION_SPECIFICATION_V1.md](03-implementation/IMPLEMENTATION_SPECIFICATION_V1.md),
   [DELIVERY_POLICY.md](03-implementation/DELIVERY_POLICY.md),
@@ -77,9 +79,11 @@ transactions, and contract fuzzing belong to [BASELINE-V3.md](BASELINE-V3.md).
 
 Revision 1.5 incorporates critical architecture and vibe-coding optimizations
 to ensure Wolio serves as a robust systems language for large-scale enterprise
-construction without scope bloat:
+construction without scope bloat, guided by [ADR-009](01-architecture/decisions/ADR-009-unconventional-paradigm-unification.md),
+[ADR-008](01-architecture/decisions/ADR-008-multi-version-anti-workaround-roadmap.md),
+and [ADR-007](01-architecture/decisions/ADR-007-deterministic-identity-and-gated-automation.md):
 1. **Keyword Forward-Reservation:** Expanded Set 3 forward-reserved keywords to
-   23 words by adding `with_mock`, `where`, `fn`, and `foreign` (for Systems FFI),
+   24 words by adding `Set`, `with_mock`, `where`, `fn`, and `foreign` (for Systems FFI),
    guaranteeing zero source collisions across V1, V2, and V3.
 2. **LLM Mutation Ergonomics:** Solved the JSON-AST verbosity paradox in
    `MUTATION_SCHEMA_V1` and `LOCAL_PROTOCOL_V1` by permitting canonical Wolio

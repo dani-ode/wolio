@@ -19,8 +19,8 @@ To guarantee zero source collisions across V1, V2 (`CORE_V2.md`), and V3
    `match`, `true`, `false`.
 2. **V1 reserved builtins & bindings (13):** `Bool`, `Int`, `String`, `Unit`,
    `Option`, `Result`, `None`, `Some`, `Ok`, `Err`, `unit`, `console`, `result`.
-3. **V2 & V3 forward-reserved keywords (23):** `in`, `with`, `bound`,
-   `invariant`, `predicate`, `List`, `Map`, `Decimal`, `UInt`, `Bytes`,
+3. **V2 & V3 forward-reserved keywords (24):** `in`, `with`, `bound`,
+   `invariant`, `predicate`, `List`, `Map`, `Set`, `Decimal`, `UInt`, `Bytes`,
    `format`, `secret`, `Secret`, `resource`, `transaction`, `modifies`, `old`,
    `property`, `std`, `with_mock`, `where`, `fn`, `foreign`.
 

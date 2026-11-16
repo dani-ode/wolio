@@ -48,11 +48,12 @@ non-contradictory.
    - [blueprint.md](blueprint.md): Master philosophy and multi-generation overview.
    - [GLOSSARY.md](GLOSSARY.md): Common terms and definitions.
    - [CHANGELOG.md](CHANGELOG.md): Non-normative history of blueprint revisions.
-   - [04-tasks/V2-TASKS.md](04-tasks/V2-TASKS.md) and [04-tasks/V3-TASKS.md](04-tasks/V3-TASKS.md): Milestone task summary indexes (the respective `Tnnn-*.md` files are sole normative sources).
+   - [04-tasks/V1-TASKS.md](04-tasks/V1-TASKS.md), [04-tasks/V2-TASKS.md](04-tasks/V2-TASKS.md), and [04-tasks/V3-TASKS.md](04-tasks/V3-TASKS.md): Milestone task summary indexes (the respective `Tnnn-*.md` files are sole normative sources).
 
 ## 3. Revision 1.5 governance
 
-Revision 1.5 incorporates [ADR-008](01-architecture/decisions/ADR-008-multi-version-anti-workaround-roadmap.md)
+Revision 1.5 incorporates [ADR-009](01-architecture/decisions/ADR-009-unconventional-paradigm-unification.md),
+[ADR-008](01-architecture/decisions/ADR-008-multi-version-anti-workaround-roadmap.md),
 and [ADR-007](01-architecture/decisions/ADR-007-deterministic-identity-and-gated-automation.md).
 Where two normative documents appear to disagree, stop the affected task, record
 the exact conflict under `.execution/blockers/`, and resolve it by amendment; do

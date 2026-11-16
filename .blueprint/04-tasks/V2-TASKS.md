@@ -76,14 +76,14 @@ acceptance of the V2 execution start.
   - Enforce that `item` and `acc` do not shadow visible bindings (`WOLIO-RESOLVE-001`) and the loop body type matches the declared accumulator type (`WOLIO-TYPE-001`).
   - At runtime: evaluate `bound` once before entry (aborting with `WOLIO-CONTRACT-005` if `false`); evaluate `invariant` on entry (`acc = init`), after each iteration (`acc = next_acc`), and on exit (aborting with `WOLIO-CONTRACT-006` if `false`).
 
-### T207: Implement immutable `List<T>` and canonical-order `Map<K, V>`
+### T207: Implement immutable `List<T>`, canonical-order `Map<K, V>`, and canonical `Set<T>`
 - **Depends on:** `T206` | **Blocks:** `T208`
 - **Bounded areas:** `crates/wolio-semantic` (submodules `resolver`, `types`), `crates/wolio-runtime`
 - **Acceptance families:** `V2-DATA` (collections)
 - **Self-contained contract:**
-  - Type-check `List<T>` and `Map<K, V>` (`K` restricted to `Int`, `UInt`, `String`, `Bool`, or nominal types over them; other key types fail with `WOLIO-TYPE-001`).
-  - Implement pure value-semantic operations with turbofish constructors: `List::empty::<T>()`, `List::push::<T>`, `List::len::<T>`, `List::get::<T>` (returning `Option<T>`), and `Map::empty::<K, V>()`, `Map::insert::<K, V>`, `Map::get::<K, V>`, `Map::remove::<K, V>`, `Map::len::<K, V>`, `Map::keys::<K, V>` (sorted in canonical key order).
-  - Support `for (item in list_expr with acc: T = init)` iteration over `List<T>`.
+  - Type-check `List<T>`, `Map<K, V>`, and `Set<T>` (`K` and `T` for sets restricted to `Int`, `UInt`, `String`, `Bool`, or nominal types over them; other key/element types fail with `WOLIO-TYPE-001`).
+  - Implement pure value-semantic operations with turbofish constructors: `List::empty::<T>()`, `List::push::<T>`, `List::len::<T>`, `List::get::<T>` (returning `Option<T>`), `Map::empty::<K, V>()`, `Map::insert::<K, V>`, `Map::get::<K, V>`, `Map::remove::<K, V>`, `Map::len::<K, V>`, `Map::keys::<K, V>` (sorted in canonical key order), and `Set::empty::<T>()`, `Set::insert::<T>`, `Set::contains::<T>`, `Set::remove::<T>`, `Set::len::<T>`, `Set::items::<T>` (sorted in canonical item order per ADR-009).
+  - Support `for (item in iter_expr with acc: T = init)` iteration over `List<T>`, `Set<T>`, and `Map::keys(...)`.
 
 ### T208: Implement type-checked deterministic `format(template, ...)`
 - **Depends on:** `T207` | **Blocks:** `T209`
