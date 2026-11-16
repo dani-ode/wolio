@@ -49,7 +49,38 @@ Diagnostics are a primary machine interface for AI agents, not just human compil
   `"suppress"`, `"ignore"`, or automatic contract weakening.
 - Diagnostics sort deterministically by `(source.file, source.start, code, target)`.
 
-## 3. V1 Anti-Workaround Analyzer Rules (`WOLIO-ANALYZER-001`..`005`)
+## 3. The 6-Tier Machine-Enforced Diagnostic Hierarchy
+
+To serve industrial vibe coding where the machine enforces 100% correctness without
+human code inspection, all Wolio diagnostics are partitioned into a strict 6-tier
+hierarchy. Higher tiers represent foundational invariants; lower tiers represent
+hyper-strict stylistic and anti-cheat enforcements. Every tier is machine-actionable:
+
+| Tier | Category Name | Description | Default Severity | Exit Code | In-Source Suppression |
+|---|---|---|---|---|---|
+| **Tier 0** | `FATAL_SYNTAX` | Unparseable grammar, malformed tokens, UTF-8 violations | `fatal` | `1` | Strictly Impossible |
+| **Tier 1** | `TYPE_RESOLUTION` | Type mismatches, cycle rejection, unhandled Results, illegal shadowing | `error` | `1` | Strictly Impossible |
+| **Tier 2** | `BEHAVIORAL_CONTRACT` | `requires`/`ensures` violations, invariant/bound failures, fuzz counterexamples | `error` | `1` | Strictly Impossible |
+| **Tier 3** | `SECURITY_CAPABILITY` | Zero-unsafe violations, unmocked test I/O, secret leaks, linear handle aliasing | `error` | `1` | Strictly Impossible |
+| **Tier 4** | `ANTI_HACKING_ANALYZER` | AI reward-hacking: swallowed errors (`Ok`), dependency/effect padding, test mirroring | `error` / `warning` | `1` / `0` | Strictly Impossible (`ANALYZER-001`) |
+| **Tier 5** | `HYPER_STRICT_LINT` | "Fierce Complainer": unused vars, dead branches, tautological contracts, naked literals | `error` (default) | `1` | Strictly Impossible |
+
+## 4. Hyper-Strict Linter Rules (`WOLIO-LINT-001`..`006`)
+
+Unlike Rust's Clippy where lints are optional or can be suppressed with `#[allow(...)]`,
+**Wolio explicitly treats in-source suppression directives as fatal compilation errors (`WOLIO-ANALYZER-001`)**.
+The AI agent must structurally repair the code to satisfy the linter:
+
+| Code | Severity | Meaning | Deterministic Trigger |
+|---|---|---|---|
+| `WOLIO-LINT-001` | `error` | Unused binding, parameter, or import | An imported symbol, operation parameter, or `let` binding is never referenced within its declaring scope. |
+| `WOLIO-LINT-002` | `error` | Dead code or redundant match arm | An AST expression, branch continuation, or `match` arm is provably unreachable given prior conditions or pattern coverage. |
+| `WOLIO-LINT-003` | `error` | Tautological contract clause | A `requires`, `ensures`, `bound`, or `invariant` predicate is statically identical to `true`, evaluates to a constant identity (e.g., `x == x`), or establishes no constraint on visible state. |
+| `WOLIO-LINT-004` | `error` | Naked magic literal in business logic | An integer or string literal appears inside a production business calculation outside of a nominal type constructor (`CustomerId(1)`) or standard mathematical constant (`0`, `1`). |
+| `WOLIO-LINT-005` | `error` | Missing intent clause | A public `operation` declaration omits an explicit `intent "..."` clause explaining its semantic purpose. |
+| `WOLIO-LINT-006` | `error` | Non-Unit statement expression discard | A statement expression (`expr;`) evaluates to a type other than `Unit`, discarding a value or `Result` without explicit binding. |
+
+## 5. V1 Anti-Workaround Analyzer Rules (`WOLIO-ANALYZER-001`..`005`)
 
 To prevent AI coding agents from introducing reward-hacking workarounds
 ("akal-akalan") that pass basic typechecks while creating technical debt, `M04`
@@ -75,7 +106,7 @@ aggregation. All five codes have concrete, deterministic triggers:
   `WOLIO-DEPENDENCY-001`, or `WOLIO-EFFECT-001` (`002`/`003` run only after `T031`
   checks pass).
 
-## 4. Scalar Boundary and Fuzz Verification Diagnostics (M03 / T032)
+## 6. Scalar Boundary and Fuzz Verification Diagnostics (M03 / T032)
 
 To defeat AI test-overfitting and reward-hacking directly at V1 M03 without
 waiting for V3 arbitrary generators, `wolio verify --fuzz` tests contract-guarded
@@ -85,7 +116,7 @@ operations against automated boundary and scalar inputs:
 |---|---|---|---|
 | `WOLIO-VERIFY-002` | `error` | Contract postcondition violated under scalar boundary or fuzz input | Under `wolio verify --fuzz`, an operation with `requires`/`ensures` produces an `ensures` postcondition violation or runtime fault when executed with boundary scalar inputs (`Int::MIN`, `Int::MAX`, `-1`, `0`, `1`, inequality boundaries) or deterministic seeded pseudo-random inputs that satisfy `requires`. |
 
-## 5. V3 Capability, Security, Resource, and FFI Diagnostics (`M13`–`M15`)
+## 7. V3 Capability, Security, Resource, and FFI Diagnostics (`M13`–`M15`)
 
 V3 registers strict compile-time and runtime diagnostics enforcing the capability model, linear resources, and Foreign Function Interface (FFI):
 

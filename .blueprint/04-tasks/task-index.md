@@ -159,4 +159,4 @@ states belong only to `.execution/task-status.md`.
 | T312 | [T312-property-fuzz-shrinking-verifier.md](T312-property-fuzz-shrinking-verifier.md) | T319 | V3-FUZZ (`property`, `wolio verify --fuzz`, `WOLIO-FUZZ-001`) |
 | T313 | [T313-agent-protocol-v3-mutations.md](T313-agent-protocol-v3-mutations.md) | T312 | V3-FUZZ, AGENT (`protocol_version: 3`) |
 | T314 | [T314-v3-ir-llvm-formatter-lsp-parity.md](T314-v3-ir-llvm-formatter-lsp-parity.md) | T313 | V3-RELEASE, NATIVE, TOOL |
-| T315 | [T315-v3-industrial-benchmark-release.md](T315-v3-industrial-benchmark-release.md) | T314 | V3-RELEASE, BENCH (W01–W15); all M15 |
+| T315 | [T315-v3-industrial-benchmark-release.md](T315-v3-industrial-benchmark-release.md) | T314 | V3-RELEASE, BENCH (W01–W16); all M15 |

@@ -48,7 +48,7 @@ In scope:
 - Updating `wolio-format` and `wolio-lsp` for all `CORE_V3` syntax.
 
 Out of scope (owner):
-- Full W01–W15 comparative industrial benchmark and V3 release packaging (T315).
+- Full W01–W16 comparative industrial benchmark and V3 release packaging (T315).
 
 ## Normative requirements
 - `VerifiedWolioIr` rejects any `ReadOld` instruction outside an `ensures` guard block or any `TransactionRegion` that can exit on `Err`/fault without executing `rollback_block` (DELIVERY_POLICY, IMPLEMENTATION_SPECIFICATION_V3).

@@ -1,5 +1,5 @@
 `.blueprint/06-project-management/AI_BUG_TAXONOMY.md`
-# AI Failure and Anti-Workaround Taxonomy (W01–W15)
+# AI Failure and Anti-Workaround Taxonomy (W01–W16)
 
 **Status:** Normative benchmark classification and compiler defense mapping across V1, V2, and V3.
 
@@ -24,6 +24,7 @@ where it enters the benchmark corpus.
 | `W13` | Live external I/O in tests | Unit test hits real clock, filesystem, or network | Mandatory hermetic `with_mock` handlers for non-console effects in tests (`WOLIO-EFFECT-002`) | **V3** (`M15`) |
 | `W14` | Undeclared transitive side effect | Helper operation performs I/O not declared by its caller | Static transitive `effects [...]` upper-bound checking (`WOLIO-EFFECT-001`) | **V1** (`M03`/`M06`) |
 | `W15` | Out-of-scope collateral regression | Agent modifies unrelated module or overwrites concurrent user edit | Path/symbol scope enforcement (`WOLIO-SCOPE-001`) + CAS snapshot check (`WOLIO-STALE-001`) + `impact` graph | **V1** (`M04`/`M06`) |
+| `W16` | Attempted unsafe or verification bypass | Use `unsafe`, raw pointer, or in-source suppression directive (`#[allow]`, `nolint`) | Zero-Unsafe Invariant (`CORE_V1`) + bypass rejection analyzer (`WOLIO-ANALYZER-001`) | **V1** (`M01`/`M04`) |
 
-Each benchmark run records the failure ID (`W01`–`W15`), prompt, outcome, repair
+Each benchmark run records the failure ID (`W01`–`W16`), prompt, outcome, repair
 iterations, token count, wall-clock time, regressions, and security impact.

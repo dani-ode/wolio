@@ -52,7 +52,7 @@ In scope:
 - Mandatory `wolio verify --fuzz` execution during `wolio-agent` `plan`/`apply`/`finalize` for V3 workspaces.
 
 Out of scope (owner):
-- V3 Native LLVM, `wolio fmt`, and `wolio lsp` parity (T314); full W01–W15 benchmark and V3 release (T315).
+- V3 Native LLVM, `wolio fmt`, and `wolio lsp` parity (T314); full W01–W16 benchmark and V3 release (T315).
 
 ## Normative requirements
 - `protocol_version: 3` requires structured AST objects for all V3 constructs (`property`, `resource`, `modifies`, `old`, `transaction`, `with_mock`) and rejects raw source strings or text diffs (MUTATION_SCHEMA_V1, V3-TASKS).

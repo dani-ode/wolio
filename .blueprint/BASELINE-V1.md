@@ -15,16 +15,19 @@ by design completion. The project owner records the actual freeze in
 ## Product decision
 
 Wolio is an industrial-grade, contract-first programming language built specifically
-for AI-assisted software construction. Its primary engineering goal is to eliminate
-AI reward-hacking and workarounds ("akal-akalan")—such as swallowed errors,
-hardcoded test-passing outputs, undeclared dependencies/effects, and silent contract
-weakening—that turn fast AI coding into long-term technical debt.
+for **Industrial Vibe Coding**—where the human acts as the system architect/specifier
+and never needs to read generated code, while the machine generates and verifies all
+implementations. Its primary engineering goal is to kill bugs from the very start and
+eliminate AI reward-hacking ("akal-akalan")—such as swallowed errors, hardcoded
+test-passing outputs, undeclared dependencies/effects, and silent contract weakening.
 
-Wolio deliberately trades away manual human coding brevity in favor of machine
-verifiability: verbose explicit declarations (`dependencies [...]`, `effects [...]`,
-`errors [...]`, nominal wrappers, and typed AST mutations) are accepted costs on
-small programs because they enforce deterministic, low-defect scaling on large
-industrial systems.
+Wolio enforces an absolute **Zero-Unsafe Policy**: there is no `unsafe` keyword, no
+raw pointers, no manual memory management, and no in-source compiler suppression
+directives (`#[allow]`, `nolint`). Wolio deliberately trades away manual human coding
+brevity and readability in favor of 100% mechanical verifiability: verbose explicit
+declarations (`dependencies [...]`, `effects [...]`, `errors [...]`, nominal wrappers,
+and multi-tiered analyzer constraints) are deliberate machine ratchets that make
+defects impossible to compile.
 
 ## Delivery profiles (V1: M01–M07)
 

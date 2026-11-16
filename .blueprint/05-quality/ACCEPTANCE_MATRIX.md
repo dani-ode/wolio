@@ -39,7 +39,7 @@ passing tests.
 | `V3-REGRESSION` | V3 (`M12`) | All V2 `BUG-*` fixtures pass; copy-on-write `List`/`Map` memory and latency benchmarks | `T301`–`T303` |
 | `V3-STD` / `V3-SECRET` | V3 (`M13`) | `std::string`, `std::collections`, `std::math`, `std::json`, `std::crypto`; `Secret<T>` leak/literal/format rejection (`WOLIO-SECURITY-001`) | `T304`–`T307` |
 | `V3-IO` / `V3-TX` / `V3-FFI` | V3 (`M14`) | `std::time`/`fs`/`net`, `with_mock` test enforcement (`WOLIO-EFFECT-002`), linear `resource` acquisition & non-aliasing (`WOLIO-RESOURCE-001`), `modifies`/`old(...)`, `transaction` rollback, Capability-Gated FFI (`foreign type`, `foreign operation`, `WOLIO-FOREIGN-001`/`002`, `Foreign::Call`), fixed-width integers (`UInt8`..`UInt32`, `Int8`..`Int32`), and C glue contracts | `T308`–`T311`, `T316`–`T319` |
-| `V3-FUZZ` / `V3-RELEASE` | V3 (`M15`) | `property` declarations and `wolio verify --fuzz` shrinking counterexamples (`WOLIO-FUZZ-001`); full W01–W15 benchmark & V3 release | `T312`–`T315` |
+| `V3-FUZZ` / `V3-RELEASE` | V3 (`M15`) | `property` declarations and `wolio verify --fuzz` shrinking counterexamples (`WOLIO-FUZZ-001`); full W01–W16 benchmark & V3 release | `T312`–`T315` |
 
 ## 3. Common execution gates
 

@@ -59,11 +59,3 @@ the exact conflict under `.execution/blockers/`, and resolve it by amendment; do
 not choose whichever is convenient. Execution facts are authoritative only in
 `.execution/`; document statuses never claim code exists. Owner baseline
 acceptance is recorded in `.execution/baseline-acceptance.md` before `T001`.
-
-Revision 1.4 incorporates [ADR-008](01-architecture/decisions/ADR-008-multi-version-anti-workaround-roadmap.md)
-and [ADR-007](01-architecture/decisions/ADR-007-deterministic-identity-and-gated-automation.md).
-Where two normative documents appear to disagree, stop the affected task, record
-the exact conflict under `.execution/blockers/`, and resolve it by amendment; do
-not choose whichever is convenient. Execution facts are authoritative only in
-`.execution/`; document statuses never claim code exists. Owner baseline
-acceptance is recorded in `.execution/baseline-acceptance.md` before `T001`.

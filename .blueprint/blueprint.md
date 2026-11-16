@@ -5,33 +5,57 @@
 > [BASELINE-V2.md](BASELINE-V2.md), and [BASELINE-V3.md](BASELINE-V3.md). This
 > document summarizes the industrial philosophy unifying all three versions.
 
-## 1. Core thesis: Defeating AI "Akal-Akalan" (Reward Hacking) at Scale
+## 1. Core thesis: Industrial Vibe Coding and Defeating AI "Akal-Akalan"
 
-AI coding models generate code orders of magnitude faster than human programmers,
-but in conventional languages (Python, TypeScript, Go, Rust) they frequently
-resolve compiler or test failures using shortcuts ("akal-akalan") that accumulate
-severe technical debt:
-1. **Swallowing errors:** Catching or matching an error and returning a dummy
-   success value (`Ok(0)`) to silence the compiler.
+Wolio is a purpose-built programming language designed from first principles for
+**Industrial Vibe Coding**—a software engineering paradigm where:
+1. **The Human is the Architect and Specifier:** The user defines domain contracts,
+   behavioral invariants, `intent` specifications, capability boundaries, and
+   acceptance tests. The human **does not need to read the generated code**.
+2. **The Machine is the Coder and Verifier:** AI generates, mutates, and refactors
+   the implementation under mechanical compiler constraints. Human readability
+   is explicitly subordinated to 100% deterministic, machine-verifiable safety.
+3. **Bugs are Eliminated at Definition Time:** The compiler acts as an unforgiving,
+   hyper-aggressive gatekeeper ("lebih garang dari Clippy") that complains instantly
+   and refuses to compile any sloppy, ambiguous, unhandled, or reward-hacked logic.
+
+In conventional languages (Python, TypeScript, Go, Rust), AI coding models routinely
+introduce subtle technical debt ("akal-akalan") to force code to pass tests:
+1. **Swallowing errors:** Catching an error and returning dummy `Ok(0)` to silence types.
 2. **Hardcoding to unit tests:** Writing `if (input == 42) { return 10; }` or
-   `99 + 1` to pass a specific unit test without implementing the domain rule.
-3. **Unbounded loops and state corruption:** Writing `while (true)` loops without
-   termination bounds or mutating shared state before an error occurs.
-4. **Hidden side effects and spaghetti dependencies:** Calling I/O deep inside a
-   helper or importing infrastructure directly into domain logic.
-5. **Weakening contracts or deleting tests:** Relaxing type/contract rules or
-   removing failing tests so a broken implementation passes CI.
+   `99 + 1` to pass a specific test without implementing the domain rule.
+3. **Unbounded loops and state corruption:** Writing unverified loops or mutating state
+   without transactional safety.
+4. **Hidden side effects and spaghetti dependencies:** Calling I/O deep inside pure logic.
+5. **Weakening contracts or deleting tests:** Relaxing types to force CI to pass.
 
-## 2. Strategic design trade-off
+## 2. Immutable architectural directives
 
-Wolio explicitly optimizes for **industrial AI correctness at scale**, not
-manual human typing speed or small-script token brevity:
-- Verbose, explicit declarations (`dependencies [...]`, `effects [...]`,
-  `errors [...]`, `requires`, `ensures`, `bound`, `invariant`, nominal wrappers)
-  are intentional.
-- Every extra line of explicit contract acts as a mechanical ratchet that
-  prevents an AI agent from introducing silent regressions across thousands of
-  modules.
+Wolio enforces four non-negotiable architectural directives:
+
+1. **Zero-Unsafe Policy:**
+   - Wolio has **NO `unsafe` keyword**, no raw pointers, no unchecked memory
+     dereferencing, and no manual allocation/deallocation.
+   - All memory is 100% safe by construction (immutable value semantics, CoW
+     reference counting, and scope-bound linear resource handles).
+   - Foreign interfaces (V3) use capability-gated, opaque handle-only FFI with
+     compiler-generated C glue and mandatory sandbox mocks in tests.
+2. **Verbosity as an Industrial Machine Ratchet:**
+   - Lengthy nominal type definitions, explicit `dependencies [...]`, `effects [...]`,
+     `errors [...]`, `requires`, `ensures`, `bound`, and `invariant` clauses are
+     intentional. Verbosity costs an AI agent fractions of a second, but gives the
+     compiler complete mathematical leverage to detect defects instantly.
+3. **Hyper-Aggressive 6-Tier Diagnostic Engine:**
+   - Multi-tiered compiler complaints: Tier 0 (`FATAL_SYNTAX`), Tier 1 (`TYPE_RESOLUTION`),
+     Tier 2 (`BEHAVIORAL_CONTRACT`), Tier 3 (`SECURITY_CAPABILITY`), Tier 4 (`ANTI_HACKING_ANALYZER`),
+     and Tier 5 (`HYPER_STRICT_LINT`).
+   - **Zero In-Source Suppression:** Directives like `#[allow(...)]` or `// nolint`
+     do not exist. Any attempt to suppress a compiler warning or lint is a fatal error
+     (`WOLIO-ANALYZER-001`).
+4. **Hermetic & Capability-Gated I/O:**
+   - No implicit clocks, randomness, filesystem, or network access. Every external
+     effect is tracked transitively and locked down in `wolio.toml`. Test blocks
+     run in a strictly hermetic sandbox with mandatory mock tables.
 
 ## 3. Three-generation conflict-free architecture (`V1 -> V2 -> V3`)
 

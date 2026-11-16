@@ -73,7 +73,7 @@ In scope:
 Out of scope (owner):
 - Property fuzzing counterexample generation (T312).
 - Agent Protocol v3 mutation schemas (T313).
-- Full W01–W15 comparative industrial benchmark (T315).
+- Full W01–W16 comparative industrial benchmark (T315).
 
 ## Normative requirements
 - `wolio-codegen` must emit verified textual LLVM IR (`.ll`) and invoke `clang`; it must not use `llvm-sys` or `inkwell` C++ bindings (DELIVERY_POLICY).

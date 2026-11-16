@@ -53,6 +53,10 @@ Out of scope (owner):
   (CORE_V1).
 - Linux x86_64 is the V1 target; unsupported targets fail explicitly before
   code emission (DELIVERY_POLICY, ACCEPTANCE_MATRIX).
+- Generated LLVM IR must not contain raw pointer arithmetic, unchecked memory
+  access, or `unsafe` constructs; all memory operations use safe abstractions
+  (reference-counted heap values, stack scalars) per the Zero-Unsafe Invariant
+  (CORE_V1).
 
 ## Acceptance criteria
 Positive and boundary:

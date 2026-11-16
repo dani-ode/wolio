@@ -21,7 +21,7 @@ comparative matrix is scheduled for V2 `T215`).
 ## Authority
 - Normative: [DELIVERY_PLAN.md](../06-project-management/DELIVERY_PLAN.md) (Benchmark protocol), [BASELINE-V1.md](../BASELINE-V1.md)
 - Acceptance: [ACCEPTANCE_MATRIX.md](../05-quality/ACCEPTANCE_MATRIX.md) `BENCH`, [DEFINITION_OF_DONE.md](../05-quality/DEFINITION_OF_DONE.md)
-- Taxonomy: [AI_BUG_TAXONOMY.md](../06-project-management/AI_BUG_TAXONOMY.md)
+- Taxonomy: [AI_BUG_TAXONOMY.md](../06-project-management/AI_BUG_TAXONOMY.md) (`W01`–`W16`)
 
 ## Scope
 In scope:

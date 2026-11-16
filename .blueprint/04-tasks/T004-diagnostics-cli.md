@@ -18,10 +18,17 @@ through the CLI and return canonical machine-readable JSON diagnostics and
 `not_run` semantic evidence records.
 
 ## Authority
-- Normative: [INTERFACE_CONTRACTS.md](../02-specifications/INTERFACE_CONTRACTS.md) (project inputs, CLI and output), [EVIDENCE_MODEL.md](../02-specifications/verification/EVIDENCE_MODEL.md), [DIAGNOSTIC_SPEC.md](../02-specifications/verification/DIAGNOSTIC_SPEC.md), [CORE_V1.md](../02-specifications/language/CORE_V1.md) (M01 profile)
+- Normative: [INTERFACE_CONTRACTS.md](../02-specifications/INTERFACE_CONTRACTS.md) (project inputs, CLI and output), [EVIDENCE_MODEL.md](../02-specifications/verification/EVIDENCE_MODEL.md), [DIAGNOSTIC_SPEC.md](../02-specifications/verification/DIAGNOSTIC_SPEC.md) (6-tier hierarchy and diagnostic shape), [CORE_V1.md](../02-specifications/language/CORE_V1.md) (M01 profile)
 - Acceptance: [ACCEPTANCE_MATRIX.md](../05-quality/ACCEPTANCE_MATRIX.md) `FRONT`, M01 row of [DELIVERY_PLAN.md](../06-project-management/DELIVERY_PLAN.md), [DEFINITION_OF_DONE.md](../05-quality/DEFINITION_OF_DONE.md)
 
 ## Self-contained implementation context
+- **Diagnostic tier classification:** All diagnostics emitted by the CLI include
+  a `tier` field corresponding to the 6-Tier Machine-Enforced Diagnostic Hierarchy
+  in `DIAGNOSTIC_SPEC.md` (Tier 0 `FATAL_SYNTAX`, Tier 1 `TYPE_RESOLUTION`,
+  Tier 2 `BEHAVIORAL_CONTRACT`, Tier 3 `SECURITY_CAPABILITY`,
+  Tier 4 `ANTI_HACKING_ANALYZER`, Tier 5 `HYPER_STRICT_LINT`). At M01 only
+  Tier 0 diagnostics (`WOLIO-SYNTAX-001`) are generated; later milestones add
+  higher-tier codes.
 - **JSON stdout envelope (`--json`):**
   ```json
   {

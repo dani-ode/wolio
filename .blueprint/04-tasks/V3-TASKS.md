@@ -181,7 +181,7 @@ acceptance of the V3 execution start.
   - Lower all V3 constructs (`std::*`, `Secret<T>`, `resource`, `modifies`, `old(expr)`, `transaction`, `foreign` bindings, and fixed-width integers `UInt8`..`UInt32`, `Int8`..`Int32`) to `VerifiedWolioIr` and LLVM with 100% interpreter/native parity.
   - Update `wolio fmt` and `wolio lsp` for all `CORE_V3` syntax including `foreign`, fixed-width integers, and `property` blocks.
 
-### T315: Execute full W01–W15 industrial benchmark and package Wolio V3 release
+### T315: Execute full W01–W16 industrial benchmark and package Wolio V3 release
 - **Depends on:** `T314` | **Blocks:** none (completes V3)
 - **Bounded areas:** `benchmarks/v3/`, release packaging, `.execution/reports/T315.md`
 - **Acceptance families:** `V3-RELEASE`, `BENCH`
