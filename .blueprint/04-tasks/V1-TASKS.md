@@ -153,7 +153,7 @@ These tasks become eligible upon owner baseline acceptance recorded in
 - **Acceptance families:** `AGENT` (versions, query, replay)
 - **Self-contained contract:**
   - Implement local stdin/stdout JSON-lines server (`wolio agent`, protocol version 1, 1 MiB line limit).
-  - Expose snapshot-checked `inspect`, `impact`, and `verify` query methods; maintain append-only idempotent `.wolio-log/` request/response replay ledger.
+  - Expose snapshot-checked `inspect` (including Context Spine queries), `impact`, and `verify` query methods; maintain append-only idempotent `.wolio-log/` request/response replay ledger.
 
 ### T041: Implement typed mutation plans, canonical AST diffs and identity links
 - **Depends on:** `T040` | **Blocks:** `T042`
@@ -168,8 +168,8 @@ These tasks become eligible upon owner baseline acceptance recorded in
 - **Bounded areas:** agent (`crates/wolio-agent`)
 - **Acceptance families:** `AGENT` (deny, traversal, tier, expiry, revocation)
 - **Self-contained contract:**
-  - Enforce deny-by-default path/symbol scope; reject path traversal (`..`) and symlink escapes with `WOLIO-SCOPE-001`.
-  - Calculate risk tiers (`AUTO`, `POST_REVIEW`, `HUMAN_REQUIRED`) from semantic diffs; validate owner approval records (<= 24h UTC expiry, single-use).
+  - Enforce deny-by-default path/symbol scope and macro-capability envelopes; reject path traversal (`..`) and symlink escapes with `WOLIO-SCOPE-001`.
+  - Calculate risk tiers (`AUTO` for all internal evolutions within capability envelopes, `POST_REVIEW` for non-breaking additions, `HUMAN_REQUIRED` strictly for capability escalation, breaking public API changes, or resource budget breaches); validate owner approval records (<= 24h UTC expiry, single-use).
 
 ### T043: Implement staged verification, CAS publication and journal crash recovery
 - **Depends on:** `T042` | **Blocks:** `T044`
@@ -179,13 +179,13 @@ These tasks become eligible upon owner baseline acceptance recorded in
   - Stage changes in an isolated temporary workspace and execute pre-publication verification.
   - Publish atomically via exclusive mutation lock, compare-and-swap snapshot verification, and write-ahead journal recovery that never discards concurrent user edits.
 
-### T044: Implement bounded repair, `finalize`, review disposition and anti-workaround analyzer
+### T044: Implement MCTS state rollback repair, Context Spine generator, `finalize`, review disposition and anti-workaround analyzer
 - **Depends on:** `T043` | **Blocks:** `T060`, `T070`
 - **Bounded areas:** agent (`crates/wolio-agent`), `crates/wolio-semantic` (analyzer submodule), verification (`crates/wolio-verify`)
-- **Acceptance families:** `AGENT` (repair, finalize, review); `ANALYZER`; completes M04
+- **Acceptance families:** `AGENT` (repair, finalize, review, spine, auto-prune); `ANALYZER`; completes M04
 - **Self-contained contract:**
-  - Enforce all 5 V1 analyzer rules (`WOLIO-ANALYZER-001`..`005`, including Zero-Unsafe Invariant, swallowed error rejection, bloat check, constant folding, and test-literal mirroring) and 6 hyper-strict lint rules (`WOLIO-LINT-001`..`006`).
-  - Implement `finalize` evidence binding, `POST_REVIEW` disposition lifecycle, and bounded 3-attempt automated repair loop.
+  - Enforce V1 analyzer rules (`WOLIO-ANALYZER-001`..`005`, including Zero-Unsafe Invariant, swallowed error rejection, Mechanical Auto-Prune pass for unused dependencies/imports, constant folding, and test-literal mirroring) and 6 hyper-strict lint rules (`WOLIO-LINT-001`..`006`).
+  - Implement `finalize` evidence binding, `POST_REVIEW` disposition lifecycle, Context Spine generator (`.wolio/context-spine.json` ≤ 2,000 tokens), and MCTS search-tree exploration with transactional state rollback.
 
 ---
 

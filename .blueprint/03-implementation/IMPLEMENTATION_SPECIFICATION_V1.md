@@ -24,7 +24,7 @@ source (.wol)
 ```
 
 Tooling consumers of the shared semantic model:
-- `wolio-agent`: local JSONL transport, canonical Wolio code snippet parser & typed AST diffs, scope/tier approvals, CAS/journal recovery.
+- `wolio-agent`: local JSONL transport, canonical Wolio code snippet parser & typed AST diffs, Macro-Capability/tier approvals, Context Spine generation, Auto-Prune pass, MCTS state rollback, CAS/journal recovery.
 - `wolio-package`: Git tag/commit resolution, `wolio.lock`, SHA-256 cache (`~/.wolio/cache/`), `--locked --offline`.
 - `wolio-format`: canonical 4-space LF comment-preserving formatter verifying `sym_` ID preservation.
 - `wolio-lsp`: stdio JSON-RPC server with in-memory unsaved-buffer overlay and version-checked rename.
@@ -46,7 +46,7 @@ Create crates only when their milestone begins (`T001` creates only the `M01` cr
 | `crates/wolio-semantic` | `M02` (`T020`–`T023`, `T030`–`T031`, `T044`) | Unified compiler middle-end: `resolver` (`T020`), `types` (`T021`–`T022`), `graph` (`T023`), `contracts` (`T030`), `effects` (`T031`), and `analyzer` (`T044`) | `wolio-parser`, `wolio-ast`, `wolio-diagnostics` |
 | `crates/wolio-runtime` | `M02` (`T024`) | Interpreter evaluator, checked arithmetic, runtime contract guards (`T030`), native C ABI (`T052`) | `wolio-ast`, `wolio-semantic`, `wolio-diagnostics` (NEVER `wolio-codegen` or LLVM) |
 | `crates/wolio-verify` | `M03` (`T032`) | Test discovery/runner, obligation evidence binding, `verify` gates, scalar boundary & property fuzzing (`wolio verify --fuzz`) | `wolio-semantic`, `wolio-runtime`, `wolio-diagnostics` |
-| `crates/wolio-agent` | `M04` (`T040`–`T044`) | Local JSONL server, canonical Wolio code snippet parsing, `MUTATION_SCHEMA` validation, AST diffs, scope/approvals, CAS journal | `wolio-parser`, `wolio-semantic`, `wolio-verify`, `wolio-diagnostics` |
+| `crates/wolio-agent` | `M04` (`T040`–`T044`) | Local JSONL server, canonical code parsing, `MUTATION_SCHEMA` validation, Context Spine generation, Auto-Prune pass, MCTS state rollback, AST diffs, scope/approvals, CAS journal | `wolio-parser`, `wolio-semantic`, `wolio-verify`, `wolio-diagnostics` |
 | `crates/wolio-ir` | `M05` (`T050`) | Typed SSA-like IR lowering and structural verifier producing opaque `VerifiedWolioIr` | `wolio-semantic`, `wolio-diagnostics` (NEVER LLVM) |
 | `crates/wolio-codegen` | `M05` (`T051`) | Emits verified textual LLVM IR (`.ll`) from `VerifiedWolioIr` and invokes pinned `clang` toolchain with runtime linking (pure Rust, zero `llvm-sys` FFI build risk) | `wolio-ir`, `wolio-runtime`, `wolio-diagnostics` |
 | `crates/wolio-package` | `M07` (`T070`–`T071`) | Git SemVer resolver, `wolio.lock`, SHA-256 content-addressed `~/.wolio/cache/`, offline install | `wolio-semantic`, `wolio-diagnostics` |

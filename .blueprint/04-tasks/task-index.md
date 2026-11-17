@@ -50,7 +50,7 @@ Milestone summary: [V1-TASKS.md](V1-TASKS.md). Individual task contract files be
 | T041 | [T041-typed-plans-ast-diffs.md](T041-typed-plans-ast-diffs.md) | T040 | AGENT plan/raw-text/ID mapping |
 | T042 | [T042-scope-approval-tiers.md](T042-scope-approval-tiers.md) | T041 | AGENT deny/traversal/tier/expiry/revocation |
 | T043 | [T043-transactional-apply-recovery.md](T043-transactional-apply-recovery.md) | T042 | AGENT crash/concurrent edits |
-| T044 | [T044-repair-finalize-review-analyzer.md](T044-repair-finalize-review-analyzer.md) | T043 | AGENT repair/review; ANALYZER `001`–`005`; all M04 |
+| T044 | [T044-repair-finalize-review-analyzer.md](T044-repair-finalize-review-analyzer.md) | T043 | AGENT repair/review/spine/auto-prune; ANALYZER; all M04 |
 
 ### M05 — Native (entry: M03, independent of M04)
 

@@ -18,7 +18,7 @@ every file in `.blueprint/` is current and non-contradictory.
    - [BASELINE-V3.md](BASELINE-V3.md): V3 V2-Bugfix Gate, Industrial Standard Library `std::*`, `Secret<T>`, Capability-Gated I/O Mocks, Capability-Gated FFI, Fixed-Width Integers, `transaction` Frames & Contract Property Fuzzing (`M12`–`M15`, `T301`–`T319`).
 2. **Layers:**
    - `00-product/`: Whole-project coverage across V1, V2, and V3.
-   - `01-architecture/`: Architecture Decision Records (`ADR-005`..`ADR-009`).
+   - `01-architecture/`: Architecture Decision Records (`ADR-005`..`ADR-010`, including `ADR-010` Vibe-Native Zero-Code Inspection Architecture).
    - `02-specifications/`: Normative language (`CORE_V1`, `CORE_V2`, `CORE_V3`), contract, semantic, protocol, package, and diagnostic specifications.
    - `03-implementation/`: Self-contained crate boundaries (`IMPLEMENTATION_SPECIFICATION_V1.md`, `IMPLEMENTATION_SPECIFICATION_V2.md`, `IMPLEMENTATION_SPECIFICATION_V3.md`) and delivery/bug-fix policies (`DELIVERY_POLICY.md`).
    - `04-tasks/`: Self-contained task contracts (`T001`–`T074` in `V1-TASKS.md`, `T201`–`T216` in `V2-TASKS.md`, `T301`–`T319` in `V3-TASKS.md`).

@@ -17,6 +17,7 @@ non-contradictory.
 
 1. **Authority & Version Baselines:**
    - This register (`DOCUMENT_AUTHORITY.md`)
+   - [ADR-010](01-architecture/decisions/ADR-010-vibe-native-zero-inspection-architecture.md): Vibe-Native Zero-Code Inspection Architecture (7 pillars, Context Spine, and anti-pathology mechanics).
    - [BASELINE-V1.md](BASELINE-V1.md): V1 scope (`M01`–`M07`, `T001`–`T074`)
    - [BASELINE-V2.md](BASELINE-V2.md): V2 scope (`M08`–`M11`, `T201`–`T216`)
    - [BASELINE-V3.md](BASELINE-V3.md): V3 scope (`M12`–`M15`, `T301`–`T319`)
@@ -52,7 +53,8 @@ non-contradictory.
 
 ## 3. Revision 1.5 governance
 
-Revision 1.5 incorporates [ADR-009](01-architecture/decisions/ADR-009-unconventional-paradigm-unification.md),
+Revision 1.5 incorporates [ADR-010](01-architecture/decisions/ADR-010-vibe-native-zero-inspection-architecture.md),
+[ADR-009](01-architecture/decisions/ADR-009-unconventional-paradigm-unification.md),
 [ADR-008](01-architecture/decisions/ADR-008-multi-version-anti-workaround-roadmap.md),
 and [ADR-007](01-architecture/decisions/ADR-007-deterministic-identity-and-gated-automation.md).
 Where two normative documents appear to disagree, stop the affected task, record

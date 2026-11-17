@@ -8,6 +8,26 @@
 
 ### Revision 1.5 — 2026-11-14 (current freeze candidate)
 
+- **Vibe-Native Zero-Inspection Architecture Overhaul (ADR-010):**
+  - Codified the definitive Vibe-Native Zero-Code Inspection architecture across Seven Foundational Pillars:
+    1. Adversarial Dual-Agent Property Synthesis (Generator vs. Critic) replacing manual boolean contracts.
+    2. Macro-Capability Envelopes in `wolio.toml` replacing micro-AST approvals (`AUTO` internal refactoring).
+    3. MCTS Search-Tree & Deterministic Auto-Fix with state rollback replacing 3-attempt linear abort.
+    4. Structural Termination & Vectorized Streams (`map`, `filter`, `fold`, etc.) replacing manual loop invariants.
+    5. Sandboxed WASI Component Model FFI (WIT interfaces, isolated memory) replacing brittle C-glue FFI.
+    6. Schema-Driven Property Fuzzing and Ephemeral Container Live Sandboxes replacing hallucinated `with_mock`.
+    7. Actor Model & Supervision Trees (process-isolated state, typed mailboxes, restart trees) replacing static-only DAG concurrency.
+  - Codified Four Anti-Pathology Mechanical Safeguards against multi-session "script akal-akalan":
+    1. Semantic Context Digest (`.wolio/context-spine.json` ~2,000 tokens) providing 100% global architecture awareness without reading function bodies.
+    2. Zero-Tolerance Anti-Orphan Architecture rejecting unmapped scripts (`fix_temp.py`) at Tier 0 syntax/module resolution (`WOLIO-MODULE-001`).
+    3. Automated Global Regression Gate emitting Semantic Root-Cause Diagnostics.
+    4. Nominal Refinement Types preventing fake data or string sentinel workarounds.
+- **Agent Autonomy & Approval Protocol Overhaul (Session 2):**
+  - **Macro-Capability Approval Matrix (`APPROVAL_MATRIX_V1.md`):** Eliminated micro-AST approvals. All internal codebase evolutions (private declarations, internal operations, internal errors, internal effects/I/O within declared macro-capabilities, private refactoring, and auto-pruning) are classified as `AUTO`. Human review (`HUMAN_REQUIRED`) is restricted strictly and exclusively to: (1) External capability escalations (new network domains, filesystem paths outside sandbox roots), (2) Breaking public API schema changes (deleting public symbols, breaking signatures, weakening public contracts), and (3) Runtime/computational resource budget violations (`timeout_ms`, `max_memory_mb`). `POST_REVIEW` is retained strictly for non-breaking, additive public boundary changes.
+  - **Context Spine Generator (`LOCAL_PROTOCOL_V1.md`, `MUTATION_SCHEMA_V1.md`):** Formalized compiler-generated architectural index at `.wolio/context-spine.json` strictly budgeted to ≤ 2,000 tokens. In multi-session agent workflows (Sessions 4, 10+), AI agents consume this spine for 100% global architectural visibility, permanently defeating Context Window Amnesia and preventing duplicate domain types (`WOLIO-TYPE-002`) and unmapped orphan scripts (`WOLIO-MODULE-001`).
+  - **Mechanical Auto-Prune Pass:** Reclassified declared bloat (unused dependencies, unreferenced imports, dead bindings) from fatal compilation rejections into a deterministic compiler AST rewrite pass, logging pruned entities under `auto_pruned: [...]` without failing plans or triggering panic workarounds.
+  - **MCTS Search-Tree & State Rollback:** Permanently abolished the legacy "3-attempt bounded linear abort". Implemented Monte Carlo Tree Search exploration of mutation branches with clean, transactional state rollbacks to valid checkpoints on failure, outputting semantic root-cause diagnostic trees upon exploration budget exhaustion.
+  - **Task & Spec Harmonization:** Synchronized `T040`, `T042`, `T043`, `T044`, `V1-TASKS.md`, `PROJECT_COVERAGE.md`, `DELIVERY_PLAN.md`, `ACCEPTANCE_MATRIX.md`, `IMPLEMENTATION_SPECIFICATION_V1.md`, and `AI_BUG_TAXONOMY.md`.
 - Addressed industrial vibe-coding and systems architecture review:
   - **Unconventional Paradigm Unification (ADR-009):** Codified Wolio's radical architectural departure from conventional languages across four immutable pillars: (1) Zero-coloring deterministic dataflow parallelism replacing threads and async/await; (2) Canonical content-addressed value collections (`Set<T>`, `Map<K, V>`) and relational identity graphs over `sym_id` tuples replacing mutable pointer heaps; (3) Contractual refinement and exhaustive closed sums replacing class inheritance and open trait hierarchies; (4) Linear resource frames, atomic rollbacks, and mandatory hermetic test isolation (`with_mock`) replacing mutable pointer I/O.
   - **Canonical Set Collection:** Added `Set<T>` to V2 M09 (`CORE_V2.md`, `T207`, `T213`, `BASELINE-V2.md`) and forward-reserved `Set` in V1 Set 3 keywords (expanding to 24 forward-reserved keywords).
